@@ -1,53 +1,126 @@
-<?php
 
-/* @var $this yii\web\View */
-
-$this->title = 'My Yii Application';
-?>
-<div class="site-index">
-
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
-
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
+<section class="intro-section">
+    <div class="container">
+        <div class="text-holder">
+            <div class="title-holder"><h1>Best shipping rates for your business from logistic leader</h1></div>
+            <a href="#" class="btn">Learn more about us</a>
+        </div>
     </div>
-
-    <div class="body-content">
-
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
+</section>
+<div class="container title-routs">
+    <h2>Our routes</h2>
+</div>
+<section class="top-section">
+    <div class="container">
+        <div class="visual-holder">
+            <div class="content-holder">
+                <h3>Cargo shipping from China to:</h3>
+                <ul class="routs-list">
+                    <li>
+                        <strong>Middle East area:</strong>
+                        <span>Jebel Ali, Dammam, Riyadh, Doha, Kuwait</span>
+                    </li>
+                    <li>
+                        <strong>Europe area:</strong>
+                        <span>Mideterian and Baltic sea: St. Petersburg, Kotka, Klaipeda, Riga, Tallin </span>
+                    </li>
+                    <li>
+                        <strong>Central Asia area:</strong>
+                        <span>Baku, Erevan, Tbilisi</span>
+                    </li>
+                    <li>
+                        <strong>Black Sea area:</strong>
+                        <span>Novorossiysk, Poti, Odessa</span>
+                    </li>
+                </ul>
+                <div class="btn-holder"><a href="#" class="btn">learn more</a></div>
             </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
+            <div class="visual">
+                <img src="images/main-bg.jpg" alt="image description">
             </div>
         </div>
-
     </div>
-</div>
+</section>
+<section class="slider-section">
+    <div class="container">
+        <h2>Our services</h2>
+        <div class="slider-holder">
+            <div class="service-slider">
+                <div>
+                    <div class="img-holder"><img src="images/sr1.jpg" alt="image description"></div>
+                    <strong>Cargo shipping</strong>
+                    <span>Moro China company provides international sea container transportations of cargoes. Due to its low cost and convenience, they are quite popular, in addition, one of the primary advantages of container transport is a high level of security.</span>
+                    <a href="#" class="btn">Learn more</a>
+                </div>
+                <div>
+                    <div class="img-holder"><img src="images/sr2.jpg" alt="image description"></div>
+                    <strong>Air transportation</strong>
+                    <span>Мого China company provides International sea container transportations of cargoes. Due to its low cost and convenience, they are quite popular, in addition, one of the primary advantages of container transport is a high level of security.</span>
+                    <a href="#" class="btn">Learn more</a>
+                </div>
+                <div>
+                    <div class="img-holder"><img src="images/sr3.jpg" alt="image description"></div>
+                    <strong>Trucking service</strong>
+                    <span>Мого China company provides international sea container transportations of cargoes. Due to its low cost and convenience, they are quite popular, in addition, one of the primary advantages of container transport is a high level of security.</span>
+                    <a href="#" class="btn">Learn more</a>
+                </div>
+                <div>
+                    <div class="img-holder"><img src="images/sr1.jpg" alt="image description"></div>
+                    <strong>Cargo shipping</strong>
+                    <span>Moro China company provides international sea container transportations of cargoes. Due to its low cost and convenience, they are quite popular, in addition, one of the primary advantages of container transport is a high level of security.</span>
+                    <a href="#" class="btn">Learn more</a>
+                </div>
+                <div>
+                    <div class="img-holder"><img src="images/sr2.jpg" alt="image description"></div>
+                    <strong>Air transportation</strong>
+                    <span>Мого China company provides International sea container transportations of cargoes. Due to its low cost and convenience, they are quite popular, in addition, one of the primary advantages of container transport is a high level of security.</span>
+                    <a href="#" class="btn">Learn more</a>
+                </div>
+                <div>
+                    <div class="img-holder"><img src="images/sr3.jpg" alt="image description"></div>
+                    <strong>Trucking service</strong>
+                    <span>Мого China company provides international sea container transportations of cargoes. Due to its low cost and convenience, they are quite popular, in addition, one of the primary advantages of container transport is a high level of security.</span>
+                    <a href="#" class="btn">Learn more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="news-section">
+    <div class="container">
+        <h2>Company news</h2>
+        <ul class="news-list">
+            <li>
+                <div class="img-holder"><img src="images/img8.jpg" alt="image description"></div>
+                <span class="date">12.10.2016</span>
+                <strong>The EU Commission closes <br> competition case without finding infringement</strong>
+            </li>
+            <li class="small">
+                <div class="img-holder"><img src="images/img9.jpg" alt="image description"></div>
+                <span class="date">12.10.2016</span>
+                <strong>RUSAL and Maersk Line announce long-term cooperation</strong>
+                <p>Moro China company provides international sea container transportations of cargoes. Due to Its low cost and convenience ...</p>
+                <a href="#" class="link">read more</a>
+            </li>
+            <li class="small">
+                <div class="img-holder"><img src="images/img10.jpg" alt="image description"></div>
+                <span class="date">12.10.2016</span>
+                <strong>RUSAL and Maersk Line announce long-term cooperation</strong>
+                <p>Moro China company provides international sea container transportations of cargoes. Due to Its low cost and convenience ...</p>
+                <a href="#" class="link">read more</a>
+            </li>
+        </ul>
+    </div>
+</section>
+<section class="partners-section">
+    <div class="container">
+        <h2>Partners</h2>
+        <ul class="partners-list">
+            <li><a href="#"><img src="images/pr1.jpg" alt="image description"></a></li>
+            <li><a href="#"><img src="images/pr2.jpg" alt="image description"></a></li>
+            <li><a href="#"><img src="images/pr3.jpg" alt="image description"></a></li>
+            <li><a href="#"><img src="images/pr4.jpg" alt="image description"></a></li>
+            <li><a href="#"><img src="images/pr5.jpg" alt="image description"></a></li>
+        </ul>
+    </div>
+</section>
