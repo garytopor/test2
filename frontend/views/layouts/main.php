@@ -25,7 +25,7 @@ MainAsset::register($this);
     <?= $this->render('_header') ?>
     <?= $content ?>
     <?= $this->render('_footer') ?>
-    <?/*$this->render('_calcPopup') */?>
+
 </div>
 
 <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
