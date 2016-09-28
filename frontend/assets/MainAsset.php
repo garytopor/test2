@@ -1,5 +1,5 @@
 <?
-namespace app\assets;
+namespace frontend\assets;
 
 use yii\web\View;
 use yii\web\AssetBundle;
