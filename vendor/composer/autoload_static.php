@@ -23,9 +23,14 @@ class ComposerStaticInit03e5047c974548529b2ccae7649f9465
             'yii\\bootstrap\\' => 14,
             'yii\\' => 4,
         ),
+        'j' => 
+        array (
+            'jamband\\schemadump\\' => 19,
+        ),
         'c' => 
         array (
             'cebe\\markdown\\' => 14,
+            'c006\\utility\\migration\\' => 23,
         ),
         'F' => 
         array (
@@ -66,9 +71,17 @@ class ComposerStaticInit03e5047c974548529b2ccae7649f9465
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2',
         ),
+        'jamband\\schemadump\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jamband/yii2-schemadump',
+        ),
         'cebe\\markdown\\' => 
         array (
             0 => __DIR__ . '/..' . '/cebe/markdown',
+        ),
+        'c006\\utility\\migration\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/c006/yii2-migration-utility',
         ),
         'Faker\\' => 
         array (

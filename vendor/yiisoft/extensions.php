@@ -57,4 +57,22 @@ return array (
       '@yii/faker' => $vendorDir . '/yiisoft/yii2-faker',
     ),
   ),
+  'c006/yii2-migration-utility' => 
+  array (
+    'name' => 'c006/yii2-migration-utility',
+    'version' => '9999999-dev',
+    'alias' => 
+    array (
+      '@c006/utility/migration' => $vendorDir . '/c006/yii2-migration-utility',
+    ),
+  ),
+  'jamband/yii2-schemadump' => 
+  array (
+    'name' => 'jamband/yii2-schemadump',
+    'version' => '0.9.9.0',
+    'alias' => 
+    array (
+      '@jamband/schemadump' => $vendorDir . '/jamband/yii2-schemadump',
+    ),
+  ),
 );
