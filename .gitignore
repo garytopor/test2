@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # yii console command
 /yii
 
@@ -29,3 +30,5 @@ phpunit.phar
 
 # vagrant runtime
 /.vagrant
+=======
+>>>>>>> 81e6234e3717637f4af6cef5e496a9cec06f988d
