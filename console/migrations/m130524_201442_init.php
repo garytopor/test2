@@ -73,7 +73,7 @@ class m130524_201442_init extends Migration
                 0 => 'PRIMARY KEY (`id`)',
                 'idCategory' => 'INT(11) NOT NULL',
                 'alias' => 'VARCHAR(50) NOT NULL',
-                'createdAt' => 'DATETIME NULL DEFAULT \'CURRENT_TIMESTAMP\'',
+                'createdAt' => 'DATETIME  DEFAULT NULL',
             ], $tableOptions_mysql);
         }
         }
