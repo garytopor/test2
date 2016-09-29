@@ -11,6 +11,9 @@ use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
 use yii\widgets\Menu;
 use yii\helpers\Url;
+use common\models\Category;
+
+$menu = Category::getMenu();
 
 AppAsset::register($this);
 ?>
@@ -97,12 +100,7 @@ AppAsset::register($this);
                         <div class="category-content no-padding">
                             <?php echo Menu::widget([
                                 'encodeLabels' => false,
-                                'items' => [
-                                    ['label' => '<i class="icon-home4"></i> Главная', 'url' => ['site/index']],
-                                    ['label' => '<i class="icon-copy"></i> О компании', 'url' => ['site/about']],
-                                    ['label' => '<i class="icon-droplet2"></i> Услуги', 'url' => ['site/services']],
-                                    ['label' => '<i class="icon-stack"></i> Контакты', 'url' => ['site/contacts']],
-                                ],
+                                'items' => $menu,
                                 'options' => [
                                     'class' => 'navigation navigation-main navigation-accordion'
                                 ],
