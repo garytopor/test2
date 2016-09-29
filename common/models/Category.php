@@ -79,7 +79,7 @@ class Category extends \yii\db\ActiveRecord
     /**
      * @return [Array] [<left menu items for backend>]
      */
-    public function getMenu ()
+    public function getMenu()
     {
         $result = [];
         $categories = Category::findAll(['showInMenu' => 1]);
