@@ -10,6 +10,8 @@ use Yii;
  * @property integer $id
  * @property string $alias
  * @property integer $sort
+ * @property integer $showInMenu
+ * @property string $icon
  *
  * @property CategoryLang[] $categoryLangs
  * @property Page[] $pages
@@ -31,8 +33,8 @@ class Category extends \yii\db\ActiveRecord
     {
         return [
             [['alias', 'sort'], 'required'],
-            [['sort'], 'integer'],
-            [['alias'], 'string', 'max' => 50],
+            [['sort', 'showInMenu'], 'integer'],
+            [['alias', 'icon'], 'string', 'max' => 50],
         ];
     }
 
@@ -45,6 +47,8 @@ class Category extends \yii\db\ActiveRecord
             'id' => Yii::t('app', 'ID'),
             'alias' => Yii::t('app', 'Alias'),
             'sort' => Yii::t('app', 'Sort'),
+            'showInMenu' => Yii::t('app', 'Show In Menu'),
+            'icon' => Yii::t('app', 'Icon'),
         ];
     }
 
@@ -64,8 +68,27 @@ class Category extends \yii\db\ActiveRecord
         return $this->hasMany(Page::className(), ['idCategory' => 'id']);
     }
 
-    public function getMenu()
+    /**
+     * @return [ActiveRecord] [<get the translated content>]
+     */
+    public function getContent()
     {
-        return [];
+        return $this->hasOne(CategoryLang::className(), ['idCategory' => 'id'])->where('lang = :lang', [ ':lang' => Yii::$app->language ]);
+    }
+
+    /**
+     * @return [Array] [<left menu items for backend>]
+     */
+    public function getMenu ()
+    {
+        $result = [];
+        $categories = Category::findAll(['showInMenu' => 1]);
+        foreach ($categories as $category) {
+            $result[] = [
+                'label' =>  '<i class="' . $category->icon . '"></i> ' . $category->content->val,
+                'url' => ['/']
+            ];
+        }
+        return $result;
     }
 }
