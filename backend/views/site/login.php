@@ -17,18 +17,18 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <div class="text-center">
             <div class="icon-object border-slate-300 text-slate-300"><i class="icon-reading"></i></div>
-            <h5 class="content-group">Login to your account <small class="display-block">Enter your credentials below</small></h5>
+            <h5 class="content-group"><?php echo Yii::t('app', 'Login to your account') ?> <small class="display-block"><?php echo Yii::t('app', 'Enter your credentials below') ?> </small></h5>
         </div>
 
         <div class="form-group has-feedback has-feedback-left">
-            <?php echo Html::activeTextInput($model, 'username', [ 'placeholder' => 'Username', 'class' => 'form-control' ]); ?>
+            <?php echo Html::activeTextInput($model, 'username', [ 'placeholder' => Yii::t('app', 'Username'), 'class' => 'form-control' ]); ?>
             <div class="form-control-feedback">
                 <i class="icon-user text-muted"></i>
             </div>
         </div>
 
         <div class="form-group has-feedback has-feedback-left">
-            <?php echo Html::activePasswordInput($model, 'password', [ 'placeholder' => 'Password', 'class' => 'form-control' ]); ?>
+            <?php echo Html::activePasswordInput($model, 'password', [ 'placeholder' => Yii::t('app', 'Password'), 'class' => 'form-control' ]); ?>
             <div class="form-control-feedback">
                 <i class="icon-lock2 text-muted"></i>
             </div>
@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= $form->field($model, 'rememberMe')->checkbox() ?>
 
         <div class="form-group">
-            <?= Html::submitButton('Login', ['class' => 'btn btn-primary btn-block', 'name' => 'login-button']) ?>
+            <?= Html::submitButton(Yii::t('app', 'Login'), ['class' => 'btn btn-primary btn-block', 'name' => 'login-button']) ?>
         </div>
 
     </div>

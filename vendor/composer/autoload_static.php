@@ -29,6 +29,7 @@ class ComposerStaticInit03e5047c974548529b2ccae7649f9465
         ),
         'c' => 
         array (
+            'codemix\\localeurls\\' => 19,
             'cebe\\markdown\\' => 14,
             'c006\\utility\\migration\\' => 23,
         ),
@@ -74,6 +75,10 @@ class ComposerStaticInit03e5047c974548529b2ccae7649f9465
         'jamband\\schemadump\\' => 
         array (
             0 => __DIR__ . '/..' . '/jamband/yii2-schemadump',
+        ),
+        'codemix\\localeurls\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/codemix/yii2-localeurls',
         ),
         'cebe\\markdown\\' => 
         array (

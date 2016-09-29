@@ -28,7 +28,7 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
     <div class="navbar navbar-default header-highlight">
         <div class="navbar-header">
-            <a class="navbar-brand" href="<?php echo Url::toRoute('/') ?>"><img src="images/logo_light.png" alt=""></a>
+            <a class="navbar-brand" href="<?php echo Url::toRoute('/') ?>"><img src="/images/logo_light.png" alt=""></a>
 
             <ul class="nav navbar-nav visible-xs-block">
                 <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
@@ -43,6 +43,25 @@ AppAsset::register($this);
 
             <div class="navbar-right">
                 <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">
+                            <span><?php echo Yii::$app->language ?></span>
+                            <i class="caret"></i>
+                        </a>
+
+                        <?php echo Menu::widget([
+                            'encodeLabels' => false,
+                            'items' => [
+                                ['label' => 'en', 'url' => ['/', 'language' => 'en']],
+                                ['label' => 'ru', 'url' => ['/', 'language' => 'ru']],
+                                ['label' => 'cn', 'url' => ['/', 'language' => 'cn']],
+                            ],
+                            'options' => [
+                                'class' => 'dropdown-menu dropdown-menu-right'
+                            ],
+                        ]); ?>
+                    </li>
+
                     <li class="dropdown dropdown-user">
                         <a class="dropdown-toggle" data-toggle="dropdown">
                             <span><?php echo Yii::$app->user->identity->username ?></span>
@@ -62,6 +81,7 @@ AppAsset::register($this);
                     </li>
                 </ul>
             </div>
+
         </div>
     </div>
 
