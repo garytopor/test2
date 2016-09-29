@@ -63,4 +63,9 @@ class Category extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Page::className(), ['idCategory' => 'id']);
     }
+
+    public function getMenu()
+    {
+        return [];
+    }
 }

@@ -69,4 +69,5 @@ class Lang extends \yii\db\ActiveRecord
     {
         return $this->hasMany(PageLang::className(), ['idLang' => 'id']);
     }
+
 }
