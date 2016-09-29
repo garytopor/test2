@@ -39,6 +39,31 @@ class m130524_201442_init extends Migration
         }
 
         /* MYSQL */
+        if (!in_array('country', $tables))  {
+        if ($dbType == "mysql") {
+            $this->createTable('{{%country}}', [
+                'id' => 'INT(5) NOT NULL AUTO_INCREMENT',
+                0 => 'PRIMARY KEY (`id`)',
+                'alias' => 'VARCHAR(50) NOT NULL',
+                'sort' => 'INT(5) NOT NULL',
+            ], $tableOptions_mysql);
+        }
+        }
+
+        /* MYSQL */
+        if (!in_array('country_lang', $tables))  {
+        if ($dbType == "mysql") {
+            $this->createTable('{{%country_lang}}', [
+                'id' => 'INT(5) NOT NULL AUTO_INCREMENT',
+                0 => 'PRIMARY KEY (`id`)',
+                'country_id' => 'INT(5) NOT NULL',
+                'lang_id' => 'INT(5) NOT NULL',
+                'val' => 'VARCHAR(50) NOT NULL',
+            ], $tableOptions_mysql);
+        }
+        }
+
+        /* MYSQL */
         if (!in_array('field', $tables))  {
         if ($dbType == "mysql") {
             $this->createTable('{{%field}}', [
@@ -73,7 +98,7 @@ class m130524_201442_init extends Migration
                 0 => 'PRIMARY KEY (`id`)',
                 'idCategory' => 'INT(11) NOT NULL',
                 'alias' => 'VARCHAR(50) NOT NULL',
-                'createdAt' => 'DATETIME NULL DEFAULT \'CURRENT_TIMESTAMP\'',
+                'createdAt' => 'DATETIME NULL',
             ], $tableOptions_mysql);
         }
         }
@@ -119,6 +144,18 @@ class m130524_201442_init extends Migration
         }
 
         /* MYSQL */
+        if (!in_array('settings', $tables))  {
+        if ($dbType == "mysql") {
+            $this->createTable('{{%settings}}', [
+                'id' => 'TINYINT(3) NOT NULL AUTO_INCREMENT',
+                0 => 'PRIMARY KEY (`id`)',
+                'name' => 'VARCHAR(255) NOT NULL',
+                'val' => 'VARCHAR(255) NOT NULL',
+            ], $tableOptions_mysql);
+        }
+        }
+
+        /* MYSQL */
         if (!in_array('user', $tables))  {
         if ($dbType == "mysql") {
             $this->createTable('{{%user}}', [
@@ -137,30 +174,30 @@ class m130524_201442_init extends Migration
         }
 
 
-        $this->createIndex('idx_idCategory_5165_00','category_lang','idCategory',0);
-        $this->createIndex('idx_idLang_5165_01','category_lang','idLang',0);
-        $this->createIndex('idx_idCategory_5165_02','category_lang','idCategory',0);
-        $this->createIndex('idx_alias_5345_03','field','alias',0);
-        $this->createIndex('idx_idCategory_5595_04','page','idCategory',0);
-        $this->createIndex('idx_alias_5595_05','page','alias',0);
-        $this->createIndex('idx_aliasPage_5705_06','page_field','aliasPage',0);
-        $this->createIndex('idx_aliasField_5705_07','page_field','aliasField',0);
-        $this->createIndex('idx_aliasPage_5705_08','page_field','aliasPage',0);
-        $this->createIndex('idx_aliasField_5705_09','page_field','aliasField',0);
-        $this->createIndex('idx_idPage_5925_10','page_image','idPage',0);
-        $this->createIndex('idx_idPage_6105_11','page_lang','idPage',0);
-        $this->createIndex('idx_idLang_6105_12','page_lang','idLang',0);
-        $this->createIndex('idx_UNIQUE_username_6165_13','user','username',1);
-        $this->createIndex('idx_UNIQUE_email_6165_14','user','email',1);
-        $this->createIndex('idx_UNIQUE_password_reset_token_6165_15','user','password_reset_token',1);
+        $this->createIndex('idx_idCategory_9621_00','category_lang','idCategory',0);
+        $this->createIndex('idx_idLang_9621_01','category_lang','idLang',0);
+        $this->createIndex('idx_idCategory_9621_02','category_lang','idCategory',0);
+        $this->createIndex('idx_alias_9701_03','field','alias',0);
+        $this->createIndex('idx_idCategory_9771_04','page','idCategory',0);
+        $this->createIndex('idx_alias_9771_05','page','alias',0);
+        $this->createIndex('idx_aliasPage_9801_06','page_field','aliasPage',0);
+        $this->createIndex('idx_aliasField_9801_07','page_field','aliasField',0);
+        $this->createIndex('idx_aliasPage_9801_08','page_field','aliasPage',0);
+        $this->createIndex('idx_aliasField_9801_09','page_field','aliasField',0);
+        $this->createIndex('idx_idPage_9831_10','page_image','idPage',0);
+        $this->createIndex('idx_idPage_9871_11','page_lang','idPage',0);
+        $this->createIndex('idx_idLang_9871_12','page_lang','idLang',0);
+        $this->createIndex('idx_UNIQUE_username_9921_13','user','username',1);
+        $this->createIndex('idx_UNIQUE_email_9921_14','user','email',1);
+        $this->createIndex('idx_UNIQUE_password_reset_token_9921_15','user','password_reset_token',1);
 
         $this->execute('SET foreign_key_checks = 0');
-        $this->addForeignKey('fk_category_5165_00','{{%category_lang}}', 'idCategory', '{{%category}}', 'id', 'CASCADE', 'RESTRICT' );
-        $this->addForeignKey('fk_lang_5165_01','{{%category_lang}}', 'idLang', '{{%lang}}', 'id', 'CASCADE', 'RESTRICT' );
-        $this->addForeignKey('fk_category_5585_02','{{%page}}', 'idCategory', '{{%category}}', 'id', 'CASCADE', 'RESTRICT' );
-        $this->addForeignKey('fk_page_5915_03','{{%page_image}}', 'idPage', '{{%page}}', 'id', 'CASCADE', 'RESTRICT' );
-        $this->addForeignKey('fk_page_6105_04','{{%page_lang}}', 'idPage', '{{%page}}', 'id', 'CASCADE', 'RESTRICT' );
-        $this->addForeignKey('fk_lang_6105_05','{{%page_lang}}', 'idLang', '{{%lang}}', 'id', 'CASCADE', 'RESTRICT' );
+        $this->addForeignKey('fk_category_9611_00','{{%category_lang}}', 'idCategory', '{{%category}}', 'id', 'CASCADE', 'NO ACTION' );
+        $this->addForeignKey('fk_lang_9611_01','{{%category_lang}}', 'idLang', '{{%lang}}', 'id', 'CASCADE', 'NO ACTION' );
+        $this->addForeignKey('fk_category_9761_02','{{%page}}', 'idCategory', '{{%category}}', 'id', 'CASCADE', 'NO ACTION' );
+        $this->addForeignKey('fk_page_9831_03','{{%page_image}}', 'idPage', '{{%page}}', 'id', 'CASCADE', 'NO ACTION' );
+        $this->addForeignKey('fk_lang_9871_04','{{%page_lang}}', 'idLang', '{{%lang}}', 'id', 'CASCADE', 'NO ACTION' );
+        $this->addForeignKey('fk_page_9871_05','{{%page_lang}}', 'idPage', '{{%page}}', 'id', 'CASCADE', 'NO ACTION' );
         $this->execute('SET foreign_key_checks = 1;');
 
     }
@@ -173,6 +210,12 @@ class m130524_201442_init extends Migration
         $this->execute('SET foreign_key_checks = 1;');
         $this->execute('SET foreign_key_checks = 0');
         $this->execute('DROP TABLE IF EXISTS `category_lang`');
+        $this->execute('SET foreign_key_checks = 1;');
+        $this->execute('SET foreign_key_checks = 0');
+        $this->execute('DROP TABLE IF EXISTS `country`');
+        $this->execute('SET foreign_key_checks = 1;');
+        $this->execute('SET foreign_key_checks = 0');
+        $this->execute('DROP TABLE IF EXISTS `country_lang`');
         $this->execute('SET foreign_key_checks = 1;');
         $this->execute('SET foreign_key_checks = 0');
         $this->execute('DROP TABLE IF EXISTS `field`');
@@ -193,7 +236,11 @@ class m130524_201442_init extends Migration
         $this->execute('DROP TABLE IF EXISTS `page_lang`');
         $this->execute('SET foreign_key_checks = 1;');
         $this->execute('SET foreign_key_checks = 0');
+        $this->execute('DROP TABLE IF EXISTS `settings`');
+        $this->execute('SET foreign_key_checks = 1;');
+        $this->execute('SET foreign_key_checks = 0');
         $this->execute('DROP TABLE IF EXISTS `user`');
         $this->execute('SET foreign_key_checks = 1;');
+
     }
 }
