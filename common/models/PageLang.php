@@ -9,11 +9,10 @@ use Yii;
  *
  * @property integer $id
  * @property integer $idPage
- * @property integer $idLang
+ * @property string $lang
  * @property string $type
  * @property string $val
  *
- * @property Lang $idLang0
  * @property Page $idPage0
  */
 class PageLang extends \yii\db\ActiveRecord
@@ -32,11 +31,11 @@ class PageLang extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['idPage', 'idLang', 'type', 'val'], 'required'],
-            [['idPage', 'idLang'], 'integer'],
+            [['idPage', 'lang', 'type', 'val'], 'required'],
+            [['idPage'], 'integer'],
             [['val'], 'string'],
+            [['lang'], 'string', 'max' => 5],
             [['type'], 'string', 'max' => 50],
-            [['idLang'], 'exist', 'skipOnError' => true, 'targetClass' => Lang::className(), 'targetAttribute' => ['idLang' => 'id']],
             [['idPage'], 'exist', 'skipOnError' => true, 'targetClass' => Page::className(), 'targetAttribute' => ['idPage' => 'id']],
         ];
     }
@@ -49,18 +48,10 @@ class PageLang extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'idPage' => Yii::t('app', 'Id Page'),
-            'idLang' => Yii::t('app', 'Id Lang'),
+            'lang' => Yii::t('app', 'Lang'),
             'type' => Yii::t('app', 'Type'),
             'val' => Yii::t('app', 'Val'),
         ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getIdLang0()
-    {
-        return $this->hasOne(Lang::className(), ['id' => 'idLang']);
     }
 
     /**

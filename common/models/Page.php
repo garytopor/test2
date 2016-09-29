@@ -76,4 +76,17 @@ class Page extends \yii\db\ActiveRecord
     {
         return $this->hasMany(PageLang::className(), ['idPage' => 'id']);
     }
+
+    /**
+     * @return [ActiveRecord] [<get the translated content by type (title, keywords, content ...)>]
+     */
+    public function getContent($type)
+    {
+        return $this->hasOne(PageLang::className(), ['idPage' => 'id'])
+            ->where(
+                'lang = :lang and type = :type',
+                [ ':lang' => Yii::$app->language, ':type' => $type ]
+            )->one();
+    }
+
 }
