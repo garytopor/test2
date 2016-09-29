@@ -10,7 +10,8 @@ use Yii;
  * @property integer $id
  * @property string $alias
  * @property string $type
- * @property string $name
+ *
+ * @property FieldLang[] $fieldLangs
  */
 class Field extends \yii\db\ActiveRecord
 {
@@ -28,9 +29,8 @@ class Field extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['alias', 'type', 'name'], 'required'],
+            [['alias', 'type'], 'required'],
             [['alias', 'type'], 'string', 'max' => 50],
-            [['name'], 'string', 'max' => 255],
         ];
     }
 
@@ -43,7 +43,14 @@ class Field extends \yii\db\ActiveRecord
             'id' => Yii::t('app', 'ID'),
             'alias' => Yii::t('app', 'Alias'),
             'type' => Yii::t('app', 'Type'),
-            'name' => Yii::t('app', 'Name'),
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getFieldLangs()
+    {
+        return $this->hasMany(FieldLang::className(), ['idField' => 'id']);
     }
 }

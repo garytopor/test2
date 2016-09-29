@@ -84,9 +84,18 @@ class Category extends \yii\db\ActiveRecord
         $result = [];
         $categories = Category::findAll(['showInMenu' => 1]);
         foreach ($categories as $category) {
+            $items = [];
+            foreach ($category->pages as $page) {
+                $items[] = [
+                    'label' => $page->getContent('title')->val,
+                    'url' => ['/']
+                ];
+            }
+
             $result[] = [
                 'label' =>  '<i class="' . $category->icon . '"></i> ' . $category->content->val,
-                'url' => ['/']
+                'url' => '#',
+                'items' => $items
             ];
         }
         return $result;
