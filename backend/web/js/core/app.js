@@ -614,4 +614,7 @@ $(function() {
     // Tooltip
     $('[data-popup="tooltip"]').tooltip();
 
+    // Datepicker
+    $('.pickadate').pickadate();
+
 });

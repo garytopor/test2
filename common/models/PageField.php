@@ -43,4 +43,13 @@ class PageField extends \yii\db\ActiveRecord
             'aliasField' => Yii::t('app', 'Alias Field'),
         ];
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getField()
+    {
+        return $this->hasOne(Field::className(), ['alias' => 'aliasField']);
+    }
+
 }

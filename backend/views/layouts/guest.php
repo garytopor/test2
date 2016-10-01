@@ -5,12 +5,8 @@
 
 use backend\assets\AppAsset;
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
-use yii\widgets\Menu;
-use yii\helpers\Url;
 
 AppAsset::register($this);
 ?>
@@ -27,6 +23,7 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 <div class="login-container">
+<<<<<<< HEAD
     <div class="navbar navbar-inverse">
         <div class="navbar-header">
             <a class="navbar-brand" href="<?php echo Url::toRoute('/') ?>"><img src="/backend/web/images/logo_light.png" alt=""></a>
@@ -57,6 +54,8 @@ AppAsset::register($this);
             </ul>
         </div>
     </div>
+=======
+>>>>>>> 2d67f6d273f8d839b32b36092c63c69fc8312a8f
 
     <div class="page-container">
         <div class="page-content">
@@ -71,8 +70,6 @@ AppAsset::register($this);
 
         </div>
     </div>
-
-    <?php NavBar::begin(); NavBar::end(); ?>
 
     <footer class="footer">
         <div class="container">

@@ -88,7 +88,7 @@ class Category extends \yii\db\ActiveRecord
             foreach ($category->pages as $page) {
                 $items[] = [
                     'label' => $page->getContent('title')->val,
-                    'url' => ['/']
+                    'url' => ['page/update', 'id' => $page->id ]
                 ];
             }
 

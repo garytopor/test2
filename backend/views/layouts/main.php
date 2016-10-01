@@ -5,8 +5,6 @@
 
 use backend\assets\AppAsset;
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
 use yii\widgets\Menu;
@@ -90,7 +88,6 @@ AppAsset::register($this);
 
     <div class="page-container">
         <div class="page-content">
-            <?php NavBar::begin(); NavBar::end(); ?>
 
             <!-- Main sidebar -->
             <div class="sidebar sidebar-main">
