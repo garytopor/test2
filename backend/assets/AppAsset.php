@@ -21,6 +21,8 @@ class AppAsset extends AssetBundle
     public $js = [
         'js/plugins/loaders/pace.min.js',
         'js/plugins/loaders/blockui.min.js',
+        'js/plugins/pickers/pickadate/picker.js',
+        'js/plugins/pickers/pickadate/picker.date.js',
         'js/core/app.js',
     ];
     public $depends = [

@@ -89,4 +89,12 @@ class Page extends \yii\db\ActiveRecord
             )->one();
     }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPageFields()
+    {
+        return $this->hasMany(PageField::className(), ['aliasPage' => 'alias']);
+    }
+
 }
