@@ -19,4 +19,5 @@ return [
     'English' => 'Английский',
     'Chinese' => 'Китайский',
     'No translatable fields' => 'Поля без перевода',
+    'Count delivery'=>'заявка на рассчет',
 ];
