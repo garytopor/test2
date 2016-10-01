@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'Home' => 'Главная',
     'Settings' => 'Настройки',
     'Login' => 'Войти',
     'Logout' => 'Выйти',

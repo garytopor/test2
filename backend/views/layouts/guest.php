@@ -27,36 +27,6 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 <div class="login-container">
-    <div class="navbar navbar-inverse">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="<?php echo Url::toRoute('/') ?>"><img src="/images/logo_light.png" alt=""></a>
-
-            <ul class="nav navbar-nav pull-right visible-xs-block">
-                <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
-            </ul>
-
-            <ul class="nav navbar-nav pull-right">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown">
-                        <span><?php echo Yii::$app->language ?></span>
-                        <i class="caret"></i>
-                    </a>
-
-                    <?php echo Menu::widget([
-                        'encodeLabels' => false,
-                        'items' => [
-                            ['label' => 'en', 'url' => ['/', 'language' => 'en']],
-                            ['label' => 'ru', 'url' => ['/', 'language' => 'ru']],
-                            ['label' => 'cn', 'url' => ['/', 'language' => 'cn']],
-                        ],
-                        'options' => [
-                            'class' => 'dropdown-menu dropdown-menu-right'
-                        ],
-                    ]); ?>
-                </li>
-            </ul>
-        </div>
-    </div>
 
     <div class="page-container">
         <div class="page-content">
