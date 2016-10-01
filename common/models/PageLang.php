@@ -61,4 +61,23 @@ class PageLang extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Page::className(), ['id' => 'idPage']);
     }
+
+    /**
+     * @return boolean
+     */
+    public function savePost($val, $type, $model, $lang)
+    {
+        $pageLang = $model->getContentByTypeLang($type, $lang);
+        if ($pageLang) {
+            $pageLang->val = $val;
+        } else {
+            $pageLang = new PageLang();
+            $pageLang->idPage = $model->id;
+            $pageLang->lang = $lang;
+            $pageLang->type = $type;
+            $pageLang->val = $val;
+        }
+        return $pageLang->save();
+
+    }
 }

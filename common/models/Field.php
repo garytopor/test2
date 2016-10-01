@@ -17,10 +17,12 @@ use common\components\H;
  */
 class Field extends \yii\db\ActiveRecord
 {
-    const TYPE_TEXT_VALUE = 'text';
-    const TYPE_TEXT_NAME  = 'Text';
-    const TYPE_HTML_VALUE = 'html';
-    const TYPE_HTML_NAME  = 'Html';
+    const TYPE_TEXT_VALUE  = 'text';
+    const TYPE_TEXT_NAME   = 'Text';
+    const TYPE_HTML_VALUE  = 'html';
+    const TYPE_HTML_NAME   = 'Html';
+    const TYPE_IMAGE_VALUE = 'image';
+    const TYPE_IMAGE_NAME  = 'Image';
 
     /**
      * @inheritdoc
@@ -75,8 +77,9 @@ class Field extends \yii\db\ActiveRecord
     public static function getTypes()
     {
         return [
-            self::TYPE_TEXT_VALUE => self::TYPE_TEXT_NAME,
-            self::TYPE_HTML_VALUE => self::TYPE_HTML_NAME,
+            self::TYPE_TEXT_VALUE  => self::TYPE_TEXT_NAME,
+            self::TYPE_HTML_VALUE  => self::TYPE_HTML_NAME,
+            self::TYPE_IMAGE_VALUE => self::TYPE_IMAGE_NAME,
         ];
     }
 
@@ -105,6 +108,17 @@ class Field extends \yii\db\ActiveRecord
                 break;
             case Field::TYPE_HTML_VALUE:
                 $input = Html::textarea($lang . '[' .$field->alias . ']', $content, ['class' => 'wysihtml5']);
+                break;
+            case Field::TYPE_IMAGE_VALUE:
+                $content = $model->getPageImageByType($field->alias, 'source');
+                $crop = '';
+                if (!empty($content->src)) {
+                    $crop = $content->x . ',' . $content->y . ',' . $content->w . ',' . $content->h;
+                    $content = $content->src . '.' . $content->ext;
+                }
+                $input = Html::fileInput($lang . '[' .$field->alias . '][img]', $content, [
+                    'class' => 'field-image', 'accept' => 'image/*', 'crop' => $crop
+                ]);
                 break;
         }
         return $input;
