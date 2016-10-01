@@ -18,6 +18,7 @@ class AppAsset extends AssetBundle
         'css/components.css',
         'css/colors.css',
         'css/extras/animate.min.css',
+        'https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900"'
     ];
     public $js = [
         'js/plugins/loaders/pace.min.js',
