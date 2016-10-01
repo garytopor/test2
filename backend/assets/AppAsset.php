@@ -13,6 +13,7 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/icons/icomoon/styles.css',
+        'css/bootstrap.css',
         'css/core.css',
         'css/components.css',
         'css/colors.css',
@@ -20,6 +21,7 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
         'js/plugins/loaders/pace.min.js',
+        'js/core/libraries/bootstrap.min.js',
         'js/plugins/loaders/blockui.min.js',
         'js/plugins/pickers/pickadate/picker.js',
         'js/plugins/pickers/pickadate/picker.date.js',
@@ -27,6 +29,6 @@ class AppAsset extends AssetBundle
     ];
     public $depends = [
         'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapAsset',
+        //'yii\bootstrap\BootstrapAsset',
     ];
 }

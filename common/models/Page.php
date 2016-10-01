@@ -90,6 +90,18 @@ class Page extends \yii\db\ActiveRecord
     }
 
     /**
+     * @return [ActiveRecord] [<get the translated content by type (title, keywords, content ...)>]
+     */
+    public function getContentByTypeLang($type, $lang)
+    {
+        return $this->hasOne(PageLang::className(), ['idPage' => 'id'])
+            ->where(
+                'lang = :lang and type = :type',
+                [ ':lang' => $lang, ':type' => $type ]
+            )->one();
+    }
+
+    /**
      * @return \yii\db\ActiveQuery
      */
     public function getPageFields()

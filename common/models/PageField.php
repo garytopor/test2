@@ -47,9 +47,9 @@ class PageField extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFields()
+    public function getField()
     {
-        return $this->hasMany(Field::className(), ['aliasField' => 'alias']);
+        return $this->hasOne(Field::className(), ['alias' => 'aliasField']);
     }
 
 }
