@@ -12,6 +12,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use common\models\forms\CalculateDelivery;
 
 /**
  * Site controller
@@ -76,6 +77,28 @@ class SiteController extends Controller
         return $this->render('index');
     }
 
+    public function actionCalculate()
+    {
+        $req = Yii::$app->getRequest();
+        $model = new CalculateDelivery();
+        if(!$req->getIsAjax() || !$model->load($req->post())) {
+            throw new BadRequestHttpException();
+        }
+
+        if(!$model->sendForm()) {
+            $errors = [];
+            foreach($model->getErrors() as $attr => $attrErrors) {
+                $errors = array_merge($errors, $attrErrors);
+            }
+            //$message = Yii::t('app', 'An error occurred');
+            $message = 'error is here';
+            $message .= "\n" . implode("\n", $errors);
+            throw new BadRequestHttpException($message);
+        }
+
+        //return Yii::t('app', 'Your request has been sent successfully');
+        return 'Your request has been sent successfully';
+    }
 
     /**
      * Logs in a user.

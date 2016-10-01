@@ -336,6 +336,7 @@ a.link:hover{
 	letter-spacing:0;
 	padding:0 19px;
 	margin:0;
+    padding-right: 15px;
 }
 #nav .desctop > ul > li.search{padding-left:15px;}
 #nav .desctop ul a{

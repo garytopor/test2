@@ -14,7 +14,7 @@ class m130524_201442_init extends Migration
       $tableOptions_pgsql = "";
       $tableOptions_sqlite = "";
       /* MYSQL */
-      if (!in_array('category', $tables))  { 
+      if (!in_array('category', $tables))  {
       if ($dbType == "mysql") {
         $this->createTable('{{%category}}', [
           'id' => 'INT(11) NOT NULL AUTO_INCREMENT',
@@ -26,9 +26,9 @@ class m130524_201442_init extends Migration
         ], $tableOptions_mysql);
       }
       }
-       
+
       /* MYSQL */
-      if (!in_array('category_lang', $tables))  { 
+      if (!in_array('category_lang', $tables))  {
       if ($dbType == "mysql") {
         $this->createTable('{{%category_lang}}', [
           'id' => 'INT(11) NOT NULL AUTO_INCREMENT',
@@ -39,9 +39,9 @@ class m130524_201442_init extends Migration
         ], $tableOptions_mysql);
       }
       }
-       
+
       /* MYSQL */
-      if (!in_array('field', $tables))  { 
+      if (!in_array('field', $tables))  {
       if ($dbType == "mysql") {
         $this->createTable('{{%field}}', [
           'id' => 'INT(11) NOT NULL AUTO_INCREMENT',
@@ -51,9 +51,9 @@ class m130524_201442_init extends Migration
         ], $tableOptions_mysql);
       }
       }
-       
+
       /* MYSQL */
-      if (!in_array('field_lang', $tables))  { 
+      if (!in_array('field_lang', $tables))  {
       if ($dbType == "mysql") {
         $this->createTable('{{%field_lang}}', [
           'id' => 'INT(11) NOT NULL AUTO_INCREMENT',
@@ -64,9 +64,9 @@ class m130524_201442_init extends Migration
         ], $tableOptions_mysql);
       }
       }
-       
+
       /* MYSQL */
-      if (!in_array('page', $tables))  { 
+      if (!in_array('page', $tables))  {
       if ($dbType == "mysql") {
         $this->createTable('{{%page}}', [
           'id' => 'INT(11) NOT NULL AUTO_INCREMENT',
@@ -77,9 +77,9 @@ class m130524_201442_init extends Migration
         ], $tableOptions_mysql);
       }
       }
-       
+
       /* MYSQL */
-      if (!in_array('page_field', $tables))  { 
+      if (!in_array('page_field', $tables))  {
       if ($dbType == "mysql") {
         $this->createTable('{{%page_field}}', [
           'id' => 'INT(11) NOT NULL AUTO_INCREMENT',
@@ -89,9 +89,9 @@ class m130524_201442_init extends Migration
         ], $tableOptions_mysql);
       }
       }
-       
+
       /* MYSQL */
-      if (!in_array('page_image', $tables))  { 
+      if (!in_array('page_image', $tables))  {
       if ($dbType == "mysql") {
         $this->createTable('{{%page_image}}', [
           'id' => 'INT(11) NOT NULL AUTO_INCREMENT',
@@ -103,9 +103,9 @@ class m130524_201442_init extends Migration
         ], $tableOptions_mysql);
       }
       }
-       
+
       /* MYSQL */
-      if (!in_array('page_lang', $tables))  { 
+      if (!in_array('page_lang', $tables))  {
       if ($dbType == "mysql") {
         $this->createTable('{{%page_lang}}', [
           'id' => 'INT(11) NOT NULL AUTO_INCREMENT',
@@ -117,9 +117,9 @@ class m130524_201442_init extends Migration
         ], $tableOptions_mysql);
       }
       }
-       
+
       /* MYSQL */
-      if (!in_array('settings', $tables))  { 
+      if (!in_array('settings', $tables))  {
       if ($dbType == "mysql") {
         $this->createTable('{{%settings}}', [
           'id' => 'TINYINT(3) NOT NULL AUTO_INCREMENT',
@@ -129,9 +129,9 @@ class m130524_201442_init extends Migration
         ], $tableOptions_mysql);
       }
       }
-       
+
       /* MYSQL */
-      if (!in_array('user', $tables))  { 
+      if (!in_array('user', $tables))  {
       if ($dbType == "mysql") {
         $this->createTable('{{%user}}', [
           'id' => 'INT(11) NOT NULL AUTO_INCREMENT',
@@ -147,8 +147,8 @@ class m130524_201442_init extends Migration
         ], $tableOptions_mysql);
       }
       }
-       
-       
+
+
       $this->createIndex('idx_idCategory_3549_00','category_lang','idCategory',0);
       $this->createIndex('idx_idCategory_3549_01','category_lang','idCategory',0);
       $this->createIndex('idx_alias_3569_02','field','alias',0);
@@ -164,7 +164,7 @@ class m130524_201442_init extends Migration
       $this->createIndex('idx_UNIQUE_username_3849_12','user','username',1);
       $this->createIndex('idx_UNIQUE_email_3849_13','user','email',1);
       $this->createIndex('idx_UNIQUE_password_reset_token_3849_14','user','password_reset_token',1);
-       
+
       $this->execute('SET foreign_key_checks = 0');
       $this->addForeignKey('fk_category_3549_00','{{%category_lang}}', 'idCategory', '{{%category}}', 'id', 'CASCADE', 'NO ACTION' );
       $this->addForeignKey('fk_field_3589_01','{{%field_lang}}', 'idField', '{{%field}}', 'id', 'CASCADE', 'NO ACTION' );
@@ -172,7 +172,7 @@ class m130524_201442_init extends Migration
       $this->addForeignKey('fk_page_3739_03','{{%page_image}}', 'idPage', '{{%page}}', 'id', 'CASCADE', 'NO ACTION' );
       $this->addForeignKey('fk_page_3769_04','{{%page_lang}}', 'idPage', '{{%page}}', 'id', 'CASCADE', 'NO ACTION' );
       $this->execute('SET foreign_key_checks = 1;');
-       
+
       $this->execute('SET foreign_key_checks = 0');
       $this->insert('{{%category}}',['id'=>'1','alias'=>'home','sort'=>'1','showInMenu'=>'1','icon'=>'icon-home4']);
       $this->insert('{{%category}}',['id'=>'2','alias'=>'about_company','sort'=>'2','showInMenu'=>'1','icon'=>'icon-brain']);

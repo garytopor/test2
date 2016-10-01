@@ -17,9 +17,14 @@
         "php": ">=5.4.0",
         "yiisoft/yii2": ">=2.0.6",
         "yiisoft/yii2-bootstrap": "*",
+<<<<<<< HEAD
         "yiisoft/yii2-swiftmailer": "^2.0",
+        "c006/yii2-migration-utility": "dev-master"
+=======
+        "yiisoft/yii2-swiftmailer": "*",
         "c006/yii2-migration-utility": "dev-master",
         "codemix/yii2-localeurls": "^1.4"
+>>>>>>> b40c913c52302340574e2f34b54643560bd1619a
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

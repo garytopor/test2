@@ -29,7 +29,7 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
     <div class="navbar navbar-default header-highlight">
         <div class="navbar-header">
-            <a class="navbar-brand" href="<?php echo Url::toRoute('/') ?>"><img src="/images/logo_light.png" alt=""></a>
+            <a class="navbar-brand" href="<?php echo Url::toRoute('/') ?>"><img src="images/logo_light.png" alt=""></a>
 
             <ul class="nav navbar-nav visible-xs-block">
                 <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
