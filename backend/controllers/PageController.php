@@ -6,12 +6,14 @@ use Yii;
 use common\models\Page;
 use common\models\PageField;
 use common\models\PageLang;
+use common\models\PageImage;
 use common\models\Field;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use common\components\H;
+use yii\web\UploadedFile;
 
 /**
  * PageController implements the CRUD actions for Page model.
@@ -89,25 +91,31 @@ class PageController extends Controller
         $model = $this->findModel($id);
 
         $post = Yii::$app->request->post();
+
         if (!empty($post)) {
+            //H::p(uniqid());
+            //H::p(UploadedFile::getInstanceByName('i18n[img-top][img]')->extension);
+            //H::p($post);
+
             $langs = H::langs();
             $fields = $model->pageFields;
 
             $transaction = Yii::$app->db->beginTransaction();
             try {
-                foreach ($langs as $lang) {
-                    foreach ($fields as $field) {
-                        $pageLang = $model->getContentByTypeLang($field->aliasField, $lang);
-                        if ($pageLang) {
-                            $pageLang->val = $post[$lang][$field->aliasField];
-                        } else {
-                            $pageLang = new PageLang();
-                            $pageLang->idPage = $model->id;
-                            $pageLang->lang = $lang;
-                            $pageLang->type = $field->aliasField;
-                            $pageLang->val = $post[$lang][$field->aliasField];
+                foreach ($fields as $field) {
+                    $type = $field->aliasField;
+                    if ($field->field->i18n) {
+                        foreach ($langs as $lang) PageLang::savePost($post[$lang][$type], $type, $model, $lang);
+                    } else {
+                        if (!empty(UploadedFile::getInstanceByName('i18n['.$type.'][img]'))) {
+                            PageImage::removeAllImages($type, $model->id);
+                            $file = PageImage::uploadImage($model->alias, $type);
+                            PageImage::saveImage($type, $model->id, $file, 'source');
                         }
-                        $pageLang->save();
+                        if (isset($post['i18n'][$type]['x'])) {
+                            PageImage::setPosition($type, $model->id, $post['i18n'][$type]);
+                            PageImage::cropImage($type, $model->id, $post['i18n'][$type], 'desktop');
+                        }
                     }
                 }
                 $transaction->commit();
@@ -117,10 +125,6 @@ class PageController extends Controller
             }
 
         }
-
-        /*if ($model->load(Yii::$app->request->post())) {
-            $model->save();
-        }*/
 
         return $this->render('update', [
             'model' => $model,

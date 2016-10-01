@@ -72,6 +72,18 @@ class Page extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
+    public function getPageImageByType($type, $device)
+    {
+        return $this->hasOne(PageImage::className(), ['idPage' => 'id'])
+            ->where(
+                'type = :type and device = :device',
+                [ ':type' => $type, ':device' => $device ]
+            )->one();
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getPageLangs()
     {
         return $this->hasMany(PageLang::className(), ['idPage' => 'id']);

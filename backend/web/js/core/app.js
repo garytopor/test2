@@ -619,17 +619,83 @@ $(function() {
 
     // wysihtml5 initialization
     if ($('.wysihtml5').length) {
-      $('.wysihtml5').wysihtml5({
-          parserRules:  wysihtml5ParserRules,
-          "font-styles": true, // Font styling, e.g. h1, h2, etc. Default true
-          "emphasis": true, // Italics, bold, etc. Default true
-          "lists": true, // (Un)ordered lists, e.g. Bullets, Numbers. Default true
-          "html": false, // Button which allows you to edit the generated HTML. Default false
-          "link": true, // Button to insert a link. Default true
-          "image": false, // Button to insert an image. Default true,
-          "action": false, // Undo / Redo buttons,
-          "color": true // Button to change color of font
-      });
+        $('.wysihtml5').wysihtml5({
+            parserRules:  wysihtml5ParserRules,
+            "font-styles": true, // Font styling, e.g. h1, h2, etc. Default true
+            "emphasis": true, // Italics, bold, etc. Default true
+            "lists": true, // (Un)ordered lists, e.g. Bullets, Numbers. Default true
+            "html": false, // Button which allows you to edit the generated HTML. Default false
+            "link": true, // Button to insert a link. Default true
+            "image": false, // Button to insert an image. Default true,
+            "action": false, // Undo / Redo buttons,
+            "color": true // Button to change color of font
+        });
     }
+
+    // file uploader with cropper
+    if ($('.field-image').length) {
+        $('.field-image').each(function () {
+            var name = $(this).attr('name').replace('[img]', '');
+            var val = $(this).attr('value');
+            var crop = $(this).attr('crop').split(',');
+
+            var inputs = '<input type="hidden" name="' + name + '[x]" class="img-x">' +
+                         '<input type="hidden" name="' + name + '[y]" class="img-y">' +
+                         '<input type="hidden" name="' + name + '[h]" class="img-h">' +
+                         '<input type="hidden" name="' + name + '[w]" class="img-w">';
+
+
+            var opts = {
+                overwriteInitial: true,
+                maxFileCount: 1,
+                autoReplace: true,
+                allowedFileExtensions: ["jpg", "gif", "png"],
+                previewTemplates: {
+                    image: '<div class="file-preview-frame" id="{previewId}" data-fileindex="{fileindex}" data-template="{template}">\n' +
+                            '   <div class="kv-file-content">' +
+                            '       <img src="{data}" class="kv-preview-data file-preview-image cropper" title="{caption}" alt="{caption}">\n' +  inputs +
+                            '   </div>\n' +
+                            '   {footer}\n' +
+                            '</div>\n'
+                }
+            };
+
+            if (val) opts.initialPreview = [
+                '<div class="kv-file-content">' +
+                    '<img src="http://static.dev/' + val + '" class="kv-preview-data file-preview-image cropper">' + inputs +
+                '</div>'
+            ];
+
+            $(this).fileinput(opts);
+
+            $('.file-preview-initial').each(function () {
+                var previewId = $(this).attr('id');
+                $('#' + previewId + ' .cropper').cropper({
+                    data: {
+                        x: crop[0],
+                        y: crop[1],
+                        width: crop[2],
+                        height: crop[3]
+                    },
+                    done: function (data) { changeCropInputs(data, previewId); }
+                });
+            });
+
+
+            $(this).on('fileloaded', function (event, file, previewId, index, reader) {
+                $('#' + previewId + ' .cropper').cropper({
+                    done: function (data) { changeCropInputs(data, previewId); }
+                });
+            });
+
+            function changeCropInputs (data, previewId) {
+                $('#' + previewId + ' .img-x').val(data.x);
+                $('#' + previewId + ' .img-y').val(data.y);
+                $('#' + previewId + ' .img-h').val(data.height);
+                $('#' + previewId + ' .img-w').val(data.width);
+            }
+        })
+    }
+
 
 });

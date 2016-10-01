@@ -18,4 +18,5 @@ return [
     'Russian' => 'Русский',
     'English' => 'Английский',
     'Chinese' => 'Китайский',
+    'No translatable fields' => 'Поля без перевода',
 ];
