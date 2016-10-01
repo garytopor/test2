@@ -96,13 +96,15 @@ class Field extends \yii\db\ActiveRecord
     public function getInputField($field, $lang, $model)
     {
         $input;
+        $content = $model->getContentByTypeLang($field->alias, $lang);
+        if (!empty($content) && !empty($content->val)) $content = $content->val;
 
         switch ($field->type) {
             case Field::TYPE_TEXT_VALUE:
-                $input = Html::input('text', $field->alias, $model->getContentByTypeLang($field->alias, $lang)->val, ['class' => 'form-control']);
+                $input = Html::input('text',  $lang . '[' .$field->alias . ']', $content, ['class' => 'form-control']);
                 break;
             case Field::TYPE_HTML_VALUE:
-                $input = Html::textarea($field->alias);
+                $input = Html::textarea($lang . '[' .$field->alias . ']', $content, ['class' => 'wysihtml5']);
                 break;
         }
         return $input;
@@ -113,7 +115,9 @@ class Field extends \yii\db\ActiveRecord
      */
     public function getInputLabel($field, $css)
     {
-        return Html::label($field->content->val, '', ['class' => $css]);
+        $text = $field->alias;
+        if (!empty($field->content) && !empty($field->content->val)) $text = $field->content->val;
+        return Html::label($text, '', ['class' => $css]);
     }
 
 }

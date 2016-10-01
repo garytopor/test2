@@ -13,22 +13,11 @@ $langs = H::langs();
 ?>
 
 <?php $form = ActiveForm::begin(); ?>
-<div class="page-form">
-
-
-    <?php echo $form->field($model, 'createdAt')->textInput(['class' => 'form-control pickadate']) ?>
-
-    <div class="form-group">
-        <?php echo Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Save'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-    </div>
-
-
-</div>
+<?php foreach ($langs as $lang): ?>
 <div class="row">
-    <?php foreach ($langs as $lang): ?>
-    <div class="col-md-<?php echo 12 / count($langs); ?>">
+    <div class="col-md-12">
         <!-- Horizontal form -->
-        <div class="panel panel-flat">
+        <div class="panel panel-flat panel-collapsed">
             <div class="panel-heading">
                 <h5 class="panel-title"><?php echo H::langText($lang) ?></h5>
                 <div class="heading-elements">
@@ -54,6 +43,15 @@ $langs = H::langs();
         </div>
         <!-- /horizotal form -->
     </div>
-    <?php endforeach; ?>
+</div>
+<?php endforeach; ?>
+
+<div class="page-form">
+
+    <div class="form-group">
+        <?php echo Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Save'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+    </div>
+
+
 </div>
 <?php ActiveForm::end(); ?>

@@ -4,6 +4,9 @@ namespace backend\controllers;
 
 use Yii;
 use common\models\Page;
+use common\models\PageField;
+use common\models\PageLang;
+use common\models\Field;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -85,9 +88,39 @@ class PageController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post())) {
-            $model->save();
+        $post = Yii::$app->request->post();
+        if (!empty($post)) {
+            $langs = H::langs();
+            $fields = $model->pageFields;
+
+            $transaction = Yii::$app->db->beginTransaction();
+            try {
+                foreach ($langs as $lang) {
+                    foreach ($fields as $field) {
+                        $pageLang = $model->getContentByTypeLang($field->aliasField, $lang);
+                        if ($pageLang) {
+                            $pageLang->val = $post[$lang][$field->aliasField];
+                        } else {
+                            $pageLang = new PageLang();
+                            $pageLang->idPage = $model->id;
+                            $pageLang->lang = $lang;
+                            $pageLang->type = $field->aliasField;
+                            $pageLang->val = $post[$lang][$field->aliasField];
+                        }
+                        $pageLang->save();
+                    }
+                }
+                $transaction->commit();
+            } catch (Exception $e) {
+                $transaction->rollBack();
+                throw $e;
+            }
+
         }
+
+        /*if ($model->load(Yii::$app->request->post())) {
+            $model->save();
+        }*/
 
         return $this->render('update', [
             'model' => $model,
@@ -120,6 +153,20 @@ class PageController extends Controller
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+
+    public function actionFields()
+    {
+        $pages  = Page::find()->all();
+        $fields = Field::find()->all();
+        foreach ($pages as $page) {
+            foreach ($fields as $field) {
+                $model = new PageField();
+                $model->aliasPage = $page->alias;
+                $model->aliasField = $field->alias;
+                $model->save();
+            }
         }
     }
 }
