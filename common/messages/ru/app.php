@@ -18,4 +18,5 @@ return [
     'Russian' => 'Русский',
     'English' => 'Английский',
     'Chinese' => 'Китайский',
+    'Count delivery'=>'заявка на рассчет',
 ];

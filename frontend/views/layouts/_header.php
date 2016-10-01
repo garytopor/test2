@@ -13,15 +13,24 @@ $menu = Category::getMenuFront();
                         <a href="#" class="link">FMS landing </a>
                         <a href="#" class="link">Freight managment</a>
                         <ul class="language-list">
-                            <li class="active"><a href="#">english</a></li>
-                            <li><a href="#">简体中文</a></li>
-                            <li><a href="#">русский</a></li>
+
+                            <?php echo Menu::widget([
+                                'encodeLabels' => false,
+                                'items' => [
+                                    ['label' => 'english', 'url' => ['/', 'language' => 'en']],
+                                    ['label' => '简体中文', 'url' => ['/', 'language' => 'cn']],
+                                    ['label' => 'русский', 'url' => ['/', 'language' => 'ru']],
+                                ],
+                                'options' => [
+                                    'class' => 'language-list'
+                                ],
+                            ]); ?>
                         </ul>
                     </div>
                     <nav id="nav">
                         <div class="desctop">
                             <div class="popup-container">
-                                <button class="btn open-popup">count delivery</button>
+                                <button class="btn open-popup"><?php echo Yii::t('app', 'Count delivery')?></button>
 
                             </div>
                             <?php echo Menu::widget([
