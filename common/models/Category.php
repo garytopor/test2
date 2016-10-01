@@ -100,4 +100,17 @@ class Category extends \yii\db\ActiveRecord
         }
         return $result;
     }
+    public function getMenuFront()
+    {
+        $result = [];
+        $categories = Category::findAll(['showInMenu' => 1]);
+        foreach ($categories as $category) {
+            $result[] = [
+                'label' =>  '<i class="' . $category->icon . '"></i> ' . $category->content->val,
+                'url' => '#',
+
+            ];
+        }
+        return $result;
+    }
 }

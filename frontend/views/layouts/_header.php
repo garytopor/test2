@@ -1,3 +1,8 @@
+<?php
+use yii\widgets\Menu;
+use common\models\Category;
+$menu = Category::getMenuFront();
+?>
 <header id="header">
     <div class="container">
         <div class="header-content">
@@ -19,16 +24,13 @@
                                 <button class="btn open-popup">count delivery</button>
 
                             </div>
-                            <ul class="default-list">
-                                <li><a href="#">about company </a></li>
-                                <li><a href="#">our services</a></li>
-                                <li><a href="#">clients and partners</a></li>
-                                <li><a href="#">contacts</a></li>
-                                <li class="search">
-                                    <a href="#">search</a>
-
-                                </li>
-                            </ul>
+                            <?php echo Menu::widget([
+                                'encodeLabels' => false,
+                                'items' => $menu,
+                                'options' => [
+                                    'class' => 'default-list'
+                                ],
+                            ]); ?>
                         </div>
                     </nav>
                 </div>
