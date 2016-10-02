@@ -3,6 +3,11 @@
 namespace common\models;
 
 use Yii;
+use common\models\PageLang;
+use common\models\PageImage;
+use common\components\H;
+use yii\web\UploadedFile;
+use yii\data\ActiveDataProvider;
 
 /**
  * This is the model class for table "page".
@@ -10,7 +15,6 @@ use Yii;
  * @property integer $id
  * @property integer $idCategory
  * @property string $alias
- * @property string $createdAt
  *
  * @property Category $idCategory0
  * @property PageImage[] $pageImages
@@ -34,7 +38,6 @@ class Page extends \yii\db\ActiveRecord
         return [
             [['idCategory', 'alias'], 'required'],
             [['idCategory'], 'integer'],
-            [['createdAt'], 'safe'],
             [['alias'], 'string', 'max' => 50],
             [['idCategory'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['idCategory' => 'id']],
         ];
@@ -49,7 +52,6 @@ class Page extends \yii\db\ActiveRecord
             'id' => Yii::t('app', 'ID'),
             'idCategory' => Yii::t('app', 'Id Category'),
             'alias' => Yii::t('app', 'Alias'),
-            'createdAt' => Yii::t('app', 'Created At'),
         ];
     }
 
@@ -94,11 +96,13 @@ class Page extends \yii\db\ActiveRecord
      */
     public function getContent($type)
     {
-        return $this->hasOne(PageLang::className(), ['idPage' => 'id'])
+        $result = $this->hasOne(PageLang::className(), ['idPage' => 'id'])
             ->where(
                 'lang = :lang and type = :type',
                 [ ':lang' => Yii::$app->language, ':type' => $type ]
             )->one();
+        if (!$result) $result = new PageLang();
+        return $result;
     }
 
     /**
@@ -106,11 +110,21 @@ class Page extends \yii\db\ActiveRecord
      */
     public function getContentByTypeLang($type, $lang)
     {
-        return $this->hasOne(PageLang::className(), ['idPage' => 'id'])
+        $result = $this->hasOne(PageLang::className(), ['idPage' => 'id'])
             ->where(
                 'lang = :lang and type = :type',
                 [ ':lang' => $lang, ':type' => $type ]
             )->one();
+        if (!$result) $result = new PageLang();
+        return $result;
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getParent()
+    {
+        return $this->hasOne(Page::className(), ['childAlias' => 'alias']);
     }
 
     /**
@@ -119,6 +133,70 @@ class Page extends \yii\db\ActiveRecord
     public function getPageFields()
     {
         return $this->hasMany(PageField::className(), ['aliasPage' => 'alias']);
+    }
+
+    public function getField($field)
+    {
+        $result = $this->hasOne(PageField::className(), ['aliasPage' => 'alias'])
+            ->where(
+                'aliasField = :field',
+                [ ':field' => $field ]
+            )->one();
+        if (!$result) $result = new PageField();
+        return $result;
+    }
+
+
+    public function saveFromPost($model)
+    {
+        $post = Yii::$app->request->post();
+
+        if (!empty($post)) {
+            $langs = H::langs();
+            $fields = $model->pageFields;
+
+            $transaction = Yii::$app->db->beginTransaction();
+            try {
+                if (!$model->id) $model->save();
+                PageLang::deleteAll(['idPage' => $model->id]);
+                foreach ($fields as $field) {
+                    $type = $field->aliasField;
+                    if ($field->field->i18n) {
+                        foreach ($langs as $lang) PageLang::savePost($post[$lang][$type], $type, $model, $lang);
+                    } else {
+                        if (!empty(UploadedFile::getInstanceByName('i18n['.$type.'][img]'))) {
+                            PageImage::removeAllImages($type, $model->id);
+                            $file = PageImage::uploadImage($model->alias, $type);
+                            PageImage::saveImage($type, $model->id, $file, 'source');
+                        }
+                        if (isset($post['i18n'][$type]['x'])) {
+                            PageImage::setPosition($type, $model->id, $post['i18n'][$type]);
+                            PageImage::cropImage($type, $model->id, $post['i18n'][$type], PageImage::DEVICE_DESKTOP_VALUE);
+                            PageImage::cropImage($type, $model->id, $post['i18n'][$type], PageImage::DEVICE_MOBILE_VALUE);
+                        } else {
+                            if (isset($post['i18n'][$type])) PageLang::savePost($post['i18n'][$type], $type, $model, 'i18n');
+                        }
+                    }
+                }
+                $transaction->commit();
+                return true;
+            } catch (Exception $e) {
+                $transaction->rollBack();
+                throw $e;
+                return false;
+            }
+
+        }
+    }
+
+    public function getChildrenList($childAlias)
+    {
+        return new ActiveDataProvider([
+            'query' => Page::find()->where(['alias' => $childAlias])->orderBy('id DESC'),
+            'pagination' => [
+                'pageSize' => 12,
+            ],
+        ]);;
     }
 
 }

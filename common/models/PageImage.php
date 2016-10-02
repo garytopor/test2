@@ -101,7 +101,7 @@ class PageImage extends \yii\db\ActiveRecord
 
     public function removeImage($image)
     {
-        unlink(Yii::getAlias('@common') . '/static/' . $image->src . '.' . $image->ext );
+        @unlink(Yii::getAlias('@common') . '/static/' . $image->src . '.' . $image->ext );
         $image->delete();
     }
 

@@ -4,16 +4,11 @@ namespace backend\controllers;
 
 use Yii;
 use common\models\Page;
-use common\models\PageField;
-use common\models\PageLang;
-use common\models\PageImage;
-use common\models\Field;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use common\components\H;
-use yii\web\UploadedFile;
+
 
 /**
  * PageController implements the CRUD actions for Page model.
@@ -90,45 +85,11 @@ class PageController extends Controller
     {
         $model = $this->findModel($id);
 
-        $post = Yii::$app->request->post();
-
-        if (!empty($post)) {
-            //H::p(uniqid());
-            //H::p(UploadedFile::getInstanceByName('i18n[img-top][img]')->extension);
-            //H::p($post);
-
-            $langs = H::langs();
-            $fields = $model->pageFields;
-
-            $transaction = Yii::$app->db->beginTransaction();
-            try {
-                foreach ($fields as $field) {
-                    $type = $field->aliasField;
-                    if ($field->field->i18n) {
-                        foreach ($langs as $lang) PageLang::savePost($post[$lang][$type], $type, $model, $lang);
-                    } else {
-                        if (!empty(UploadedFile::getInstanceByName('i18n['.$type.'][img]'))) {
-                            PageImage::removeAllImages($type, $model->id);
-                            $file = PageImage::uploadImage($model->alias, $type);
-                            PageImage::saveImage($type, $model->id, $file, 'source');
-                        }
-                        if (isset($post['i18n'][$type]['x'])) {
-                            PageImage::setPosition($type, $model->id, $post['i18n'][$type]);
-                            PageImage::cropImage($type, $model->id, $post['i18n'][$type], PageImage::DEVICE_DESKTOP_VALUE);
-                            PageImage::cropImage($type, $model->id, $post['i18n'][$type], PageImage::DEVICE_MOBILE_VALUE);
-                        }
-                    }
-                }
-                $transaction->commit();
-            } catch (Exception $e) {
-                $transaction->rollBack();
-                throw $e;
-            }
-
-        }
+        Page::saveFromPost($model);
 
         return $this->render('update', [
             'model' => $model,
+            'children' => $model->childAlias ? $model->getChildrenList($model->childAlias) : [],
         ]);
     }
 
@@ -161,17 +122,4 @@ class PageController extends Controller
         }
     }
 
-    public function actionFields()
-    {
-        $pages  = Page::find()->all();
-        $fields = Field::find()->all();
-        foreach ($pages as $page) {
-            foreach ($fields as $field) {
-                $model = new PageField();
-                $model->aliasPage = $page->alias;
-                $model->aliasField = $field->alias;
-                $model->save();
-            }
-        }
-    }
 }

@@ -697,5 +697,28 @@ $(function() {
         })
     }
 
+    $('.btn-popup').on('click', function () {
+        var w = 600;
+        var h = 400;
+        var left = (screen.width/2)-(w/2);
+        var top = (screen.height/2)-(h/2);
+        var childWin = window.open($(this).attr('href'), 'child', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
+        childWin.onunload = function () {
+            //$.pjax.reload({container:'#child-listview'});
+            childWin.opener.location.reload();
+        }
+        return false;
+    });
+
+
+    $('.btn-delete').on('click', function () {
+        if (!confirm(yesNoText)) return false;
+        $.get( $(this).attr('href'), function( data ) {
+          window.location.reload();
+        });
+
+        return false;
+    });
+
 
 });
