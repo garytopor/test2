@@ -36,7 +36,7 @@
                 <div class="btn-holder"><a href="#" class="btn">learn more</a></div>
             </div>
             <div class="visual">
-                <img src="images/main-bg.jpg" alt="image description">
+                <img src="<?php echo Yii::getAlias('@web');?>/images/main-bg.jpg" alt="image description">
             </div>
         </div>
     </div>
@@ -47,37 +47,37 @@
         <div class="slider-holder">
             <div class="service-slider">
                 <div>
-                    <div class="img-holder"><img src="images/sr1.jpg" alt="image description"></div>
+                    <div class="img-holder"><img src="<?php echo Yii::getAlias('@web');?>/images/sr1.jpg" alt="image description"></div>
                     <strong>Cargo shipping</strong>
                     <span>Moro China company provides international sea container transportations of cargoes. Due to its low cost and convenience, they are quite popular, in addition, one of the primary advantages of container transport is a high level of security.</span>
                     <a href="#" class="btn">Learn more</a>
                 </div>
                 <div>
-                    <div class="img-holder"><img src="images/sr2.jpg" alt="image description"></div>
+                    <div class="img-holder"><img src="<?php echo Yii::getAlias('@web');?>/images/sr2.jpg" alt="image description"></div>
                     <strong>Air transportation</strong>
                     <span>Мого China company provides International sea container transportations of cargoes. Due to its low cost and convenience, they are quite popular, in addition, one of the primary advantages of container transport is a high level of security.</span>
                     <a href="#" class="btn">Learn more</a>
                 </div>
                 <div>
-                    <div class="img-holder"><img src="images/sr3.jpg" alt="image description"></div>
+                    <div class="img-holder"><img src="<?php echo Yii::getAlias('@web');?>/images/sr3.jpg" alt="image description"></div>
                     <strong>Trucking service</strong>
                     <span>Мого China company provides international sea container transportations of cargoes. Due to its low cost and convenience, they are quite popular, in addition, one of the primary advantages of container transport is a high level of security.</span>
                     <a href="#" class="btn">Learn more</a>
                 </div>
                 <div>
-                    <div class="img-holder"><img src="images/sr1.jpg" alt="image description"></div>
+                    <div class="img-holder"><img src="<?php echo Yii::getAlias('@web');?>/images/sr1.jpg" alt="image description"></div>
                     <strong>Cargo shipping</strong>
                     <span>Moro China company provides international sea container transportations of cargoes. Due to its low cost and convenience, they are quite popular, in addition, one of the primary advantages of container transport is a high level of security.</span>
                     <a href="#" class="btn">Learn more</a>
                 </div>
                 <div>
-                    <div class="img-holder"><img src="images/sr2.jpg" alt="image description"></div>
+                    <div class="img-holder"><img src="<?php echo Yii::getAlias('@web');?>/images/sr2.jpg" alt="image description"></div>
                     <strong>Air transportation</strong>
                     <span>Мого China company provides International sea container transportations of cargoes. Due to its low cost and convenience, they are quite popular, in addition, one of the primary advantages of container transport is a high level of security.</span>
                     <a href="#" class="btn">Learn more</a>
                 </div>
                 <div>
-                    <div class="img-holder"><img src="images/sr3.jpg" alt="image description"></div>
+                    <div class="img-holder"><img src="<?php echo Yii::getAlias('@web');?>/images/sr3.jpg" alt="image description"></div>
                     <strong>Trucking service</strong>
                     <span>Мого China company provides international sea container transportations of cargoes. Due to its low cost and convenience, they are quite popular, in addition, one of the primary advantages of container transport is a high level of security.</span>
                     <a href="#" class="btn">Learn more</a>
@@ -91,19 +91,19 @@
         <h2>Company news</h2>
         <ul class="news-list">
             <li>
-                <div class="img-holder"><img src="images/img8.jpg" alt="image description"></div>
+                <div class="img-holder"><img src="<?php echo Yii::getAlias('@web');?>/images/img8.jpg" alt="image description"></div>
                 <span class="date">12.10.2016</span>
                 <strong>The EU Commission closes <br> competition case without finding infringement</strong>
             </li>
             <li class="small">
-                <div class="img-holder"><img src="images/img9.jpg" alt="image description"></div>
+                <div class="img-holder"><img src="<?php echo Yii::getAlias('@web');?>/images/img9.jpg" alt="image description"></div>
                 <span class="date">12.10.2016</span>
                 <strong>RUSAL and Maersk Line announce long-term cooperation</strong>
                 <p>Moro China company provides international sea container transportations of cargoes. Due to Its low cost and convenience ...</p>
                 <a href="#" class="link">read more</a>
             </li>
             <li class="small">
-                <div class="img-holder"><img src="images/img10.jpg" alt="image description"></div>
+                <div class="img-holder"><img src="<?php echo Yii::getAlias('@web');?>/images/img10.jpg" alt="image description"></div>
                 <span class="date">12.10.2016</span>
                 <strong>RUSAL and Maersk Line announce long-term cooperation</strong>
                 <p>Moro China company provides international sea container transportations of cargoes. Due to Its low cost and convenience ...</p>
@@ -116,11 +116,11 @@
     <div class="container">
         <h2>Partners</h2>
         <ul class="partners-list">
-            <li><a href="#"><img src="images/pr1.jpg" alt="image description"></a></li>
-            <li><a href="#"><img src="images/pr2.jpg" alt="image description"></a></li>
-            <li><a href="#"><img src="images/pr3.jpg" alt="image description"></a></li>
-            <li><a href="#"><img src="images/pr4.jpg" alt="image description"></a></li>
-            <li><a href="#"><img src="images/pr5.jpg" alt="image description"></a></li>
+            <li><a href="#"><img src="<?php echo Yii::getAlias('@web');?>/images/pr1.jpg" alt="image description"></a></li>
+            <li><a href="#"><img src="<?php echo Yii::getAlias('@web');?>/images/pr2.jpg" alt="image description"></a></li>
+            <li><a href="#"><img src="<?php echo Yii::getAlias('@web');?>/images/pr3.jpg" alt="image description"></a></li>
+            <li><a href="#"><img src="<?php echo Yii::getAlias('@web');?>/images/pr4.jpg" alt="image description"></a></li>
+            <li><a href="#"><img src="<?php echo Yii::getAlias('@web');?>/images/pr5.jpg" alt="image description"></a></li>
         </ul>
     </div>
 </section>
