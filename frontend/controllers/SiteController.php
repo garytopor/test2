@@ -13,6 +13,8 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use common\models\forms\CalculateDelivery;
+use common\models\Page;
+use yii\web\NotFoundHttpException;
 
 /**
  * Site controller
@@ -75,6 +77,24 @@ class SiteController extends Controller
     {
 
         return $this->render('index');
+    }
+
+    public function actionAbout()
+    {
+        $model = Page::find(['alias'=>'company_history_and_possibilities'])->one();
+
+        return $this->render('about',
+            [
+                'model' => $model,
+            ]);
+    }
+    protected function findModel($id)
+    {
+        if (($model = Page::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
     }
 
     public function actionCalculate()
@@ -161,10 +181,7 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionAbout()
-    {
-        return $this->render('about');
-    }
+
 
     /**
      * Signs user up.
