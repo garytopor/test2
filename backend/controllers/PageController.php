@@ -114,7 +114,8 @@ class PageController extends Controller
                         }
                         if (isset($post['i18n'][$type]['x'])) {
                             PageImage::setPosition($type, $model->id, $post['i18n'][$type]);
-                            PageImage::cropImage($type, $model->id, $post['i18n'][$type], 'desktop');
+                            PageImage::cropImage($type, $model->id, $post['i18n'][$type], PageImage::DEVICE_DESKTOP_VALUE);
+                            PageImage::cropImage($type, $model->id, $post['i18n'][$type], PageImage::DEVICE_MOBILE_VALUE);
                         }
                     }
                 }
