@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use common\components\H;
 
 /**
  * This is the model class for table "page_lang".
@@ -68,15 +69,10 @@ class PageLang extends \yii\db\ActiveRecord
     public function savePost($val, $type, $model, $lang)
     {
         $pageLang = $model->getContentByTypeLang($type, $lang);
-        if ($pageLang) {
-            $pageLang->val = $val;
-        } else {
-            $pageLang = new PageLang();
-            $pageLang->idPage = $model->id;
-            $pageLang->lang = $lang;
-            $pageLang->type = $type;
-            $pageLang->val = $val;
-        }
+        $pageLang->idPage = $model->id;
+        $pageLang->lang = $lang;
+        $pageLang->type = $type;
+        $pageLang->val = $val;
         return $pageLang->save();
 
     }

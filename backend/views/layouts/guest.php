@@ -23,6 +23,7 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 <div class="login-container">
+
     <div class="page-container">
         <div class="page-content">
             <!-- Content area -->
@@ -37,9 +38,6 @@ AppAsset::register($this);
         </div>
     </div>
 
-    <footer class="footer">
-
-    </footer>
 </div>
 
 <?php $this->endBody() ?>

@@ -19,10 +19,18 @@ class Field extends \yii\db\ActiveRecord
 {
     const TYPE_TEXT_VALUE  = 'text';
     const TYPE_TEXT_NAME   = 'Text';
+
     const TYPE_HTML_VALUE  = 'html';
     const TYPE_HTML_NAME   = 'Html';
+
     const TYPE_IMAGE_VALUE = 'image';
     const TYPE_IMAGE_NAME  = 'Image';
+
+    const TYPE_EMAIL_VALUE = 'email';
+    const TYPE_EMAIL_NAME  = 'Email';
+
+    const TYPE_TEL_VALUE   = 'tel';
+    const TYPE_TEL_NAME    = 'Tel';
 
     /**
      * @inheritdoc
@@ -80,6 +88,8 @@ class Field extends \yii\db\ActiveRecord
             self::TYPE_TEXT_VALUE  => self::TYPE_TEXT_NAME,
             self::TYPE_HTML_VALUE  => self::TYPE_HTML_NAME,
             self::TYPE_IMAGE_VALUE => self::TYPE_IMAGE_NAME,
+            self::TYPE_EMAIL_VALUE => self::TYPE_EMAIL_NAME,
+            self::TYPE_TEL_VALUE   => self::TYPE_TEL_NAME,
         ];
     }
 
@@ -99,12 +109,17 @@ class Field extends \yii\db\ActiveRecord
     public function getInputField($field, $lang, $model)
     {
         $input;
-        $content = $model->getContentByTypeLang($field->alias, $lang);
-        if (!empty($content) && !empty($content->val)) $content = $content->val;
+        $content = $model->getContentByTypeLang($field->alias, $lang)->val;
 
         switch ($field->type) {
             case Field::TYPE_TEXT_VALUE:
                 $input = Html::input('text',  $lang . '[' .$field->alias . ']', $content, ['class' => 'form-control']);
+                break;
+            case Field::TYPE_EMAIL_VALUE:
+                $input = Html::input('email',  $lang . '[' .$field->alias . ']', $content, ['class' => 'form-control', 'pattern' => '[^@]+@[^@]+\.[a-zA-Z]{2,6}']);
+                break;
+            case Field::TYPE_TEL_VALUE:
+                $input = Html::input('tel',  $lang . '[' .$field->alias . ']', $content, ['class' => 'form-control', 'pattern' => '(\+?\d[- .]*){7,13}']);
                 break;
             case Field::TYPE_HTML_VALUE:
                 $input = Html::textarea($lang . '[' .$field->alias . ']', $content, ['class' => 'wysihtml5']);
