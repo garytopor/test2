@@ -5,6 +5,7 @@ namespace common\models;
 use Yii;
 use yii\web\UploadedFile;
 use common\components\H;
+use common\components\ImageHelper;
 
 /**
  * This is the model class for table "page_image".
@@ -19,6 +20,17 @@ use common\components\H;
  */
 class PageImage extends \yii\db\ActiveRecord
 {
+    const DEVICE_SOURCE_VALUE   = 'source';
+    const DEVICE_SOURCE_NAME    = 'Source';
+
+    const DEVICE_DESKTOP_VALUE  = 'desktop';
+    const DEVICE_DESKTOP_NAME   = 'Desktop';
+
+    const DEVICE_MOBILE_VALUE   = 'mobile';
+    const DEVICE_MOBILE_NAME    = 'Mobile';
+
+    const MOBILE_MAX_WIDTH      = 800;
+
     /**
      * @inheritdoc
      */
@@ -58,7 +70,7 @@ class PageImage extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getIdPage0()
+    public function getPage()
     {
         return $this->hasOne(Page::className(), ['id' => 'idPage']);
     }
@@ -83,15 +95,20 @@ class PageImage extends \yii\db\ActiveRecord
     {
         $images = PageImage::find()->where(['idPage' => $idPage, 'type' => $type])->all();
         foreach ($images as $image) {
-            unlink(Yii::getAlias('@common') . '/static/' . $image->src . '.' . $image->ext );
-            $image->delete();
+            self::removeImage($image);
         }
+    }
+
+    public function removeImage($image)
+    {
+        unlink(Yii::getAlias('@common') . '/static/' . $image->src . '.' . $image->ext );
+        $image->delete();
     }
 
     public function uploadImage($page, $type)
     {
         $file = UploadedFile::getInstanceByName('i18n[' . $type . '][img]');
-        $name = $page . '-' . $type;
+        $name = $page . '-' . $type . '-' . uniqid();
         $file->saveAs(Yii::getAlias('@common') . '/static/' . $name . '.' . $file->extension);
         return [$name, $file->extension];
     }
@@ -99,7 +116,7 @@ class PageImage extends \yii\db\ActiveRecord
     public function setPosition($type, $idPage, $position)
     {
         $image = PageImage::find()
-            ->where(['idPage' => $idPage, 'type' => $type, 'device' => 'source'])
+            ->where(['idPage' => $idPage, 'type' => $type, 'device' => self::DEVICE_SOURCE_VALUE])
             ->one();
         $image->x = $position['x'];
         $image->y = $position['y'];
@@ -110,19 +127,32 @@ class PageImage extends \yii\db\ActiveRecord
 
     public function cropImage($type, $idPage, $position, $device)
     {
-        PageImage::find()
+        $model = PageImage::find()
             ->where(['idPage' => $idPage, 'type' => $type, 'device' => $device])
-            ->one()->delete();
-        $image = PageImage::find()
-            ->where(['idPage' => $idPage, 'type' => $type, 'device' => 'source'])
             ->one();
+        if ($model) self::removeImage($model);
+        $image = PageImage::find()
+            ->where(['idPage' => $idPage, 'type' => $type, 'device' => self::DEVICE_SOURCE_VALUE])
+            ->one();
+
+        $source = Yii::getAlias('@common') . '/static/' . $image->src;
+        $file = $image->page->alias . '-' . $image->type . '--' . $device . '-' . uniqid();
+        $result = Yii::getAlias('@common') . '/static/' . $file;
         exec(
-            'gm convert ' . Yii::getAlias('@common') . '/static/' . $image->src . '.' . $image->ext .
+            'gm convert ' . $source . '.' . $image->ext .
             ' -crop ' . $image->w . 'x' . $image->h . '+' . $image->x . '+' . $image->y . ' ' .
-            Yii::getAlias('@common') . '/static/' . $image->src . '--' . $device . '.' . $image->ext
+            $result . '.' . $image->ext
         );
 
-        PageImage::saveImage($type, $idPage, [$image->src . '--' . $device, $image->ext], $device);
+        if ($image->w > self::MOBILE_MAX_WIDTH && $device == self::DEVICE_MOBILE_VALUE) {
+            exec(
+                'gm convert ' . $result . '.' . $image->ext .
+                ' -resize ' . self::MOBILE_MAX_WIDTH . 'x ' .
+                $result . '.' . $image->ext
+            );
+        }
+
+        PageImage::saveImage($type, $idPage, [$file, $image->ext], $device);
 
     }
 }
