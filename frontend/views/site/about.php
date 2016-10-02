@@ -30,7 +30,9 @@
                     <?php echo $model->getContent('content-main')->val;?>
                 </div>
             </div>
-            <div class="img-holder"><img src="images/img2.jpg" alt="image description"></div>
+            <div class="img-holder">
+                <img src="images/img2.jpg" alt="image description">
+            </div>
             <div class="content-holder down"><div class="text"><p>Our advantage routes In Europe, the Middle East. Southeast Asia and the United States, with many world-renowned shipping companies have a direct relationship, now has fixed more than 2.000 customers, it Is expected to export proxy container 30000 TEU, annual import agent container 5000 TEU. The company has been adhering to the "service to win customers, In good faith pool staff, web development enterprise" business philosophy to "the development of modern logistics industry" as its mission, with the leading edge services and national logistics service system, is seeking a pragmatic Hony Endeavour, honesty, practical, ambitious and dedicated to provide "safe, efficient, economic and thoughtful" first-class service to our customers around the world.</p></div></div>
             <div class="line">&nbsp;</div>
         </div>
