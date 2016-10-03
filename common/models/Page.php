@@ -171,8 +171,8 @@ class Page extends \yii\db\ActiveRecord
                         }
                         if (isset($post['i18n'][$type]['x'])) {
                             PageImage::setPosition($type, $model->id, $post['i18n'][$type]);
-                            PageImage::cropImage($type, $model->id, $post['i18n'][$type], PageImage::DEVICE_DESKTOP_VALUE);
-                            PageImage::cropImage($type, $model->id, $post['i18n'][$type], PageImage::DEVICE_MOBILE_VALUE);
+                            PageImage::cropAndResizeImage($type, $model->id, $post['i18n'][$type], PageImage::DEVICE_DESKTOP_VALUE);
+                            PageImage::cropAndResizeImage($type, $model->id, $post['i18n'][$type], PageImage::DEVICE_MOBILE_VALUE);
                         } else {
                             if (isset($post['i18n'][$type])) PageLang::savePost($post['i18n'][$type], $type, $model, 'i18n');
                         }

@@ -6,6 +6,7 @@ use Yii;
 use yii\web\UploadedFile;
 use common\components\H;
 use common\components\ImageHelper;
+use Imagick;
 
 /**
  * This is the model class for table "page_image".
@@ -125,7 +126,7 @@ class PageImage extends \yii\db\ActiveRecord
         return $image->save();
     }
 
-    public function cropImage($type, $idPage, $position, $device)
+    public function cropAndResizeImage($type, $idPage, $position, $device)
     {
         $model = PageImage::find()
             ->where(['idPage' => $idPage, 'type' => $type, 'device' => $device])
@@ -138,21 +139,39 @@ class PageImage extends \yii\db\ActiveRecord
         $source = Yii::getAlias('@staticDir/') . $image->src;
         $file = $image->page->alias . '-' . $image->type . '--' . $device . '-' . uniqid();
         $result = Yii::getAlias('@staticDir/') . $file;
-        exec(
+
+        self::cropImage($source . '.' . $image->ext, $result . '.' . $image->ext, $image);
+
+/*        exec(
             'gm convert ' . $source . '.' . $image->ext .
             ' -crop ' . $image->w . 'x' . $image->h . '+' . $image->x . '+' . $image->y . ' ' .
             $result . '.' . $image->ext
         );
-
+*/
         if ($image->w > self::MOBILE_MAX_WIDTH && $device == self::DEVICE_MOBILE_VALUE) {
-            exec(
+            self::resizeImage($result . '.' . $image->ext);
+/*            exec(
                 'gm convert ' . $result . '.' . $image->ext .
                 ' -resize ' . self::MOBILE_MAX_WIDTH . 'x ' .
                 $result . '.' . $image->ext
             );
-        }
+*/        }
 
         PageImage::saveImage($type, $idPage, [$file, $image->ext], $device);
 
+    }
+
+    public function cropImage($source, $result, $image)
+    {
+        $imagick = new Imagick($source);
+        $imagick->cropImage($image->w, $image->h, $image->x, $image->y);
+        $imagick->writeImage($result);
+    }
+
+    public function resizeImage($file)
+    {
+        $imagick = new Imagick($file);
+        $imagick->thumbnailImage(self::MOBILE_MAX_WIDTH, null, 0);
+        $imagick->writeImage($file);
     }
 }
