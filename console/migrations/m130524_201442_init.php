@@ -156,28 +156,28 @@ class m130524_201442_init extends Migration
         }
 
 
-        $this->createIndex('idx_idCategory_3199_00','category_lang','idCategory',0);
-        $this->createIndex('idx_idCategory_3199_01','category_lang','idCategory',0);
-        $this->createIndex('idx_alias_3379_02','field','alias',0);
-        $this->createIndex('idx_idField_3409_03','field_lang','idField',0);
-        $this->createIndex('idx_idCategory_3549_04','page','idCategory',0);
-        $this->createIndex('idx_alias_3549_05','page','alias',0);
-        $this->createIndex('idx_aliasPage_3579_06','page_field','aliasPage',0);
-        $this->createIndex('idx_aliasField_3579_07','page_field','aliasField',0);
-        $this->createIndex('idx_aliasPage_3579_08','page_field','aliasPage',0);
-        $this->createIndex('idx_aliasField_3579_09','page_field','aliasField',0);
-        $this->createIndex('idx_idPage_3619_10','page_image','idPage',0);
-        $this->createIndex('idx_idPage_3649_11','page_lang','idPage',0);
-        $this->createIndex('idx_UNIQUE_username_3809_12','user','username',1);
-        $this->createIndex('idx_UNIQUE_email_3809_13','user','email',1);
-        $this->createIndex('idx_UNIQUE_password_reset_token_3809_14','user','password_reset_token',1);
+        $this->createIndex('idx_idCategory_4819_00','category_lang','idCategory',0);
+        $this->createIndex('idx_idCategory_4819_01','category_lang','idCategory',0);
+        $this->createIndex('idx_alias_4849_02','field','alias',0);
+        $this->createIndex('idx_idField_4879_03','field_lang','idField',0);
+        $this->createIndex('idx_idCategory_4899_04','page','idCategory',0);
+        $this->createIndex('idx_alias_4899_05','page','alias',0);
+        $this->createIndex('idx_aliasPage_4939_06','page_field','aliasPage',0);
+        $this->createIndex('idx_aliasField_4939_07','page_field','aliasField',0);
+        $this->createIndex('idx_aliasPage_4939_08','page_field','aliasPage',0);
+        $this->createIndex('idx_aliasField_4939_09','page_field','aliasField',0);
+        $this->createIndex('idx_idPage_4979_10','page_image','idPage',0);
+        $this->createIndex('idx_idPage_5009_11','page_lang','idPage',0);
+        $this->createIndex('idx_UNIQUE_username_5059_12','user','username',1);
+        $this->createIndex('idx_UNIQUE_email_5059_13','user','email',1);
+        $this->createIndex('idx_UNIQUE_password_reset_token_5059_14','user','password_reset_token',1);
 
         $this->execute('SET foreign_key_checks = 0');
-        $this->addForeignKey('fk_category_3189_00','{{%category_lang}}', 'idCategory', '{{%category}}', 'id', 'CASCADE', 'NO ACTION' );
-        $this->addForeignKey('fk_field_3399_01','{{%field_lang}}', 'idField', '{{%field}}', 'id', 'CASCADE', 'NO ACTION' );
-        $this->addForeignKey('fk_category_3539_02','{{%page}}', 'idCategory', '{{%category}}', 'id', 'CASCADE', 'NO ACTION' );
-        $this->addForeignKey('fk_page_3609_03','{{%page_image}}', 'idPage', '{{%page}}', 'id', 'CASCADE', 'NO ACTION' );
-        $this->addForeignKey('fk_page_3649_04','{{%page_lang}}', 'idPage', '{{%page}}', 'id', 'CASCADE', 'NO ACTION' );
+        $this->addForeignKey('fk_category_4819_00','{{%category_lang}}', 'idCategory', '{{%category}}', 'id', 'CASCADE', 'NO ACTION' );
+        $this->addForeignKey('fk_field_4869_01','{{%field_lang}}', 'idField', '{{%field}}', 'id', 'CASCADE', 'NO ACTION' );
+        $this->addForeignKey('fk_category_4899_02','{{%page}}', 'idCategory', '{{%category}}', 'id', 'CASCADE', 'NO ACTION' );
+        $this->addForeignKey('fk_page_4979_03','{{%page_image}}', 'idPage', '{{%page}}', 'id', 'CASCADE', 'NO ACTION' );
+        $this->addForeignKey('fk_page_4999_04','{{%page_lang}}', 'idPage', '{{%page}}', 'id', 'CASCADE', 'NO ACTION' );
         $this->execute('SET foreign_key_checks = 1;');
 
         $this->execute('SET foreign_key_checks = 0');
@@ -213,6 +213,8 @@ class m130524_201442_init extends Migration
         $this->insert('{{%field}}',['id'=>'10','alias'=>'post','type'=>'text','i18n'=>'1']);
         $this->insert('{{%field}}',['id'=>'11','alias'=>'tel','type'=>'tel','i18n'=>'0']);
         $this->insert('{{%field}}',['id'=>'12','alias'=>'email','type'=>'email','i18n'=>'0']);
+        $this->insert('{{%field}}',['id'=>'13','alias'=>'createdAt','type'=>'date','i18n'=>'0']);
+        $this->insert('{{%field}}',['id'=>'14','alias'=>'isMain','type'=>'checkbox','i18n'=>'0']);
         $this->insert('{{%field_lang}}',['id'=>'1','idField'=>'1','lang'=>'en','val'=>'Title']);
         $this->insert('{{%field_lang}}',['id'=>'2','idField'=>'1','lang'=>'ru','val'=>'Заголовок']);
         $this->insert('{{%field_lang}}',['id'=>'3','idField'=>'1','lang'=>'cn','val'=>'标题']);
@@ -251,9 +253,9 @@ class m130524_201442_init extends Migration
         $this->insert('{{%field_lang}}',['id'=>'36','idField'=>'12','lang'=>'cn','val'=>'电子邮件']);
         $this->insert('{{%page}}',['id'=>'1','idCategory'=>'2','alias'=>'company_history_and_possibilities','childAlias'=>'','isChild'=>'0']);
         $this->insert('{{%page}}',['id'=>'4','idCategory'=>'2','alias'=>'managment','childAlias'=>'managers','isChild'=>'0']);
-        $this->insert('{{%page}}',['id'=>'5','idCategory'=>'2','alias'=>'current_jobs','childAlias'=>'','isChild'=>'0']);
+        $this->insert('{{%page}}',['id'=>'5','idCategory'=>'2','alias'=>'current_jobs','childAlias'=>'vacancies','isChild'=>'0']);
         $this->insert('{{%page}}',['id'=>'6','idCategory'=>'2','alias'=>'responsibility_and_security','childAlias'=>'','isChild'=>'0']);
-        $this->insert('{{%page}}',['id'=>'7','idCategory'=>'2','alias'=>'company_news','childAlias'=>'','isChild'=>'0']);
+        $this->insert('{{%page}}',['id'=>'7','idCategory'=>'2','alias'=>'company_news','childAlias'=>'news','isChild'=>'0']);
         $this->insert('{{%page}}',['id'=>'8','idCategory'=>'3','alias'=>'cargo_selection','childAlias'=>'','isChild'=>'0']);
         $this->insert('{{%page}}',['id'=>'9','idCategory'=>'3','alias'=>'our_route','childAlias'=>'','isChild'=>'0']);
         $this->insert('{{%page}}',['id'=>'10','idCategory'=>'3','alias'=>'sea_inland_air_service','childAlias'=>'','isChild'=>'0']);
@@ -316,6 +318,14 @@ class m130524_201442_init extends Migration
         $this->insert('{{%page_field}}',['id'=>'67','aliasPage'=>'managers','aliasField'=>'post']);
         $this->insert('{{%page_field}}',['id'=>'68','aliasPage'=>'managers','aliasField'=>'tel']);
         $this->insert('{{%page_field}}',['id'=>'69','aliasPage'=>'managers','aliasField'=>'email']);
+        $this->insert('{{%page_field}}',['id'=>'70','aliasPage'=>'vacancies','aliasField'=>'title']);
+        $this->insert('{{%page_field}}',['id'=>'71','aliasPage'=>'vacancies','aliasField'=>'content-top']);
+        $this->insert('{{%page_field}}',['id'=>'72','aliasPage'=>'news','aliasField'=>'title']);
+        $this->insert('{{%page_field}}',['id'=>'73','aliasPage'=>'news','aliasField'=>'content-top']);
+        $this->insert('{{%page_field}}',['id'=>'74','aliasPage'=>'news','aliasField'=>'createdAt']);
+        $this->insert('{{%page_field}}',['id'=>'75','aliasPage'=>'news','aliasField'=>'isMain']);
+        $this->insert('{{%page_field}}',['id'=>'76','aliasPage'=>'news','aliasField'=>'img-top']);
+        $this->insert('{{%page_field}}',['id'=>'77','aliasPage'=>'news','aliasField'=>'img-main']);
         $this->insert('{{%page_lang}}',['id'=>'7','idPage'=>'5','lang'=>'en','type'=>'title','val'=>'Current Jobs']);
         $this->insert('{{%page_lang}}',['id'=>'8','idPage'=>'5','lang'=>'ru','type'=>'title','val'=>'Текущие Вакансии']);
         $this->insert('{{%page_lang}}',['id'=>'9','idPage'=>'5','lang'=>'cn','type'=>'title','val'=>'当前作业']);
@@ -348,14 +358,13 @@ class m130524_201442_init extends Migration
         $this->insert('{{%page_lang}}',['id'=>'36','idPage'=>'14','lang'=>'cn','type'=>'title','val'=>'我们的合作伙伴']);
         $this->insert('{{%page_lang}}',['id'=>'194','idPage'=>'4','lang'=>'ru','type'=>'title','val'=>'Руководство']);
         $this->insert('{{%page_lang}}',['id'=>'195','idPage'=>'4','lang'=>'en','type'=>'title','val'=>'Managment']);
-        $this->insert('{{%page_lang}}',['id'=>'229','idPage'=>'1','lang'=>'ru','type'=>'title','val'=>'История создания и возможности']);
-        $this->insert('{{%page_lang}}',['id'=>'230','idPage'=>'1','lang'=>'en','type'=>'title','val'=>'Company history and possibilities']);
-        $this->insert('{{%page_lang}}',['id'=>'231','idPage'=>'1','lang'=>'cn','type'=>'title','val'=>'公司的历史和可能性']);
-        $this->insert('{{%page_lang}}',['id'=>'232','idPage'=>'1','lang'=>'en','type'=>'content-top','val'=>'<h4>10 years of hard work, success and grow</h4>Nlngbo Rul-speed International freight forwarders Ltd. Is a sea, air and land transport as an Integrated International freight forwarding companies. In 2005, the prototype of the company in Nlngbo; then, In the development of the SAR Shenzhen, vitality and charm of Shanghai, Qlngdao; today, Is planning to close to Ben Thanh Tlanjln and Xiamen, two of the sea.<h4></h4>']);
-        $this->insert('{{%page_lang}}',['id'=>'233','idPage'=>'1','lang'=>'en','type'=>'content-main','val'=>'<p>Nlngbo Rul-speed international freight forwarders Ltd. Is a sea. air and land transport as an Integrated International freight forwarding companies. In 2005, the prototype of the company In Nlngbo; then, In the development of the SAR Shenzhen, vitality and charm of Shanghai, Qlngdao; today, Is planning to close to Ben Thanh Tianjin and Xiamen, two of the sea.</p><p>Our company has the right to direct booking and comprehensive global agency network, with operations in every corner of the world, where the core business Is focused on romantic European Russia. Britain. France, Finland. Spain, as well as Southeast Asia. Thailand. Malaysia, Vietnam and the Philippines and other countries exotic, as well as the United States, the Middle East and Australia, totaling about It, there are a total of Division I business relationships with more than 50 countries.</p><p>After five years of growth, our company has been formed FCL (FCL), LCL (LCL) import and export freight forwarders, air cargo Import and export freight forwarders, container Inland transportation and door to door service, customs clearance services in Eastern Europe and Russia. Continental bridge transport services and customs declaration, inspection, insurance agents, etc. all aspects of logistics service system, and a determined effort from the coast Into the Inland city of the Chinese coast, out Nelxlu China, to the wider world and become a link global freight forwarders people trusted to provide door to door transport services.</p><div><div><p>Our advantage routes In Europe, the Middle East. Southeast Asia and the United States, with many world-renowned shipping companies have a direct relationship, now has fixed more than 2.000 customers, it Is expected to export proxy container 30000 TEU, annual import agent container 5000 TEU. The company has been adhering to the \"service to win customers, In good faith pool staff, web development enterprise\" business philosophy to \"the development of modern logistics industry\" as its mission, with the leading edge services and national logistics service system, is seeking a pragmatic Hony Endeavour, honesty, practical, ambitious and dedicated to provide \"safe, efficient, economic and thoughtful\" first-class service to our customers around the world.</p></div></div>']);
+        $this->insert('{{%page_lang}}',['id'=>'259','idPage'=>'1','lang'=>'ru','type'=>'title','val'=>'История создания и возможности']);
+        $this->insert('{{%page_lang}}',['id'=>'260','idPage'=>'1','lang'=>'en','type'=>'title','val'=>'Company history and possibilities']);
+        $this->insert('{{%page_lang}}',['id'=>'261','idPage'=>'1','lang'=>'cn','type'=>'title','val'=>'公司的历史和可能性']);
+        $this->insert('{{%page_lang}}',['id'=>'262','idPage'=>'1','lang'=>'en','type'=>'content-top','val'=>'<h4>10 years of hard work, success and grow</h4>Nlngbo Rul-speed International freight forwarders Ltd. Is a sea, air and land transport as an Integrated International freight forwarding companies. In 2005, the prototype of the company in Nlngbo; then, In the development of the SAR Shenzhen, vitality and charm of Shanghai, Qlngdao; today, Is planning to close to Ben Thanh Tlanjln and Xiamen, two of the sea.<h4></h4>']);
+        $this->insert('{{%page_lang}}',['id'=>'263','idPage'=>'1','lang'=>'en','type'=>'content-main','val'=>'<p>Nlngbo Rul-speed international freight forwarders Ltd. Is a sea. air and land transport as an Integrated International freight forwarding companies. In 2005, the prototype of the company In Nlngbo; then, In the development of the SAR Shenzhen, vitality and charm of Shanghai, Qlngdao; today, Is planning to close to Ben Thanh Tianjin and Xiamen, two of the sea.</p><p>Our company has the right to direct booking and comprehensive global agency network, with operations in every corner of the world, where the core business Is focused on romantic European Russia. Britain. France, Finland. Spain, as well as Southeast Asia. Thailand. Malaysia, Vietnam and the Philippines and other countries exotic, as well as the United States, the Middle East and Australia, totaling about It, there are a total of Division I business relationships with more than 50 countries.</p><p>After five years of growth, our company has been formed FCL (FCL), LCL (LCL) import and export freight forwarders, air cargo Import and export freight forwarders, container Inland transportation and door to door service, customs clearance services in Eastern Europe and Russia. Continental bridge transport services and customs declaration, inspection, insurance agents, etc. all aspects of logistics service system, and a determined effort from the coast Into the Inland city of the Chinese coast, out Nelxlu China, to the wider world and become a link global freight forwarders people trusted to provide door to door transport services.</p><div><div><p>Our advantage routes In Europe, the Middle East. Southeast Asia and the United States, with many world-renowned shipping companies have a direct relationship, now has fixed more than 2.000 customers, it Is expected to export proxy container 30000 TEU, annual import agent container 5000 TEU. The company has been adhering to the \\\"service to win customers, In good faith pool staff, web development enterprise\\\" business philosophy to \\\"the development of modern logistics industry\\\" as its mission, with the leading edge services and national logistics service system, is seeking a pragmatic Hony Endeavour, honesty, practical, ambitious and dedicated to provide \\\"safe, efficient, economic and thoughtful\\\" first-class service to our customers around the world.</p></div></div>']);
         $this->insert('{{%user}}',['id'=>'1','username'=>'admin','auth_key'=>'XaQFqmmIzWse3zjGUR7nOZ4TfhI3UIyW','password_hash'=>'$2y$13$u.4MgIhMdC62rQ9hIC634ucuNjc0B.jL/n2nQiu0iRdN7x/TtzGOK','password_reset_token'=>'','email'=>'admin@email.com','status'=>'10','created_at'=>'1475080941','updated_at'=>'1475080941']);
         $this->execute('SET foreign_key_checks = 1;');
-
 
     }
 

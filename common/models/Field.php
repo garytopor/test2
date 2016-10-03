@@ -17,20 +17,26 @@ use common\components\H;
  */
 class Field extends \yii\db\ActiveRecord
 {
-    const TYPE_TEXT_VALUE  = 'text';
-    const TYPE_TEXT_NAME   = 'Text';
+    const TYPE_TEXT_VALUE          = 'text';
+    const TYPE_TEXT_NAME           = 'Text';
 
-    const TYPE_HTML_VALUE  = 'html';
-    const TYPE_HTML_NAME   = 'Html';
+    const TYPE_HTML_VALUE          = 'html';
+    const TYPE_HTML_NAME           = 'Html';
 
-    const TYPE_IMAGE_VALUE = 'image';
-    const TYPE_IMAGE_NAME  = 'Image';
+    const TYPE_IMAGE_VALUE         = 'image';
+    const TYPE_IMAGE_NAME          = 'Image';
 
-    const TYPE_EMAIL_VALUE = 'email';
-    const TYPE_EMAIL_NAME  = 'Email';
+    const TYPE_EMAIL_VALUE         = 'email';
+    const TYPE_EMAIL_NAME          = 'Email';
 
-    const TYPE_TEL_VALUE   = 'tel';
-    const TYPE_TEL_NAME    = 'Tel';
+    const TYPE_CHECKBOX_VALUE      = 'checkbox';
+    const TYPE_CHECKBOX_NAME       = 'Checkbox';
+
+    const TYPE_DATE_VALUE          = 'date';
+    const TYPE_DATE_NAME           = 'Date';
+
+    const TYPE_TEL_VALUE           = 'tel';
+    const TYPE_TEL_NAME            = 'Tel';
 
     /**
      * @inheritdoc
@@ -85,11 +91,13 @@ class Field extends \yii\db\ActiveRecord
     public static function getTypes()
     {
         return [
-            self::TYPE_TEXT_VALUE  => self::TYPE_TEXT_NAME,
-            self::TYPE_HTML_VALUE  => self::TYPE_HTML_NAME,
-            self::TYPE_IMAGE_VALUE => self::TYPE_IMAGE_NAME,
-            self::TYPE_EMAIL_VALUE => self::TYPE_EMAIL_NAME,
-            self::TYPE_TEL_VALUE   => self::TYPE_TEL_NAME,
+            self::TYPE_TEXT_VALUE       => self::TYPE_TEXT_NAME,
+            self::TYPE_HTML_VALUE       => self::TYPE_HTML_NAME,
+            self::TYPE_IMAGE_VALUE      => self::TYPE_IMAGE_NAME,
+            self::TYPE_EMAIL_VALUE      => self::TYPE_EMAIL_NAME,
+            self::TYPE_TEL_VALUE        => self::TYPE_TEL_NAME,
+            self::TYPE_CHECKBOX_VALUE   => self::TYPE_CHECKBOX_NAME,
+            self::TYPE_DATE_VALUE       => self::TYPE_DATE_NAME,
         ];
     }
 
@@ -114,6 +122,12 @@ class Field extends \yii\db\ActiveRecord
         switch ($field->type) {
             case Field::TYPE_TEXT_VALUE:
                 $input = Html::input('text',  $lang . '[' .$field->alias . ']', $content, ['class' => 'form-control']);
+                break;
+            case Field::TYPE_DATE_VALUE:
+                $input = Html::input('text',  $lang . '[' .$field->alias . ']', $content, ['class' => 'form-control pickadate']);
+                break;
+            case Field::TYPE_CHECKBOX_VALUE:
+                $input = Html::checkbox( $lang . '[' .$field->alias . ']', $content, ['class' => 'form-control']);
                 break;
             case Field::TYPE_EMAIL_VALUE:
                 $input = Html::input('email',  $lang . '[' .$field->alias . ']', $content, ['class' => 'form-control', 'pattern' => '[^@]+@[^@]+\.[a-zA-Z]{2,6}']);
