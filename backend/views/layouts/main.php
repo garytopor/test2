@@ -24,7 +24,10 @@ AppAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
-    <script type="text/javascript"> var yesNoText = '<?php echo Yii::t("app", "Are you sure you want to delete this item?") ?>'  </script>
+    <script type="text/javascript">
+        var yesNoText = '<?php echo Yii::t("app", "Are you sure you want to delete this item?") ?>';
+        var staticServer = '<?php echo Yii::getAlias('@staticUrl/'); ?>';
+    </script>
 </head>
 <body>
 <?php $this->beginBody() ?>

@@ -101,7 +101,7 @@ class PageImage extends \yii\db\ActiveRecord
 
     public function removeImage($image)
     {
-        @unlink(Yii::getAlias('@common') . '/static/' . $image->src . '.' . $image->ext );
+        @unlink(Yii::getAlias('@staticDir/') . $image->src . '.' . $image->ext );
         $image->delete();
     }
 
@@ -109,7 +109,7 @@ class PageImage extends \yii\db\ActiveRecord
     {
         $file = UploadedFile::getInstanceByName('i18n[' . $type . '][img]');
         $name = $page . '-' . $type . '-' . uniqid();
-        $file->saveAs(Yii::getAlias('@common') . '/static/' . $name . '.' . $file->extension);
+        $file->saveAs(Yii::getAlias('@staticDir/') . $name . '.' . $file->extension);
         return [$name, $file->extension];
     }
 
@@ -135,9 +135,9 @@ class PageImage extends \yii\db\ActiveRecord
             ->where(['idPage' => $idPage, 'type' => $type, 'device' => self::DEVICE_SOURCE_VALUE])
             ->one();
 
-        $source = Yii::getAlias('@common') . '/static/' . $image->src;
+        $source = Yii::getAlias('@staticDir/') . $image->src;
         $file = $image->page->alias . '-' . $image->type . '--' . $device . '-' . uniqid();
-        $result = Yii::getAlias('@common') . '/static/' . $file;
+        $result = Yii::getAlias('@staticDir/') . $file;
         exec(
             'gm convert ' . $source . '.' . $image->ext .
             ' -crop ' . $image->w . 'x' . $image->h . '+' . $image->x . '+' . $image->y . ' ' .

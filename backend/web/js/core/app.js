@@ -662,7 +662,7 @@ $(function() {
 
             if (val) opts.initialPreview = [
                 '<div class="kv-file-content">' +
-                    '<img src="http://static.dev/' + val + '" class="kv-preview-data file-preview-image cropper">' + inputs +
+                    '<img src="' + staticServer + val + '" class="kv-preview-data file-preview-image cropper">' + inputs +
                 '</div>'
             ];
 

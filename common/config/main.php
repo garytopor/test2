@@ -3,6 +3,12 @@ return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'sourceLanguage' => 'en',
     'language' => 'en',
+    'aliases' => [
+        '@backendUrl' => 'http://backend.dev',
+        '@frontendUrl' => 'http://frontend.dev',
+        '@staticUrl' => 'http://static.dev',
+        '@staticDir' => '@common/static',
+    ],
     'components' => [
         'urlManager' => [
             'class' => 'codemix\localeurls\UrlManager',
