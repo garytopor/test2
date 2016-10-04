@@ -76,13 +76,16 @@ class SiteController extends Controller
     public function actionIndex()
     {
 
-        return $this->render('index');
+        $model = Page::find()->where(['alias' => 'home'])->one();
+        return $this->render('index',
+            [
+                'model' => $model,
+            ]);
     }
 
     public function actionAbout()
     {
-        $model = Page::find(['alias'=>'company_history_and_possibilities'])->one();
-
+        $model = Page::find()->where(['alias' => 'company_history_and_possibilities'])->one();
         return $this->render('about',
             [
                 'model' => $model,

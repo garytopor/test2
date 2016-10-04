@@ -3,7 +3,7 @@
     <div class="container">
         <div class="text-holder">
             <div class="title-holder"><h1>Best shipping rates for your business from logistic leader</h1></div>
-            <a href="#" class="btn">Learn more about us</a>
+            <a href="#" class="btn"><?php echo Yii::t('app', 'Learn more about us');?></a>
         </div>
     </div>
 </section>
@@ -14,26 +14,26 @@
     <div class="container">
         <div class="visual-holder">
             <div class="content-holder">
-                <h3>Cargo shipping from China to:</h3>
+                <h3><?php echo Yii::t('app', 'Cargo shipping from China to:');?></h3>
                 <ul class="routs-list">
                     <li>
-                        <strong>Middle East area:</strong>
-                        <span>Jebel Ali, Dammam, Riyadh, Doha, Kuwait</span>
+                        <strong><?php echo Yii::t('app', 'Middle East area:');?></strong>
+                        <span><?php echo Yii::t('app', 'Jebel Ali, Dammam, Riyadh, Doha, Kuwait');?></span>
                     </li>
                     <li>
-                        <strong>Europe area:</strong>
-                        <span>Mideterian and Baltic sea: St. Petersburg, Kotka, Klaipeda, Riga, Tallin </span>
+                        <strong><?php echo Yii::t('app', 'Europe area:');?></strong>
+                        <span><?php echo Yii::t('app', 'Mideterian and Baltic sea: St. Petersburg, Kotka, Klaipeda, Riga, Tallin');?></span>
                     </li>
                     <li>
-                        <strong>Central Asia area:</strong>
-                        <span>Baku, Erevan, Tbilisi</span>
+                        <strong><?php echo Yii::t('app', 'Central Asia area:');?></strong>
+                        <span><?php echo Yii::t('app', 'Baku, Erevan, Tbilisi');?></span>
                     </li>
                     <li>
-                        <strong>Black Sea area:</strong>
-                        <span>Novorossiysk, Poti, Odessa</span>
+                        <strong><?php echo Yii::t('app', 'Black Sea area:');?></strong>
+                        <span><?php echo Yii::t('app', 'Novorossiysk, Poti, Odessa');?></span>
                     </li>
                 </ul>
-                <div class="btn-holder"><a href="#" class="btn">learn more</a></div>
+                <div class="btn-holder"><a href="#" class="btn"><?php echo Yii::t('app', 'learn more');?></a></div>
             </div>
             <div class="visual">
                 <img src="<?php echo Yii::getAlias('@web');?>/images/main-bg.jpg" alt="image description">
@@ -43,7 +43,7 @@
 </section>
 <section class="slider-section">
     <div class="container">
-        <h2>Our services</h2>
+        <h2><?php echo Yii::t('app', 'Our services');?></h2>
         <div class="slider-holder">
             <div class="service-slider">
                 <div>
@@ -88,7 +88,7 @@
 </section>
 <section class="news-section">
     <div class="container">
-        <h2>Company news</h2>
+        <h2><?php echo Yii::t('app', 'Company news');?></h2>
         <ul class="news-list">
             <li>
                 <div class="img-holder"><img src="<?php echo Yii::getAlias('@web');?>/images/img8.jpg" alt="image description"></div>
@@ -114,7 +114,7 @@
 </section>
 <section class="partners-section">
     <div class="container">
-        <h2>Partners</h2>
+        <h2><?php echo Yii::t('app', 'Partners');?></h2>
         <ul class="partners-list">
             <li><a href="#"><img src="<?php echo Yii::getAlias('@web');?>/images/pr1.jpg" alt="image description"></a></li>
             <li><a href="#"><img src="<?php echo Yii::getAlias('@web');?>/images/pr2.jpg" alt="image description"></a></li>

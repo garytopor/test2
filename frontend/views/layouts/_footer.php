@@ -1,30 +1,20 @@
+<?php
+use yii\widgets\Menu;
+use common\models\Category;
+$menu = Category::getMenuBottom();
+?>
 <footer class="footer">
     <div class="container">
         <div class="footer-content">
             <a href="#" class="copy">© 2016, Moro <br> All rights reserved </a>
-            <ul class="footer-list">
-                <li>
-                    <a href="#"><strong>About company</strong></a>
-                </li>
-                <li>
-                    <a href="#"><strong>Our services</strong></a>
-                </li>
-                <li>
-                    <a href="#"><strong>Clients and partners</strong></a>
-                </li>
-                <li>
-                    <a href="#"><strong>Contacts</strong></a>
-                </li>
-                <li>
-                    <a href="#">&nbsp;</a>
-                </li>
-                <li>
-                    <a href="#">FMS landing</a>
-                </li>
-                <li>
-                    <a href="#">Freight managment</a>
-                </li>
-            </ul>
+            <?php echo Menu::widget([
+                                'encodeLabels' => false,
+                                'items' => $menu,
+                                'options' => [
+                                    'class' => 'footer-list'
+                                ],
+                            ]); ?>
+
             <ul class="contacts-list">
                 <li>
                     Tel: <a href="tel:057487259554" class="phone">0574-87259554 </a>
@@ -37,24 +27,24 @@
                     Rainbow Road, Jiangdong District, Ningbo City on the 11th, Carnival World Trade Room 1101 A Block, China.
                 </li>
                 <li>
-                    <a href="#">all braches on a map</a>
+                    <a href="#"><?php echo Yii::t('app', 'all braches on a map');?></a>
                 </li>
             </ul>
             <div class="form-holder">
                 <form action="" class="footer-form">
                     <fieldset>
-                        <h3>If you have any question to us,<br> let us contact with you:</h3>
+                        <h3><?php echo Yii::t('app', 'If you have any question to us,<br> let us contact with you:');?></h3>
                         <div class="row">
-                            <input type="text" class="input" placeholder="Your name">
+                            <input type="text" class="input" placeholder="<?php echo Yii::t('app', 'Your name');?>">
                         </div>
                         <div class="row">
-                            <input type="text" class="input" placeholder="E-mail">
+                            <input type="text" class="input" placeholder="<?php echo Yii::t('app', 'E-mail');?>">
                         </div>
                         <div class="row">
-                            <input type="text" class="input" placeholder="Company name">
+                            <input type="text" class="input" placeholder="<?php echo Yii::t('app', 'Company name');?>">
                         </div>
                         <div class="btn-holder">
-                            <input type="submit" class="btn" value="contact with me">
+                            <input type="submit" class="btn" value="<?php echo Yii::t('app', 'Contact with me');?>">
                         </div>
                     </fieldset>
                 </form>

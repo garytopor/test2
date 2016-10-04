@@ -1,8 +1,3 @@
-<?php
-
-?>
-
-
 <section class="about-section">
     <div class="container">
         <div class="top-holder">

@@ -106,11 +106,33 @@ class Category extends \yii\db\ActiveRecord
         $categories = Category::findAll(['showInMenu' => 1]);
         foreach ($categories as $category) {
             $result[] = [
-                'label' =>  '<i class="' . $category->icon . '"></i> ' . $category->content->val,
+                'label' => $category->content->val,
                 'url' => '#',
 
             ];
         }
+        return $result;
+    }
+    public function getMenuBottom()
+    {
+        $result = [];
+        $categories = Category::findAll(['showInMenu' => 1]);
+        foreach ($categories as $category) {
+            $result[] = [
+                'label' => '<strong>'.$category->content->val.'</strong>',
+                'url' => '#',
+
+            ];
+        }
+        $result[] = [
+                'label' => '&nbsp;',
+                'url' => '#',];
+        $result[] = [
+                'label' => 'FMS landing',
+                'url' => '#',];
+        $result[] = [
+                'label' => 'Freight managment',
+                'url' => '#',];
         return $result;
     }
 }
