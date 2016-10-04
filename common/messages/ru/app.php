@@ -21,5 +21,8 @@ return [
     'Chinese' => 'Китайский',
     'No translatable fields' => 'Поля без перевода',
     'Count delivery'=>'заявка на рассчет',
-    'Are you sure you want to delete this item?' => 'Вы уверены что хотите удалить эту запись?'
+    'Are you sure you want to delete this item?' => 'Вы уверены что хотите удалить эту запись?',
+    'Countries and Cities' => 'Страны и портовые города',
+    'Create Country' => 'Создать страну',
+    'Create City' => 'Создать город',
 ];
