@@ -31,13 +31,19 @@ class ChildController extends \yii\web\Controller
     {
         $model = $this->findModel($id);
         if ($model->isChild) {
-            foreach ($model->pageLangs as $pageLang) {
-                $pageLang->delete();
+            $transaction = Yii::$app->db->beginTransaction();
+            try {
+                foreach ($model->pageLangs as $pageLang) {
+                    $pageLang->delete();
+                }
+                foreach ($model->pageImages as $pageImage) {
+                    PageImage::removeImage($pageImage);
+                }
+                $model->delete();
+                $transaction->commit();
+            } catch (Exception $e) {
+                $transaction->rollBack();
             }
-            foreach ($model->pageImages as $pageImage) {
-                PageImage::removeImage($pageImage);
-            }
-            $model->delete();
         }
         echo 1;
     }

@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use common\components\H;
 use common\models\Field;
+use common\models\Country;
 use yii\widgets\ListView;
 use yii\widgets\Pjax;
 
@@ -101,6 +102,33 @@ $langs = H::langs();
                     <?php echo ListView::widget([
                         'dataProvider' => $children,
                         'itemView' => 'children/' . $model->childAlias,
+                        'layout' => '{summary}<div class="row">{items}</div>{pager}',
+                    ]); ?>
+                </div>
+            </div>
+        </div>
+        <!-- /horizotal form -->
+    </div>
+    <?php endif; ?>
+
+    <?php if ($model->alias == 'our_route'): ?>
+    <div class="col-md-12">
+        <!-- Horizontal form -->
+        <div class="panel panel-flat">
+            <div class="panel-heading">
+                <h5 class="panel-title"><?php echo Yii::t('app', 'Countries and Cities') ?></h5>
+                <div class="heading-elements">
+                    <?php echo Html::a(Yii::t('app', 'Create Country'), ['/country/create'] ,['class' => 'btn btn-primary btn-popup heading-btn']) ?>
+                </div>
+                <a class="heading-elements-toggle"><i class="icon-more"></i></a>
+
+            </div>
+            <div class="panel-body">
+
+                <div class="row">
+                    <?php echo ListView::widget([
+                        'dataProvider' => Country::getProvider(),
+                        'itemView' => 'children/countries',
                         'layout' => '{summary}<div class="row">{items}</div>{pager}',
                     ]); ?>
                 </div>
