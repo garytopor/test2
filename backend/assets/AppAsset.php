@@ -37,6 +37,8 @@ class AppAsset extends AssetBundle
 
         'js/plugins/media/cropper.min.js',
 
+        'js/plugins/media/fancybox.min.js',
+
         'js/core/app.js',
     ];
     public $depends = [

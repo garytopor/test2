@@ -2,7 +2,7 @@
 use common\components\H;
 use yii\helpers\Url;
 ?>
-<div class="col-md-2">
+<div class="col-md-4">
     <div class="panel panel-white">
         <div class="panel-heading">
         <h6 class="panel-title"><span class="text-semibold"><?php echo $model->getContent('title')->val;; ?></span></h6>
@@ -16,8 +16,14 @@ use yii\helpers\Url;
 
         <div class="panel-body">
 
-            <?php echo $model->getField('content-top')->field->content->val; ?> :
-            <?php echo $model->getContent('content-top')->val; ?> <br/>
+            <b><?php echo $model->getField('content-top')->field->content->val; ?></b> :
+
+            <div class="thumbnail">
+                <a href="<?php echo $model->getImageUrl('img-top', 'desktop') ?>" data-popup="lightbox">
+                    <img src="<?php echo $model->getImageUrl('img-top', 'desktop') ?>" alt="">
+                </a>
+            </div>
+            <?php echo H::stringLimit($model->getContent('content-top')->val); ?> <br/>
 
         </div>
     </div>

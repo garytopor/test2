@@ -16,8 +16,8 @@ use yii\helpers\Url;
 
         <div class="panel-body">
 
-            <?php echo $model->getField('content-top')->field->content->val; ?> :
-            <?php echo $model->getContent('content-top')->val; ?> <br/>
+            <b><?php echo $model->getField('content-top')->field->content->val; ?></b> :
+            <?php echo H::stringLimit($model->getContent('content-top')->val); ?> <br/>
 
         </div>
     </div>

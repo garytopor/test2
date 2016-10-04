@@ -16,12 +16,11 @@ $langs = H::langs();
 
 <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 <div class="row">
-    <?php foreach ($langs as $lang): ?>
-    <div class="col-md-6">
+    <div class="col-md-12">
         <!-- Horizontal form -->
         <div class="panel panel-flat">
             <div class="panel-heading">
-                <h5 class="panel-title"><?php echo H::langText($lang) ?></h5>
+                <h5 class="panel-title"><?php echo H::langText(Yii::$app->language) ?></h5>
                 <div class="heading-elements">
                     <ul class="icons-list">
                         <li><a data-action="collapse"></a></li>
@@ -37,7 +36,7 @@ $langs = H::langs();
                         <div class="form-group">
                             <?php echo Field::getInputLabel($pageField->field, 'control-label col-lg-2') ?>
                             <div class="col-lg-10">
-                                <?php echo Field::getInputField($pageField->field, $lang, $model) ?>
+                                <?php echo Field::getInputField($pageField->field, Yii::$app->language, $model) ?>
                             </div>
                         </div>
                         <?php endif; ?>
@@ -47,9 +46,8 @@ $langs = H::langs();
         </div>
         <!-- /horizotal form -->
     </div>
-    <?php endforeach; ?>
 
-    <div class="col-md-6">
+    <div class="col-md-12">
         <!-- Horizontal form -->
         <div class="panel panel-flat">
             <div class="panel-heading">

@@ -83,6 +83,12 @@ class Page extends \yii\db\ActiveRecord
             )->one();
     }
 
+    public function getImageUrl($type, $device)
+    {
+        $image = $this->getPageImageByType($type, $device);
+        return Yii::getAlias('@staticUrl/' . $image->src . '.' . $image->ext);
+    }
+
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -158,11 +164,14 @@ class Page extends \yii\db\ActiveRecord
             $transaction = Yii::$app->db->beginTransaction();
             try {
                 if (!$model->id) $model->save();
-                PageLang::deleteAll(['idPage' => $model->id]);
                 foreach ($fields as $field) {
                     $type = $field->aliasField;
                     if ($field->field->i18n) {
-                        foreach ($langs as $lang) PageLang::savePost($post[$lang][$type], $type, $model, $lang);
+                        foreach ($langs as $lang) {
+                            if (isset($post[$lang])) {
+                                PageLang::savePost($post[$lang][$type], $type, $model, $lang);
+                            }
+                        }
                     } else {
                         if (!empty(UploadedFile::getInstanceByName('i18n['.$type.'][img]'))) {
                             PageImage::removeAllImages($type, $model->id);
@@ -198,5 +207,6 @@ class Page extends \yii\db\ActiveRecord
             ],
         ]);;
     }
+
 
 }

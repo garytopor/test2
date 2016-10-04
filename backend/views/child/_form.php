@@ -17,6 +17,37 @@ $langs = H::langs();
         <!-- Horizontal form -->
         <div class="panel panel-flat">
             <div class="panel-heading">
+                <h5 class="panel-title"><?php echo H::langText(Yii::$app->language) ?></h5>
+                <div class="heading-elements">
+                    <ul class="icons-list">
+                        <li><a data-action="collapse"></a></li>
+                        <li><a data-action="close"></a></li>
+                    </ul>
+                </div>
+                <a class="heading-elements-toggle"><i class="icon-more"></i></a>
+            </div>
+            <div class="panel-body">
+                <div class="form-horizontal">
+                    <?php foreach ($model->pageFields as $pageField): ?>
+                        <?php if ($pageField->field->i18n): ?>
+                        <div class="form-group">
+                            <?php echo Field::getInputLabel($pageField->field, 'control-label col-lg-2') ?>
+                            <div class="col-lg-10">
+                                <?php echo Field::getInputField($pageField->field, Yii::$app->language, $model) ?>
+                            </div>
+                        </div>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+        <!-- /horizotal form -->
+    </div>
+
+    <div class="col-md-12">
+        <!-- Horizontal form -->
+        <div class="panel panel-flat">
+            <div class="panel-heading">
                 <h5 class="panel-title"><?php echo Yii::t('app', 'No translatable fields') ?></h5>
                 <div class="heading-elements">
                     <ul class="icons-list">
@@ -48,39 +79,6 @@ $langs = H::langs();
         </div>
         <!-- /horizotal form -->
     </div>
-
-    <?php foreach ($langs as $lang): ?>
-    <div class="col-md-12">
-        <!-- Horizontal form -->
-        <div class="panel panel-flat">
-            <div class="panel-heading">
-                <h5 class="panel-title"><?php echo H::langText($lang) ?></h5>
-                <div class="heading-elements">
-                    <ul class="icons-list">
-                        <li><a data-action="collapse"></a></li>
-                        <li><a data-action="close"></a></li>
-                    </ul>
-                </div>
-                <a class="heading-elements-toggle"><i class="icon-more"></i></a>
-            </div>
-            <div class="panel-body">
-                <div class="form-horizontal">
-                    <?php foreach ($model->pageFields as $pageField): ?>
-                        <?php if ($pageField->field->i18n): ?>
-                        <div class="form-group">
-                            <?php echo Field::getInputLabel($pageField->field, 'control-label col-lg-2') ?>
-                            <div class="col-lg-10">
-                                <?php echo Field::getInputField($pageField->field, $lang, $model) ?>
-                            </div>
-                        </div>
-                        <?php endif; ?>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-        </div>
-        <!-- /horizotal form -->
-    </div>
-    <?php endforeach; ?>
 </div>
 
 <?php ActiveForm::end(); ?>

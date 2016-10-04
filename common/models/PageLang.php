@@ -32,7 +32,7 @@ class PageLang extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['idPage', 'lang', 'type', 'val'], 'required'],
+            [['idPage', 'lang', 'type'], 'required'],
             [['idPage'], 'integer'],
             [['val'], 'string'],
             [['lang'], 'string', 'max' => 5],

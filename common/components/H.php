@@ -46,4 +46,19 @@ class H
         return Yii::$app->getUrlManager()->languages;
     }
 
+    public function stringLimit($string)
+    {
+        $string = strip_tags($string);
+
+        if (strlen($string) > 500) {
+
+            // truncate string
+            $stringCut = substr($string, 0, 500);
+
+            // make sure it ends in a word so assassinate doesn't become ass...
+            $string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... ';
+        }
+
+        return $string;
+    }
 }
