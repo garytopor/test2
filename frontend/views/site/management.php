@@ -1,3 +1,6 @@
+<?php
+use yii\widgets\ListView;
+?>
 <section class="about-section">
     <div class="container">
         <div class="top-holder">
@@ -11,27 +14,29 @@
     </div>
     <div class="main-holder">
         <div class="container">
-            <div class="content-holder">
-                <asside class="sidebar">
-                    <ul class="menu">
-                        <li class="active"><a href="#"><?php echo Yii::t('app', 'Company history and possibilities');?></a></li>
-                        <li><a href="#"><?php echo Yii::t('app', 'Management');?></a></li>
-                        <li><a href="#"><?php echo Yii::t('app', 'Current Jobs');?></a></li>
-                        <li><a href="#"><?php echo Yii::t('app', 'Responsibility and security');?></a></li>
-                        <li><a href="#"><?php echo Yii::t('app', 'Company news');?></a></li>
-                    </ul>
-                </asside>
-                <div class="text">
-                    <?php echo $model->getContent('content-main')->val;?>
-                </div>
-            </div>
-            <div class="img-holder" style="background: <?php echo Yii::getAlias('@staticUrl').'/'.$model->getPageImageByType('img-main', 'source')->src.'.'.$model->getPageImageByType('img-top', 'source')->ext; ?>">
-                <img src="<?php echo Yii::getAlias('@staticUrl').'/'.$model->getPageImageByType('img-main', 'source')->src.'.'.$model->getPageImageByType('img-top', 'source')->ext; ?>" alt="image description">
-            </div>
-            <div class="content-holder down">
-                <div class="text">
-                    <?php echo $model->getContent('content-bottom')->val;?>
-                </div>
+            <asside class="sidebar">
+                <ul class="menu">
+                    <li><a href="#"><?php echo Yii::t('app', 'Company history and possibilities');?></a></li>
+                    <li class="active"><a href="#"><?php echo Yii::t('app', 'Management');?></a></li>
+                    <li><a href="#"><?php echo Yii::t('app', 'Current Jobs');?></a></li>
+                    <li><a href="#"><?php echo Yii::t('app', 'Responsibility and security');?></a></li>
+                    <li><a href="#"><?php echo Yii::t('app', 'Company news');?></a></li>
+                </ul>
+            </asside>
+            <div class="text">
+                <?php echo $model->getContent('content-main')->val;?>
+                <strong class="title"><?php echo Yii::t('app', 'Please contact us:');?></strong>
+
+                    <?php echo ListView::widget([
+                        'dataProvider' => $children,
+                        'itemView' => 'children/' . $model->childAlias,
+                        'layout' => '<ul class="contacts-list">{items}</ul>{pager}',
+                        'itemOptions' => [
+                            'tag' => false,
+                        ],
+                    ]); ?>
+
+
             </div>
             <div class="line">&nbsp;</div>
         </div>

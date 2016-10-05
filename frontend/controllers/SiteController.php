@@ -91,6 +91,25 @@ class SiteController extends Controller
                 'model' => $model,
             ]);
     }
+
+    public function actionManagement()
+    {
+        $model = Page::find()->where(['alias' => 'managment'])->one();
+        return $this->render('management',
+            [
+                'model' => $model,
+                'children' => $model->childAlias ? $model->getChildrenList($model->childAlias) : [],
+            ]);
+    }
+    public function actionNews()
+    {
+        $model = Page::find()->where(['alias' => 'company_news'])->one();
+        return $this->render('news',
+            [
+                'model' => $model,
+            ]);
+    }
+
     protected function findModel($id)
     {
         if (($model = Page::findOne($id)) !== null) {

@@ -37,8 +37,7 @@ return [
     'Contact with me'=>'Свяжитесь со мной',
     'Our services'=>'Наши услуги',
     'Company news'=>'Новости компании',
-
-
+    'Our routes'=>'Наши маршруты',
     'Best shipping rates for your business from logistic leader'=>'Лучшие ставки доставки для вашего бизнеса от логистического лидера',
     'Cargo shipping from China to:'=>'Грузовые перевозки из Китая:',
     'Middle East area:'=>'Ближний Восток',
@@ -49,6 +48,12 @@ return [
     'Baku, Erevan, Tbilisi'=>'Баку, Ереван, Тбилиси',
     'Black Sea area:'=>'Черное море',
     'Novorossiysk, Poti, Odessa'=>'Новороссийск, Поти, Одесса',
+    'Company history and possibilities'=>'История создания и возможности',
+    'Management'=>'Менеджмент',
+    'Current Jobs'=>'Текущие работы',
+    'Responsibility and security'=>'Ответственность и безопасность',
+    'Company news'=>'Новости компании',
+    'Please contact us:'=>'Свяжитесь с нами',
 
 
 

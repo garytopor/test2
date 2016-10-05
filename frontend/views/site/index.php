@@ -8,7 +8,7 @@
     </div>
 </section>
 <div class="container title-routs">
-    <h2>Our routes</h2>
+    <h2><?php echo Yii::t('app', 'Our routes');?></h2>
 </div>
 <section class="top-section">
     <div class="container">

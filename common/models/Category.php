@@ -93,7 +93,7 @@ class Category extends \yii\db\ActiveRecord
             }
 
             $result[] = [
-                'label' =>  '<i class="' . $category->icon . '"></i> ' . $category->content->val,
+                'label' =>  '<i class="' . $category->icon . '"></i><span>' . $category->content->val.'</span>',
                 'url' => '#',
                 'items' => $items
             ];
