@@ -205,34 +205,34 @@ class m130524_201442_init extends Migration
         }
 
 
-        $this->createIndex('idx_idCategory_1006_00','category_lang','idCategory',0);
-        $this->createIndex('idx_idCategory_1006_01','category_lang','idCategory',0);
-        $this->createIndex('idx_idCountry_1056_02','city','idCountry',0);
-        $this->createIndex('idx_idCity_1086_03','city_lang','idCity',0);
-        $this->createIndex('idx_idCountry_1146_04','country_lang','idCountry',0);
-        $this->createIndex('idx_alias_1166_05','field','alias',0);
-        $this->createIndex('idx_idField_1226_06','field_lang','idField',0);
-        $this->createIndex('idx_idCategory_1256_07','page','idCategory',0);
-        $this->createIndex('idx_alias_1256_08','page','alias',0);
-        $this->createIndex('idx_aliasPage_1286_09','page_field','aliasPage',0);
-        $this->createIndex('idx_aliasField_1286_10','page_field','aliasField',0);
-        $this->createIndex('idx_aliasPage_1286_11','page_field','aliasPage',0);
-        $this->createIndex('idx_aliasField_1286_12','page_field','aliasField',0);
-        $this->createIndex('idx_idPage_1306_13','page_image','idPage',0);
-        $this->createIndex('idx_idPage_1556_14','page_lang','idPage',0);
-        $this->createIndex('idx_UNIQUE_username_1616_15','user','username',1);
-        $this->createIndex('idx_UNIQUE_email_1616_16','user','email',1);
-        $this->createIndex('idx_UNIQUE_password_reset_token_1616_17','user','password_reset_token',1);
+        $this->createIndex('idx_idCategory_9493_00','category_lang','idCategory',0);
+        $this->createIndex('idx_idCategory_9493_01','category_lang','idCategory',0);
+        $this->createIndex('idx_idCountry_9523_02','city','idCountry',0);
+        $this->createIndex('idx_idCity_9693_03','city_lang','idCity',0);
+        $this->createIndex('idx_idCountry_9933_04','country_lang','idCountry',0);
+        $this->createIndex('idx_alias_0003_05','field','alias',0);
+        $this->createIndex('idx_idField_0023_06','field_lang','idField',0);
+        $this->createIndex('idx_idCategory_0053_07','page','idCategory',0);
+        $this->createIndex('idx_alias_0053_08','page','alias',0);
+        $this->createIndex('idx_aliasPage_0083_09','page_field','aliasPage',0);
+        $this->createIndex('idx_aliasField_0083_10','page_field','aliasField',0);
+        $this->createIndex('idx_aliasPage_0083_11','page_field','aliasPage',0);
+        $this->createIndex('idx_aliasField_0083_12','page_field','aliasField',0);
+        $this->createIndex('idx_idPage_0113_13','page_image','idPage',0);
+        $this->createIndex('idx_idPage_0273_14','page_lang','idPage',0);
+        $this->createIndex('idx_UNIQUE_username_0323_15','user','username',1);
+        $this->createIndex('idx_UNIQUE_email_0323_16','user','email',1);
+        $this->createIndex('idx_UNIQUE_password_reset_token_0323_17','user','password_reset_token',1);
 
         $this->execute('SET foreign_key_checks = 0');
-        $this->addForeignKey('fk_category_1006_00','{{%category_lang}}', 'idCategory', '{{%category}}', 'id', 'CASCADE', 'CASCADE' );
-        $this->addForeignKey('fk_country_1056_01','{{%city}}', 'idCountry', '{{%country}}', 'id', 'CASCADE', 'CASCADE' );
-        $this->addForeignKey('fk_city_1086_02','{{%city_lang}}', 'idCity', '{{%city}}', 'id', 'CASCADE', 'CASCADE' );
-        $this->addForeignKey('fk_country_1146_03','{{%country_lang}}', 'idCountry', '{{%country}}', 'id', 'CASCADE', 'CASCADE' );
-        $this->addForeignKey('fk_field_1226_04','{{%field_lang}}', 'idField', '{{%field}}', 'id', 'CASCADE', 'CASCADE' );
-        $this->addForeignKey('fk_category_1256_05','{{%page}}', 'idCategory', '{{%category}}', 'id', 'CASCADE', 'CASCADE' );
-        $this->addForeignKey('fk_page_1306_06','{{%page_image}}', 'idPage', '{{%page}}', 'id', 'CASCADE', 'CASCADE' );
-        $this->addForeignKey('fk_page_1546_07','{{%page_lang}}', 'idPage', '{{%page}}', 'id', 'CASCADE', 'CASCADE' );
+        $this->addForeignKey('fk_category_9493_00','{{%category_lang}}', 'idCategory', '{{%category}}', 'id', 'CASCADE', 'NO ACTION' );
+        $this->addForeignKey('fk_country_9513_01','{{%city}}', 'idCountry', '{{%country}}', 'id', 'CASCADE', 'NO ACTION' );
+        $this->addForeignKey('fk_city_9683_02','{{%city_lang}}', 'idCity', '{{%city}}', 'id', 'CASCADE', 'NO ACTION' );
+        $this->addForeignKey('fk_country_9923_03','{{%country_lang}}', 'idCountry', '{{%country}}', 'id', 'CASCADE', 'NO ACTION' );
+        $this->addForeignKey('fk_field_0023_04','{{%field_lang}}', 'idField', '{{%field}}', 'id', 'CASCADE', 'NO ACTION' );
+        $this->addForeignKey('fk_category_0053_05','{{%page}}', 'idCategory', '{{%category}}', 'id', 'CASCADE', 'NO ACTION' );
+        $this->addForeignKey('fk_page_0113_06','{{%page_image}}', 'idPage', '{{%page}}', 'id', 'CASCADE', 'NO ACTION' );
+        $this->addForeignKey('fk_page_0273_07','{{%page_lang}}', 'idPage', '{{%page}}', 'id', 'CASCADE', 'NO ACTION' );
         $this->execute('SET foreign_key_checks = 1;');
 
         $this->execute('SET foreign_key_checks = 0');
@@ -270,6 +270,8 @@ class m130524_201442_init extends Migration
         $this->insert('{{%field}}',['id'=>'12','alias'=>'email','type'=>'email','i18n'=>'0']);
         $this->insert('{{%field}}',['id'=>'13','alias'=>'createdAt','type'=>'date','i18n'=>'0']);
         $this->insert('{{%field}}',['id'=>'14','alias'=>'isMain','type'=>'checkbox','i18n'=>'0']);
+        $this->insert('{{%field}}',['id'=>'15','alias'=>'tech-data','type'=>'html','i18n'=>'1']);
+        $this->insert('{{%field}}',['id'=>'16','alias'=>'isRed','type'=>'checkbox','i18n'=>'0']);
         $this->insert('{{%field_lang}}',['id'=>'1','idField'=>'1','lang'=>'en','val'=>'Title']);
         $this->insert('{{%field_lang}}',['id'=>'2','idField'=>'1','lang'=>'ru','val'=>'Заголовок']);
         $this->insert('{{%field_lang}}',['id'=>'3','idField'=>'1','lang'=>'cn','val'=>'标题']);
@@ -311,13 +313,13 @@ class m130524_201442_init extends Migration
         $this->insert('{{%page}}',['id'=>'5','idCategory'=>'2','alias'=>'current_jobs','childAlias'=>'vacancies','isChild'=>'0']);
         $this->insert('{{%page}}',['id'=>'6','idCategory'=>'2','alias'=>'responsibility_and_security','childAlias'=>'','isChild'=>'0']);
         $this->insert('{{%page}}',['id'=>'7','idCategory'=>'2','alias'=>'company_news','childAlias'=>'news','isChild'=>'0']);
-        $this->insert('{{%page}}',['id'=>'8','idCategory'=>'3','alias'=>'cargo_selection','childAlias'=>'','isChild'=>'0']);
+        $this->insert('{{%page}}',['id'=>'8','idCategory'=>'3','alias'=>'cargo_selection','childAlias'=>'cargos','isChild'=>'0']);
         $this->insert('{{%page}}',['id'=>'9','idCategory'=>'3','alias'=>'our_route','childAlias'=>'','isChild'=>'0']);
-        $this->insert('{{%page}}',['id'=>'10','idCategory'=>'3','alias'=>'sea_inland_air_service','childAlias'=>'','isChild'=>'0']);
-        $this->insert('{{%page}}',['id'=>'11','idCategory'=>'3','alias'=>'dangerous_goods','childAlias'=>'','isChild'=>'0']);
-        $this->insert('{{%page}}',['id'=>'12','idCategory'=>'3','alias'=>'your_questions_and_our_answers','childAlias'=>'','isChild'=>'0']);
-        $this->insert('{{%page}}',['id'=>'13','idCategory'=>'4','alias'=>'our_clients','childAlias'=>'','isChild'=>'0']);
-        $this->insert('{{%page}}',['id'=>'14','idCategory'=>'4','alias'=>'our_partners','childAlias'=>'','isChild'=>'0']);
+        $this->insert('{{%page}}',['id'=>'10','idCategory'=>'3','alias'=>'sea_inland_air_service','childAlias'=>'transports','isChild'=>'0']);
+        $this->insert('{{%page}}',['id'=>'11','idCategory'=>'3','alias'=>'dangerous_goods','childAlias'=>'goods','isChild'=>'0']);
+        $this->insert('{{%page}}',['id'=>'12','idCategory'=>'3','alias'=>'your_questions_and_our_answers','childAlias'=>'faq','isChild'=>'0']);
+        $this->insert('{{%page}}',['id'=>'13','idCategory'=>'4','alias'=>'our_clients','childAlias'=>'client','isChild'=>'0']);
+        $this->insert('{{%page}}',['id'=>'14','idCategory'=>'4','alias'=>'our_partners','childAlias'=>'partner','isChild'=>'0']);
         $this->insert('{{%page_field}}',['id'=>'1','aliasPage'=>'company_history_and_possibilities','aliasField'=>'title']);
         $this->insert('{{%page_field}}',['id'=>'2','aliasPage'=>'company_history_and_possibilities','aliasField'=>'meta-description']);
         $this->insert('{{%page_field}}',['id'=>'3','aliasPage'=>'company_history_and_possibilities','aliasField'=>'meta-keywords']);
@@ -342,14 +344,10 @@ class m130524_201442_init extends Migration
         $this->insert('{{%page_field}}',['id'=>'22','aliasPage'=>'company_news','aliasField'=>'meta-description']);
         $this->insert('{{%page_field}}',['id'=>'23','aliasPage'=>'company_news','aliasField'=>'meta-keywords']);
         $this->insert('{{%page_field}}',['id'=>'26','aliasPage'=>'cargo_selection','aliasField'=>'title']);
-        $this->insert('{{%page_field}}',['id'=>'27','aliasPage'=>'cargo_selection','aliasField'=>'meta-description']);
-        $this->insert('{{%page_field}}',['id'=>'28','aliasPage'=>'cargo_selection','aliasField'=>'meta-keywords']);
         $this->insert('{{%page_field}}',['id'=>'31','aliasPage'=>'our_route','aliasField'=>'title']);
         $this->insert('{{%page_field}}',['id'=>'32','aliasPage'=>'our_route','aliasField'=>'meta-description']);
         $this->insert('{{%page_field}}',['id'=>'33','aliasPage'=>'our_route','aliasField'=>'meta-keywords']);
         $this->insert('{{%page_field}}',['id'=>'36','aliasPage'=>'sea_inland_air_service','aliasField'=>'title']);
-        $this->insert('{{%page_field}}',['id'=>'37','aliasPage'=>'sea_inland_air_service','aliasField'=>'meta-description']);
-        $this->insert('{{%page_field}}',['id'=>'38','aliasPage'=>'sea_inland_air_service','aliasField'=>'meta-keywords']);
         $this->insert('{{%page_field}}',['id'=>'41','aliasPage'=>'dangerous_goods','aliasField'=>'title']);
         $this->insert('{{%page_field}}',['id'=>'42','aliasPage'=>'dangerous_goods','aliasField'=>'meta-description']);
         $this->insert('{{%page_field}}',['id'=>'43','aliasPage'=>'dangerous_goods','aliasField'=>'meta-keywords']);
@@ -359,11 +357,7 @@ class m130524_201442_init extends Migration
         $this->insert('{{%page_field}}',['id'=>'48','aliasPage'=>'your_questions_and_our_answers','aliasField'=>'meta-keywords']);
         $this->insert('{{%page_field}}',['id'=>'49','aliasPage'=>'your_questions_and_our_answers','aliasField'=>'content-top']);
         $this->insert('{{%page_field}}',['id'=>'51','aliasPage'=>'our_clients','aliasField'=>'title']);
-        $this->insert('{{%page_field}}',['id'=>'52','aliasPage'=>'our_clients','aliasField'=>'meta-description']);
-        $this->insert('{{%page_field}}',['id'=>'53','aliasPage'=>'our_clients','aliasField'=>'meta-keywords']);
         $this->insert('{{%page_field}}',['id'=>'56','aliasPage'=>'our_partners','aliasField'=>'title']);
-        $this->insert('{{%page_field}}',['id'=>'57','aliasPage'=>'our_partners','aliasField'=>'meta-description']);
-        $this->insert('{{%page_field}}',['id'=>'58','aliasPage'=>'our_partners','aliasField'=>'meta-keywords']);
         $this->insert('{{%page_field}}',['id'=>'61','aliasPage'=>'company_history_and_possibilities','aliasField'=>'img-top']);
         $this->insert('{{%page_field}}',['id'=>'62','aliasPage'=>'company_history_and_possibilities','aliasField'=>'img-main']);
         $this->insert('{{%page_field}}',['id'=>'63','aliasPage'=>'managment','aliasField'=>'img-top']);
@@ -381,6 +375,36 @@ class m130524_201442_init extends Migration
         $this->insert('{{%page_field}}',['id'=>'75','aliasPage'=>'news','aliasField'=>'isMain']);
         $this->insert('{{%page_field}}',['id'=>'76','aliasPage'=>'news','aliasField'=>'img-top']);
         $this->insert('{{%page_field}}',['id'=>'77','aliasPage'=>'news','aliasField'=>'img-main']);
+        $this->insert('{{%page_field}}',['id'=>'78','aliasPage'=>'cargos','aliasField'=>'title']);
+        $this->insert('{{%page_field}}',['id'=>'79','aliasPage'=>'cargos','aliasField'=>'meta-description']);
+        $this->insert('{{%page_field}}',['id'=>'80','aliasPage'=>'cargos','aliasField'=>'meta-keywords']);
+        $this->insert('{{%page_field}}',['id'=>'81','aliasPage'=>'cargos','aliasField'=>'content-top']);
+        $this->insert('{{%page_field}}',['id'=>'82','aliasPage'=>'cargos','aliasField'=>'tech-data']);
+        $this->insert('{{%page_field}}',['id'=>'83','aliasPage'=>'cargos','aliasField'=>'img-icon']);
+        $this->insert('{{%page_field}}',['id'=>'84','aliasPage'=>'cargos','aliasField'=>'img-top']);
+        $this->insert('{{%page_field}}',['id'=>'85','aliasPage'=>'transports','aliasField'=>'title']);
+        $this->insert('{{%page_field}}',['id'=>'86','aliasPage'=>'transports','aliasField'=>'meta-description']);
+        $this->insert('{{%page_field}}',['id'=>'87','aliasPage'=>'transports','aliasField'=>'meta-keywords']);
+        $this->insert('{{%page_field}}',['id'=>'88','aliasPage'=>'transports','aliasField'=>'content-top']);
+        $this->insert('{{%page_field}}',['id'=>'90','aliasPage'=>'transports','aliasField'=>'img-icon']);
+        $this->insert('{{%page_field}}',['id'=>'91','aliasPage'=>'transports','aliasField'=>'img-top']);
+        $this->insert('{{%page_field}}',['id'=>'92','aliasPage'=>'goods','aliasField'=>'title']);
+        $this->insert('{{%page_field}}',['id'=>'93','aliasPage'=>'goods','aliasField'=>'content-top']);
+        $this->insert('{{%page_field}}',['id'=>'94','aliasPage'=>'goods','aliasField'=>'isRed']);
+        $this->insert('{{%page_field}}',['id'=>'95','aliasPage'=>'faq','aliasField'=>'title']);
+        $this->insert('{{%page_field}}',['id'=>'96','aliasPage'=>'faq','aliasField'=>'content-top']);
+        $this->insert('{{%page_field}}',['id'=>'97','aliasPage'=>'client','aliasField'=>'title']);
+        $this->insert('{{%page_field}}',['id'=>'98','aliasPage'=>'client','aliasField'=>'meta-description']);
+        $this->insert('{{%page_field}}',['id'=>'99','aliasPage'=>'client','aliasField'=>'meta-keywords']);
+        $this->insert('{{%page_field}}',['id'=>'100','aliasPage'=>'client','aliasField'=>'content-top']);
+        $this->insert('{{%page_field}}',['id'=>'102','aliasPage'=>'client','aliasField'=>'img-icon']);
+        $this->insert('{{%page_field}}',['id'=>'103','aliasPage'=>'client','aliasField'=>'img-top']);
+        $this->insert('{{%page_field}}',['id'=>'104','aliasPage'=>'partner','aliasField'=>'title']);
+        $this->insert('{{%page_field}}',['id'=>'105','aliasPage'=>'partner','aliasField'=>'meta-description']);
+        $this->insert('{{%page_field}}',['id'=>'106','aliasPage'=>'partner','aliasField'=>'meta-keywords']);
+        $this->insert('{{%page_field}}',['id'=>'107','aliasPage'=>'partner','aliasField'=>'content-top']);
+        $this->insert('{{%page_field}}',['id'=>'109','aliasPage'=>'partner','aliasField'=>'img-icon']);
+        $this->insert('{{%page_field}}',['id'=>'110','aliasPage'=>'partner','aliasField'=>'img-top']);
         $this->insert('{{%page_lang}}',['id'=>'7','idPage'=>'5','lang'=>'en','type'=>'title','val'=>'Current Jobs']);
         $this->insert('{{%page_lang}}',['id'=>'8','idPage'=>'5','lang'=>'ru','type'=>'title','val'=>'Текущие Вакансии']);
         $this->insert('{{%page_lang}}',['id'=>'9','idPage'=>'5','lang'=>'cn','type'=>'title','val'=>'当前作业']);
@@ -417,7 +441,7 @@ class m130524_201442_init extends Migration
         $this->insert('{{%page_lang}}',['id'=>'280','idPage'=>'1','lang'=>'en','type'=>'title','val'=>'Company history and possibilities']);
         $this->insert('{{%page_lang}}',['id'=>'281','idPage'=>'1','lang'=>'cn','type'=>'title','val'=>'公司的历史和可能性']);
         $this->insert('{{%page_lang}}',['id'=>'282','idPage'=>'1','lang'=>'en','type'=>'content-top','val'=>'<h4>10 years of hard work, success and grow</h4>Nlngbo Rul-speed International freight forwarders Ltd. Is a sea, air and land transport as an Integrated International freight forwarding companies. In 2005, the prototype of the company in Nlngbo; then, In the development of the SAR Shenzhen, vitality and charm of Shanghai, Qlngdao; today, Is planning to close to Ben Thanh Tlanjln and Xiamen, two of the sea.<h4></h4>']);
-        $this->insert('{{%page_lang}}',['id'=>'283','idPage'=>'1','lang'=>'en','type'=>'content-main','val'=>'<p>Nlngbo Rul-speed international freight forwarders Ltd. Is a sea. air and land transport as an Integrated International freight forwarding companies. In 2005, the prototype of the company In Nlngbo; then, In the development of the SAR Shenzhen, vitality and charm of Shanghai, Qlngdao; today, Is planning to close to Ben Thanh Tianjin and Xiamen, two of the sea.</p><p>Our company has the right to direct booking and comprehensive global agency network, with operations in every corner of the world, where the core business Is focused on romantic European Russia. Britain. France, Finland. Spain, as well as Southeast Asia. Thailand. Malaysia, Vietnam and the Philippines and other countries exotic, as well as the United States, the Middle East and Australia, totaling about It, there are a total of Division I business relationships with more than 50 countries.</p><p>After five years of growth, our company has been formed FCL (FCL), LCL (LCL) import and export freight forwarders, air cargo Import and export freight forwarders, container Inland transportation and door to door service, customs clearance services in Eastern Europe and Russia. Continental bridge transport services and customs declaration, inspection, insurance agents, etc. all aspects of logistics service system, and a determined effort from the coast Into the Inland city of the Chinese coast, out Nelxlu China, to the wider world and become a link global freight forwarders people trusted to provide door to door transport services.</p><div><div><p>Our advantage routes In Europe, the Middle East. Southeast Asia and the United States, with many world-renowned shipping companies have a direct relationship, now has fixed more than 2.000 customers, it Is expected to export proxy container 30000 TEU, annual import agent container 5000 TEU. The company has been adhering to the \\\\\"service to win customers, In good faith pool staff, web development enterprise\\\\\" business philosophy to \\\\\"the development of modern logistics industry\\\\\" as its mission, with the leading edge services and national logistics service system, is seeking a pragmatic Hony Endeavour, honesty, practical, ambitious and dedicated to provide \\\\\"safe, efficient, economic and thoughtful\\\\\" first-class service to our customers around the world.</p></div></div>']);
+        $this->insert('{{%page_lang}}',['id'=>'283','idPage'=>'1','lang'=>'en','type'=>'content-main','val'=>'<p>Nlngbo Rul-speed international freight forwarders Ltd. Is a sea. air and land transport as an Integrated International freight forwarding companies. In 2005, the prototype of the company In Nlngbo; then, In the development of the SAR Shenzhen, vitality and charm of Shanghai, Qlngdao; today, Is planning to close to Ben Thanh Tianjin and Xiamen, two of the sea.</p><p>Our company has the right to direct booking and comprehensive global agency network, with operations in every corner of the world, where the core business Is focused on romantic European Russia. Britain. France, Finland. Spain, as well as Southeast Asia. Thailand. Malaysia, Vietnam and the Philippines and other countries exotic, as well as the United States, the Middle East and Australia, totaling about It, there are a total of Division I business relationships with more than 50 countries.</p><p>After five years of growth, our company has been formed FCL (FCL), LCL (LCL) import and export freight forwarders, air cargo Import and export freight forwarders, container Inland transportation and door to door service, customs clearance services in Eastern Europe and Russia. Continental bridge transport services and customs declaration, inspection, insurance agents, etc. all aspects of logistics service system, and a determined effort from the coast Into the Inland city of the Chinese coast, out Nelxlu China, to the wider world and become a link global freight forwarders people trusted to provide door to door transport services.</p><div><div><p>Our advantage routes In Europe, the Middle East. Southeast Asia and the United States, with many world-renowned shipping companies have a direct relationship, now has fixed more than 2.000 customers, it Is expected to export proxy container 30000 TEU, annual import agent container 5000 TEU. The company has been adhering to the \\\\\\\"service to win customers, In good faith pool staff, web development enterprise\\\\\\\" business philosophy to \\\\\\\"the development of modern logistics industry\\\\\\\" as its mission, with the leading edge services and national logistics service system, is seeking a pragmatic Hony Endeavour, honesty, practical, ambitious and dedicated to provide \\\\\\\"safe, efficient, economic and thoughtful\\\\\\\" first-class service to our customers around the world.</p></div></div>']);
         $this->insert('{{%user}}',['id'=>'1','username'=>'admin','auth_key'=>'XaQFqmmIzWse3zjGUR7nOZ4TfhI3UIyW','password_hash'=>'$2y$13$u.4MgIhMdC62rQ9hIC634ucuNjc0B.jL/n2nQiu0iRdN7x/TtzGOK','password_reset_token'=>'','email'=>'admin@email.com','status'=>'10','created_at'=>'1475080941','updated_at'=>'1475080941']);
         $this->execute('SET foreign_key_checks = 1;');
 
@@ -469,7 +493,6 @@ class m130524_201442_init extends Migration
         $this->execute('SET foreign_key_checks = 0');
         $this->execute('DROP TABLE IF EXISTS `user`');
         $this->execute('SET foreign_key_checks = 1;');
-
 
     }
 }
