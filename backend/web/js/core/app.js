@@ -726,4 +726,37 @@ $(function() {
         padding: 3
     });
 
+    if ($('#yMap').length) {
+        ymaps.ready(init);
+
+        function init(){
+
+            var yMap;
+
+            var latLon = $('#latLon').val() ? $('#latLon').val().split(',') : [55.7447, 37.5627];
+
+            yMap = new ymaps.Map("yMap", {
+                center: latLon,
+                zoom: 7
+            });
+
+            yMap.events.add('click', function (e) {
+                addPlacemark(e.get('coords'));
+            });
+
+            function addPlacemark(coords) {
+                if (coords.length > 1) {
+                    if (typeof coords[0] != 'string') coords[0] = coords[0].toFixed(4);
+                    if (typeof coords[1] != 'string') coords[1] = coords[1].toFixed(4);
+                    yMap.geoObjects.removeAll();
+                    yMap.geoObjects.add(new ymaps.Placemark(coords, { preset: 'twirl#violetIcon' }));
+                    $('#latLon').val([coords[0], coords[1]].join(','));
+                }
+            }
+
+            addPlacemark(latLon);
+
+        }
+    }
+
 });

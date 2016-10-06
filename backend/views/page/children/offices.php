@@ -15,9 +15,14 @@ use yii\helpers\Url;
         </div>
 
         <div class="panel-body">
+            <?php echo $model->getField('address')->field->content->val; ?> :
+            <?php echo $model->getContent('address')->val; ?> <br/>
 
-            <b><?php echo $model->getField('content-top')->field->content->val; ?></b> :
-            <?php echo H::stringLimit($model->getContent('content-top')->val); ?> <br/>
+            <?php echo $model->getField('tel')->field->content->val; ?> :
+            <?php echo $model->getContentByTypeLang('tel', 'i18n')->val; ?> <br/>
+
+            <?php echo $model->getField('email')->field->content->val; ?> :
+            <?php echo $model->getContentByTypeLang('email', 'i18n')->val; ?>
 
         </div>
     </div>

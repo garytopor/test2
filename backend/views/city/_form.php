@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use common\models\Field;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\City */
@@ -14,9 +15,7 @@ use yii\widgets\ActiveForm;
 
     <?= Html::input('text',  'name', $model->content ? $model->content->val : '', ['class' => 'form-control']); ?>
 
-    <?= $form->field($model, 'lat')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'lon')->textInput(['maxlength' => true]) ?>
+    <?= Field::getInputLatLon('latLon', $model->latLon); ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
