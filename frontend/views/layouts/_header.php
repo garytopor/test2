@@ -12,7 +12,7 @@ $menu = Category::getMenuFront();
                     <div class="row">
                         <a href="#" class="link">FMS landing </a>
                         <a href="#" class="link">Freight managment</a>
-                        <ul class="language-list">
+                        <?php /*<ul class="language-list">
 
                             <?php echo Menu::widget([
                                 'encodeLabels' => false,
@@ -25,6 +25,20 @@ $menu = Category::getMenuFront();
                                     'class' => 'language-list'
                                 ],
                             ]); ?>
+                        </ul>
+                        */?>
+                        <?php
+                            $lang =  Yii::$app->language;
+                            if($lang=='en')$enlang='class="active"';
+                            if($lang=='ru')$rulang='class="active"';
+                            if($lang=='cn')$cnlang='class="active"';
+                        ?>
+                        <ul class="language-list">
+
+                            <ul class="language-list">
+                                <li <?php echo $enlang;?>><a href="/en">english</a></li>
+                                <li <?php echo $cnlang;?>><a href="/cn">简体中文</a></li>
+                                <li <?php echo $rulang;?>><a href="/ru">русский</a></li></ul>
                         </ul>
                     </div>
                     <nav id="nav">

@@ -207,6 +207,15 @@ class Page extends \yii\db\ActiveRecord
             ],
         ]);;
     }
+    public function getChildrenNewsFront($childAlias)
+    {
+        return new ActiveDataProvider([
+            'query' => Page::find()->where(['alias' => $childAlias])->orderBy('id DESC'),
+            'pagination' => [
+                'pageSize' => 4,
+            ],
+        ]);;
+    }
 
 
 }

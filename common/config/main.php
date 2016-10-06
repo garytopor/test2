@@ -3,7 +3,7 @@ return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'sourceLanguage' => 'en',
     'language' => 'en',
-    
+
     'components' => [
         'urlManager' => [
             'class' => 'codemix\localeurls\UrlManager',

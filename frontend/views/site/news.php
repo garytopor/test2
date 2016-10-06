@@ -1,9 +1,12 @@
+<?php
+use yii\widgets\ListView;
+?>
 <section class="title-section news">
     <div class="container">
         <div class="text-holder">
             <span>12.10.2016</span>
             <strong>The EU Commission <br> closes competition <br> case without finding <br>infringement</strong>
-            <a href="#" class="link">read more</a>
+            <a href="#" class="link"><?php echo Yii::t('app', 'read more');?></a>
         </div>
     </div>
 </section>
@@ -12,69 +15,25 @@
         <div class="container">
             <asside class="sidebar">
                 <ul class="menu">
-                    <li><a href="#"><?php echo Yii::t('app', 'Company history and possibilities');?></a></li>
-                    <li><a href="#"><?php echo Yii::t('app', 'Management');?></a></li>
+                    <li><a href="about"><?php echo Yii::t('app', 'Company history and possibilities');?></a></li>
+                    <li ><a href="management"><?php echo Yii::t('app', 'Management');?></a></li>
                     <li><a href="#"><?php echo Yii::t('app', 'Current Jobs');?></a></li>
                     <li><a href="#"><?php echo Yii::t('app', 'Responsibility and security');?></a></li>
                     <li class="active"><a href="#"><?php echo Yii::t('app', 'Company news');?></a></li>
                 </ul>
             </asside>
             <div class="content">
-                <ul class="about-list">
-                    <li>
-                        <div class="content-holder">
-                            <div class="screen-holder"><img src="images/img16.jpg" alt="image description"></div>
-                            <div class="text-holder">
-                                <span class="date">12.10.2016</span>
-                                <strong>RUSAL and Maersk Line announce long-term cooperation</strong>
-                                <span class="description">Moro China company provides international sea container transportations of cargoes. Due to its low cost and convenience ...</span>
-                                <a href="#" class="link">read more</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="content-holder">
-                            <div class="screen-holder"><img src="images/img17.jpg" alt="image description"></div>
-                            <div class="text-holder">
-                                <span class="date">12.10.2016</span>
-                                <strong>RUSAL and Maersk Line announce long-term cooperation</strong>
-                                <span class="description">Moro China company provides international sea container transportations of cargoes. Due to its low cost and convenience ...</span>
-                                <a href="#" class="link">read more</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="content-holder">
-                            <div class="screen-holder"><img src="images/img16.jpg" alt="image description"></div>
-                            <div class="text-holder">
-                                <span class="date">12.10.2016</span>
-                                <strong>RUSAL and Maersk Line announce long-term cooperation</strong>
-                                <span class="description">Moro China company provides international sea container transportations of cargoes. Due to its low cost and convenience ...</span>
-                                <a href="#" class="link">read more</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="content-holder">
-                            <div class="screen-holder"><img src="images/img17.jpg" alt="image description"></div>
-                            <div class="text-holder">
-                                <span class="date">12.10.2016</span>
-                                <strong>RUSAL and Maersk Line announce long-term cooperation</strong>
-                                <span class="description">Moro China company provides international sea container transportations of cargoes. Due to its low cost and convenience ...</span>
-                                <a href="#" class="link">read more</a>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-                <div class="pagination-holder">
-                    <div class="line">&nbsp;</div>
-                    <ul>
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                    </ul>
-                </div>
+
+                <?php echo ListView::widget([
+                    'dataProvider' => $children,
+                    'itemView' => 'children/' . $model->childAlias,
+                    'layout' => '<ul class="about-list">{items}</ul><div class="pagination-holder"><div class="line">&nbsp;</div>{pager} </div>',
+                    'itemOptions' => [
+                        'tag' => false,
+                    ],
+
+                ]); ?>
+
             </div>
         </div>
     </div>
@@ -128,11 +87,11 @@
     <div class="container">
         <h2><?php echo Yii::t('app', 'Partners');?></h2>
         <ul class="partners-list">
-            <li><a href="#"><img src="images/pr1.jpg" alt="image description"></a></li>
-            <li><a href="#"><img src="images/pr2.jpg" alt="image description"></a></li>
-            <li><a href="#"><img src="images/pr3.jpg" alt="image description"></a></li>
-            <li><a href="#"><img src="images/pr4.jpg" alt="image description"></a></li>
-            <li><a href="#"><img src="images/pr5.jpg" alt="image description"></a></li>
+            <li><a href="#"><img src="<?php echo Yii::getAlias('@web');?>/images/pr1.jpg" alt="image description"></a></li>
+            <li><a href="#"><img src="<?php echo Yii::getAlias('@web');?>/images/pr2.jpg" alt="image description"></a></li>
+            <li><a href="#"><img src="<?php echo Yii::getAlias('@web');?>/images/pr3.jpg" alt="image description"></a></li>
+            <li><a href="#"><img src="<?php echo Yii::getAlias('@web');?>/images/pr4.jpg" alt="image description"></a></li>
+            <li><a href="#"><img src="<?php echo Yii::getAlias('@web');?>/images/pr5.jpg" alt="image description"></a></li>
         </ul>
     </div>
 </section>

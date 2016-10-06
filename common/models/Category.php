@@ -100,16 +100,27 @@ class Category extends \yii\db\ActiveRecord
         }
         return $result;
     }
+
     public function getMenuFront()
     {
-        $result = [];
+        //$action_id= Yii::$app->controller->action->id;
+        $urls = [];
+        $urls[] =['site/index'];
+        $urls[] =['site/about'];
+        $urls[] =['site/management'];
+        $urls[] =['site/management'];
+        $urls[] =['site/management'];
+
         $categories = Category::findAll(['showInMenu' => 1]);
+        $i = 0;
         foreach ($categories as $category) {
+
             $result[] = [
                 'label' => $category->content->val,
-                'url' => '#',
-
+                'url' =>$urls[$i],
+                //'options'=> ['class'=>'list-group-item']
             ];
+        $i++;
         }
         return $result;
     }

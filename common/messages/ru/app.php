@@ -28,7 +28,7 @@ return [
     'Countries and Cities' => 'Страны и портовые города',
     'Create Country' => 'Создать страну',
     'Create City' => 'Создать город',
-    'read more'=>'подробно',
+    'read more'=>'Подробно',
     'If you have any question to us,<br> let us contact with you:'=>'Если у Вас возникли вопросы к нам, дайте нам связаться с вами:',
     'all braches on a map'=>'все филиалы на карте',
     'Partners'=>'Партнеры',
@@ -54,6 +54,7 @@ return [
     'Responsibility and security'=>'Ответственность и безопасность',
     'Company news'=>'Новости компании',
     'Please contact us:'=>'Свяжитесь с нами',
+    'back to news'=>'Назад к новостям',
 
 
 

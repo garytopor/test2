@@ -15,10 +15,10 @@
                 <asside class="sidebar">
                     <ul class="menu">
                         <li class="active"><a href="#"><?php echo Yii::t('app', 'Company history and possibilities');?></a></li>
-                        <li><a href="#"><?php echo Yii::t('app', 'Management');?></a></li>
+                        <li><a href="management"><?php echo Yii::t('app', 'Management');?></a></li>
                         <li><a href="#"><?php echo Yii::t('app', 'Current Jobs');?></a></li>
                         <li><a href="#"><?php echo Yii::t('app', 'Responsibility and security');?></a></li>
-                        <li><a href="#"><?php echo Yii::t('app', 'Company news');?></a></li>
+                        <li><a href="news"><?php echo Yii::t('app', 'Company news');?></a></li>
                     </ul>
                 </asside>
                 <div class="text">

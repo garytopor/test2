@@ -104,10 +104,36 @@ class SiteController extends Controller
     public function actionNews()
     {
         $model = Page::find()->where(['alias' => 'company_news'])->one();
+
         return $this->render('news',
             [
                 'model' => $model,
+                'children' => $model->childAlias ? $model->getChildrenNewsFront($model->childAlias) : [],
             ]);
+    }
+    public function actionCargo_selection()
+    {
+        $model = Page::find()->where(['alias' => 'cargo_selection'])->one();
+        return $this->render('cargo_selection',
+            [
+                'model' => $model,
+                'children' => $model->childAlias ? $model->getChildrenList($model->childAlias) : [],
+            ]);
+    }
+    public function actionNewsitem($id)
+    {
+
+        $parentId =7;
+        $parent = $this->findModel($parentId);
+        $model = $id ? $this->findModel($id) : new Page();
+        $model->idCategory = $parent->idCategory;
+        $model->alias = $parent->childAlias;
+        $model->isChild = 1;
+
+        return $this->render('newsitem', [
+            'model' => $model,
+            'parent' => $parent,
+        ]);
     }
 
     protected function findModel($id)
