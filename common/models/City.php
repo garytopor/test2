@@ -4,14 +4,13 @@ namespace common\models;
 
 use Yii;
 use common\models\CityLang;
+use common\components\H;
 
 /**
  * This is the model class for table "city".
  *
  * @property integer $id
  * @property integer $idCountry
- * @property string $lat
- * @property string $lon
  *
  * @property Country $idCountry0
  * @property CityLang[] $cityLangs
@@ -32,9 +31,8 @@ class City extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['idCountry', 'lat', 'lon'], 'required'],
+            [['idCountry'], 'required'],
             [['idCountry'], 'integer'],
-            [['lat', 'lon'], 'number'],
             [['idCountry'], 'exist', 'skipOnError' => true, 'targetClass' => Country::className(), 'targetAttribute' => ['idCountry' => 'id']],
         ];
     }
@@ -47,8 +45,7 @@ class City extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'idCountry' => Yii::t('app', 'Id Country'),
-            'lat' => Yii::t('app', 'Lat'),
-            'lon' => Yii::t('app', 'Lon'),
+            'latLon' => Yii::t('app', 'LatLon'),
         ];
     }
 
@@ -82,7 +79,7 @@ class City extends \yii\db\ActiveRecord
         if (!empty($post) && !empty($post['name'])) {
             $transaction = Yii::$app->db->beginTransaction();
             try {
-                $model->load($post);
+                $model->latLon = $post['City']['latLon'];
                 $model->save();
                 if($model->content) $model->content->delete();
                 $lang = new CityLang();

@@ -14,9 +14,9 @@ use yii\widgets\ActiveForm;
 
     <?= Html::input('text',  'name', $model->content ? $model->content->val : '', ['class' => 'form-control']); ?>
 
-    <?= $form->field($model, 'lat')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'latLon')->textInput(['maxlength' => true, 'id' => 'latLon', 'readonly' => 'readonly']) ?>
 
-    <?= $form->field($model, 'lon')->textInput(['maxlength' => true]) ?>
+    <div id="map" style="height:300px;"></div>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
