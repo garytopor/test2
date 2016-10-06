@@ -204,34 +204,34 @@ class m130524_201442_init extends Migration
         }
 
 
-        $this->createIndex('idx_idCategory_8778_00','category_lang','idCategory',0);
-        $this->createIndex('idx_idCategory_8778_01','category_lang','idCategory',0);
-        $this->createIndex('idx_idCountry_8818_02','city','idCountry',0);
-        $this->createIndex('idx_idCity_8868_03','city_lang','idCity',0);
-        $this->createIndex('idx_idCountry_9468_04','country_lang','idCountry',0);
-        $this->createIndex('idx_alias_9908_05','field','alias',0);
-        $this->createIndex('idx_idField_0188_06','field_lang','idField',0);
-        $this->createIndex('idx_idCategory_1028_07','page','idCategory',0);
-        $this->createIndex('idx_alias_1028_08','page','alias',0);
-        $this->createIndex('idx_aliasPage_1188_09','page_field','aliasPage',0);
-        $this->createIndex('idx_aliasField_1188_10','page_field','aliasField',0);
-        $this->createIndex('idx_aliasPage_1198_11','page_field','aliasPage',0);
-        $this->createIndex('idx_aliasField_1198_12','page_field','aliasField',0);
-        $this->createIndex('idx_idPage_1398_13','page_image','idPage',0);
-        $this->createIndex('idx_idPage_1468_14','page_lang','idPage',0);
-        $this->createIndex('idx_UNIQUE_username_2158_15','user','username',1);
-        $this->createIndex('idx_UNIQUE_email_2158_16','user','email',1);
-        $this->createIndex('idx_UNIQUE_password_reset_token_2158_17','user','password_reset_token',1);
+        $this->createIndex('idx_idCategory_5784_00','category_lang','idCategory',0);
+        $this->createIndex('idx_idCategory_5784_01','category_lang','idCategory',0);
+        $this->createIndex('idx_idCountry_5804_02','city','idCountry',0);
+        $this->createIndex('idx_idCity_5834_03','city_lang','idCity',0);
+        $this->createIndex('idx_idCountry_5904_04','country_lang','idCountry',0);
+        $this->createIndex('idx_alias_5984_05','field','alias',0);
+        $this->createIndex('idx_idField_6044_06','field_lang','idField',0);
+        $this->createIndex('idx_idCategory_6084_07','page','idCategory',0);
+        $this->createIndex('idx_alias_6084_08','page','alias',0);
+        $this->createIndex('idx_aliasPage_6154_09','page_field','aliasPage',0);
+        $this->createIndex('idx_aliasField_6154_10','page_field','aliasField',0);
+        $this->createIndex('idx_aliasPage_6154_11','page_field','aliasPage',0);
+        $this->createIndex('idx_aliasField_6154_12','page_field','aliasField',0);
+        $this->createIndex('idx_idPage_6184_13','page_image','idPage',0);
+        $this->createIndex('idx_idPage_6214_14','page_lang','idPage',0);
+        $this->createIndex('idx_UNIQUE_username_6304_15','user','username',1);
+        $this->createIndex('idx_UNIQUE_email_6304_16','user','email',1);
+        $this->createIndex('idx_UNIQUE_password_reset_token_6304_17','user','password_reset_token',1);
 
         $this->execute('SET foreign_key_checks = 0');
-        $this->addForeignKey('fk_category_8768_00','{{%category_lang}}', 'idCategory', '{{%category}}', 'id', 'CASCADE', 'NO ACTION' );
-        $this->addForeignKey('fk_country_8818_01','{{%city}}', 'idCountry', '{{%country}}', 'id', 'CASCADE', 'NO ACTION' );
-        $this->addForeignKey('fk_city_8858_02','{{%city_lang}}', 'idCity', '{{%city}}', 'id', 'CASCADE', 'NO ACTION' );
-        $this->addForeignKey('fk_country_9448_03','{{%country_lang}}', 'idCountry', '{{%country}}', 'id', 'CASCADE', 'NO ACTION' );
-        $this->addForeignKey('fk_field_0178_04','{{%field_lang}}', 'idField', '{{%field}}', 'id', 'CASCADE', 'NO ACTION' );
-        $this->addForeignKey('fk_category_1018_05','{{%page}}', 'idCategory', '{{%category}}', 'id', 'CASCADE', 'NO ACTION' );
-        $this->addForeignKey('fk_page_1388_06','{{%page_image}}', 'idPage', '{{%page}}', 'id', 'CASCADE', 'NO ACTION' );
-        $this->addForeignKey('fk_page_1458_07','{{%page_lang}}', 'idPage', '{{%page}}', 'id', 'CASCADE', 'NO ACTION' );
+        $this->addForeignKey('fk_category_5774_00','{{%category_lang}}', 'idCategory', '{{%category}}', 'id', 'CASCADE', 'NO ACTION' );
+        $this->addForeignKey('fk_country_5804_01','{{%city}}', 'idCountry', '{{%country}}', 'id', 'CASCADE', 'NO ACTION' );
+        $this->addForeignKey('fk_city_5824_02','{{%city_lang}}', 'idCity', '{{%city}}', 'id', 'CASCADE', 'NO ACTION' );
+        $this->addForeignKey('fk_country_5904_03','{{%country_lang}}', 'idCountry', '{{%country}}', 'id', 'CASCADE', 'NO ACTION' );
+        $this->addForeignKey('fk_field_6034_04','{{%field_lang}}', 'idField', '{{%field}}', 'id', 'CASCADE', 'NO ACTION' );
+        $this->addForeignKey('fk_category_6084_05','{{%page}}', 'idCategory', '{{%category}}', 'id', 'CASCADE', 'NO ACTION' );
+        $this->addForeignKey('fk_page_6184_06','{{%page_image}}', 'idPage', '{{%page}}', 'id', 'CASCADE', 'NO ACTION' );
+        $this->addForeignKey('fk_page_6214_07','{{%page_lang}}', 'idPage', '{{%page}}', 'id', 'CASCADE', 'NO ACTION' );
         $this->execute('SET foreign_key_checks = 1;');
 
         $this->execute('SET foreign_key_checks = 0');
@@ -255,8 +255,8 @@ class m130524_201442_init extends Migration
         $this->insert('{{%category_lang}}',['id'=>'13','idCategory'=>'5','lang'=>'en','val'=>'contacts']);
         $this->insert('{{%category_lang}}',['id'=>'14','idCategory'=>'5','lang'=>'ru','val'=>'контакты']);
         $this->insert('{{%category_lang}}',['id'=>'15','idCategory'=>'5','lang'=>'cn','val'=>'往来']);
-        $this->insert('{{%city}}',['id'=>'1','idCountry'=>'1','latLon'=>'55.8528,37.6070']);
-        $this->insert('{{%city_lang}}',['id'=>'3','idCity'=>'1','lang'=>'ru','val'=>'Ташкент']);
+        $this->insert('{{%city}}',['id'=>'1','idCountry'=>'1','latLon'=>'41.3178,69.2875']);
+        $this->insert('{{%city_lang}}',['id'=>'6','idCity'=>'1','lang'=>'ru','val'=>'Ташкент']);
         $this->insert('{{%country}}',['id'=>'1']);
         $this->insert('{{%country_lang}}',['id'=>'1','idCountry'=>'1','lang'=>'ru','val'=>'Узбекистан']);
         $this->insert('{{%field}}',['id'=>'1','alias'=>'title','type'=>'text','i18n'=>'1']);
@@ -275,6 +275,8 @@ class m130524_201442_init extends Migration
         $this->insert('{{%field}}',['id'=>'14','alias'=>'isMain','type'=>'checkbox','i18n'=>'0']);
         $this->insert('{{%field}}',['id'=>'15','alias'=>'tech-data','type'=>'html','i18n'=>'1']);
         $this->insert('{{%field}}',['id'=>'16','alias'=>'isRed','type'=>'checkbox','i18n'=>'0']);
+        $this->insert('{{%field}}',['id'=>'17','alias'=>'latLon','type'=>'latlon','i18n'=>'1']);
+        $this->insert('{{%field}}',['id'=>'18','alias'=>'address','type'=>'html','i18n'=>'1']);
         $this->insert('{{%field_lang}}',['id'=>'1','idField'=>'1','lang'=>'en','val'=>'Title']);
         $this->insert('{{%field_lang}}',['id'=>'2','idField'=>'1','lang'=>'ru','val'=>'Заголовок']);
         $this->insert('{{%field_lang}}',['id'=>'3','idField'=>'1','lang'=>'cn','val'=>'标题']);
@@ -311,6 +313,24 @@ class m130524_201442_init extends Migration
         $this->insert('{{%field_lang}}',['id'=>'34','idField'=>'12','lang'=>'en','val'=>'Email']);
         $this->insert('{{%field_lang}}',['id'=>'35','idField'=>'12','lang'=>'ru','val'=>'Эл. адрес']);
         $this->insert('{{%field_lang}}',['id'=>'36','idField'=>'12','lang'=>'cn','val'=>'电子邮件']);
+        $this->insert('{{%field_lang}}',['id'=>'37','idField'=>'17','lang'=>'ru','val'=>'Координаты']);
+        $this->insert('{{%field_lang}}',['id'=>'38','idField'=>'17','lang'=>'en','val'=>'Coordinates']);
+        $this->insert('{{%field_lang}}',['id'=>'39','idField'=>'17','lang'=>'cn','val'=>'坐标']);
+        $this->insert('{{%field_lang}}',['id'=>'40','idField'=>'13','lang'=>'ru','val'=>'Дата создания']);
+        $this->insert('{{%field_lang}}',['id'=>'41','idField'=>'13','lang'=>'en','val'=>'Created At']);
+        $this->insert('{{%field_lang}}',['id'=>'42','idField'=>'13','lang'=>'cn','val'=>'在创建']);
+        $this->insert('{{%field_lang}}',['id'=>'43','idField'=>'14','lang'=>'ru','val'=>'На главной']);
+        $this->insert('{{%field_lang}}',['id'=>'44','idField'=>'14','lang'=>'en','val'=>'Is Main']);
+        $this->insert('{{%field_lang}}',['id'=>'45','idField'=>'14','lang'=>'cn','val'=>'主要是']);
+        $this->insert('{{%field_lang}}',['id'=>'46','idField'=>'15','lang'=>'ru','val'=>'Тех.данные']);
+        $this->insert('{{%field_lang}}',['id'=>'47','idField'=>'15','lang'=>'en','val'=>'Technical Data']);
+        $this->insert('{{%field_lang}}',['id'=>'48','idField'=>'15','lang'=>'cn','val'=>'技术数据']);
+        $this->insert('{{%field_lang}}',['id'=>'49','idField'=>'16','lang'=>'ru','val'=>'Отметить красным']);
+        $this->insert('{{%field_lang}}',['id'=>'50','idField'=>'16','lang'=>'en','val'=>'Fill red']);
+        $this->insert('{{%field_lang}}',['id'=>'51','idField'=>'16','lang'=>'cn','val'=>'填写红']);
+        $this->insert('{{%field_lang}}',['id'=>'52','idField'=>'18','lang'=>'ru','val'=>'Адрес']);
+        $this->insert('{{%field_lang}}',['id'=>'53','idField'=>'18','lang'=>'en','val'=>'Address']);
+        $this->insert('{{%field_lang}}',['id'=>'54','idField'=>'18','lang'=>'cn','val'=>'地址']);
         $this->insert('{{%page}}',['id'=>'1','idCategory'=>'2','alias'=>'company_history_and_possibilities','childAlias'=>'','isChild'=>'0']);
         $this->insert('{{%page}}',['id'=>'4','idCategory'=>'2','alias'=>'managment','childAlias'=>'managers','isChild'=>'0']);
         $this->insert('{{%page}}',['id'=>'5','idCategory'=>'2','alias'=>'current_jobs','childAlias'=>'vacancies','isChild'=>'0']);
@@ -323,6 +343,8 @@ class m130524_201442_init extends Migration
         $this->insert('{{%page}}',['id'=>'12','idCategory'=>'3','alias'=>'your_questions_and_our_answers','childAlias'=>'faq','isChild'=>'0']);
         $this->insert('{{%page}}',['id'=>'13','idCategory'=>'4','alias'=>'our_clients','childAlias'=>'client','isChild'=>'0']);
         $this->insert('{{%page}}',['id'=>'14','idCategory'=>'4','alias'=>'our_partners','childAlias'=>'partner','isChild'=>'0']);
+        $this->insert('{{%page}}',['id'=>'15','idCategory'=>'5','alias'=>'contacts','childAlias'=>'offices','isChild'=>'0']);
+        $this->insert('{{%page}}',['id'=>'16','idCategory'=>'5','alias'=>'offices','childAlias'=>'','isChild'=>'1']);
         $this->insert('{{%page_field}}',['id'=>'1','aliasPage'=>'company_history_and_possibilities','aliasField'=>'title']);
         $this->insert('{{%page_field}}',['id'=>'2','aliasPage'=>'company_history_and_possibilities','aliasField'=>'meta-description']);
         $this->insert('{{%page_field}}',['id'=>'3','aliasPage'=>'company_history_and_possibilities','aliasField'=>'meta-keywords']);
@@ -408,6 +430,11 @@ class m130524_201442_init extends Migration
         $this->insert('{{%page_field}}',['id'=>'107','aliasPage'=>'partner','aliasField'=>'content-top']);
         $this->insert('{{%page_field}}',['id'=>'109','aliasPage'=>'partner','aliasField'=>'img-icon']);
         $this->insert('{{%page_field}}',['id'=>'110','aliasPage'=>'partner','aliasField'=>'img-top']);
+        $this->insert('{{%page_field}}',['id'=>'111','aliasPage'=>'offices','aliasField'=>'title']);
+        $this->insert('{{%page_field}}',['id'=>'112','aliasPage'=>'offices','aliasField'=>'address']);
+        $this->insert('{{%page_field}}',['id'=>'113','aliasPage'=>'offices','aliasField'=>'tel']);
+        $this->insert('{{%page_field}}',['id'=>'114','aliasPage'=>'offices','aliasField'=>'email']);
+        $this->insert('{{%page_field}}',['id'=>'115','aliasPage'=>'offices','aliasField'=>'latLon']);
         $this->insert('{{%page_lang}}',['id'=>'7','idPage'=>'5','lang'=>'en','type'=>'title','val'=>'Current Jobs']);
         $this->insert('{{%page_lang}}',['id'=>'8','idPage'=>'5','lang'=>'ru','type'=>'title','val'=>'Текущие Вакансии']);
         $this->insert('{{%page_lang}}',['id'=>'9','idPage'=>'5','lang'=>'cn','type'=>'title','val'=>'当前作业']);
@@ -444,10 +471,16 @@ class m130524_201442_init extends Migration
         $this->insert('{{%page_lang}}',['id'=>'280','idPage'=>'1','lang'=>'en','type'=>'title','val'=>'Company history and possibilities']);
         $this->insert('{{%page_lang}}',['id'=>'281','idPage'=>'1','lang'=>'cn','type'=>'title','val'=>'公司的历史和可能性']);
         $this->insert('{{%page_lang}}',['id'=>'282','idPage'=>'1','lang'=>'en','type'=>'content-top','val'=>'<h4>10 years of hard work, success and grow</h4>Nlngbo Rul-speed International freight forwarders Ltd. Is a sea, air and land transport as an Integrated International freight forwarding companies. In 2005, the prototype of the company in Nlngbo; then, In the development of the SAR Shenzhen, vitality and charm of Shanghai, Qlngdao; today, Is planning to close to Ben Thanh Tlanjln and Xiamen, two of the sea.<h4></h4>']);
-        $this->insert('{{%page_lang}}',['id'=>'283','idPage'=>'1','lang'=>'en','type'=>'content-main','val'=>'<p>Nlngbo Rul-speed international freight forwarders Ltd. Is a sea. air and land transport as an Integrated International freight forwarding companies. In 2005, the prototype of the company In Nlngbo; then, In the development of the SAR Shenzhen, vitality and charm of Shanghai, Qlngdao; today, Is planning to close to Ben Thanh Tianjin and Xiamen, two of the sea.</p><p>Our company has the right to direct booking and comprehensive global agency network, with operations in every corner of the world, where the core business Is focused on romantic European Russia. Britain. France, Finland. Spain, as well as Southeast Asia. Thailand. Malaysia, Vietnam and the Philippines and other countries exotic, as well as the United States, the Middle East and Australia, totaling about It, there are a total of Division I business relationships with more than 50 countries.</p><p>After five years of growth, our company has been formed FCL (FCL), LCL (LCL) import and export freight forwarders, air cargo Import and export freight forwarders, container Inland transportation and door to door service, customs clearance services in Eastern Europe and Russia. Continental bridge transport services and customs declaration, inspection, insurance agents, etc. all aspects of logistics service system, and a determined effort from the coast Into the Inland city of the Chinese coast, out Nelxlu China, to the wider world and become a link global freight forwarders people trusted to provide door to door transport services.</p><div><div><p>Our advantage routes In Europe, the Middle East. Southeast Asia and the United States, with many world-renowned shipping companies have a direct relationship, now has fixed more than 2.000 customers, it Is expected to export proxy container 30000 TEU, annual import agent container 5000 TEU. The company has been adhering to the \\\\\\\"service to win customers, In good faith pool staff, web development enterprise\\\\\\\" business philosophy to \\\\\\\"the development of modern logistics industry\\\\\\\" as its mission, with the leading edge services and national logistics service system, is seeking a pragmatic Hony Endeavour, honesty, practical, ambitious and dedicated to provide \\\\\\\"safe, efficient, economic and thoughtful\\\\\\\" first-class service to our customers around the world.</p></div></div>']);
+        $this->insert('{{%page_lang}}',['id'=>'283','idPage'=>'1','lang'=>'en','type'=>'content-main','val'=>'<p>Nlngbo Rul-speed international freight forwarders Ltd. Is a sea. air and land transport as an Integrated International freight forwarding companies. In 2005, the prototype of the company In Nlngbo; then, In the development of the SAR Shenzhen, vitality and charm of Shanghai, Qlngdao; today, Is planning to close to Ben Thanh Tianjin and Xiamen, two of the sea.</p><p>Our company has the right to direct booking and comprehensive global agency network, with operations in every corner of the world, where the core business Is focused on romantic European Russia. Britain. France, Finland. Spain, as well as Southeast Asia. Thailand. Malaysia, Vietnam and the Philippines and other countries exotic, as well as the United States, the Middle East and Australia, totaling about It, there are a total of Division I business relationships with more than 50 countries.</p><p>After five years of growth, our company has been formed FCL (FCL), LCL (LCL) import and export freight forwarders, air cargo Import and export freight forwarders, container Inland transportation and door to door service, customs clearance services in Eastern Europe and Russia. Continental bridge transport services and customs declaration, inspection, insurance agents, etc. all aspects of logistics service system, and a determined effort from the coast Into the Inland city of the Chinese coast, out Nelxlu China, to the wider world and become a link global freight forwarders people trusted to provide door to door transport services.</p><div><div><p>Our advantage routes In Europe, the Middle East. Southeast Asia and the United States, with many world-renowned shipping companies have a direct relationship, now has fixed more than 2.000 customers, it Is expected to export proxy container 30000 TEU, annual import agent container 5000 TEU. The company has been adhering to the \\\\\\\\\"service to win customers, In good faith pool staff, web development enterprise\\\\\\\\\" business philosophy to \\\\\\\\\"the development of modern logistics industry\\\\\\\\\" as its mission, with the leading edge services and national logistics service system, is seeking a pragmatic Hony Endeavour, honesty, practical, ambitious and dedicated to provide \\\\\\\\\"safe, efficient, economic and thoughtful\\\\\\\\\" first-class service to our customers around the world.</p></div></div>']);
+        $this->insert('{{%page_lang}}',['id'=>'284','idPage'=>'15','lang'=>'en','type'=>'title','val'=>'Offices']);
+        $this->insert('{{%page_lang}}',['id'=>'285','idPage'=>'15','lang'=>'ru','type'=>'title','val'=>'Офисы']);
+        $this->insert('{{%page_lang}}',['id'=>'286','idPage'=>'16','lang'=>'ru','type'=>'title','val'=>'Офис в Ташкенте']);
+        $this->insert('{{%page_lang}}',['id'=>'287','idPage'=>'16','lang'=>'ru','type'=>'address','val'=>'ул.Миробад д.14']);
+        $this->insert('{{%page_lang}}',['id'=>'288','idPage'=>'16','lang'=>'i18n','type'=>'tel','val'=>'+9878447854']);
+        $this->insert('{{%page_lang}}',['id'=>'289','idPage'=>'16','lang'=>'i18n','type'=>'email','val'=>'fsdf@fdf.ru']);
+        $this->insert('{{%page_lang}}',['id'=>'290','idPage'=>'16','lang'=>'ru','type'=>'latLon','val'=>'41.3080,69.2474']);
         $this->insert('{{%user}}',['id'=>'1','username'=>'admin','auth_key'=>'XaQFqmmIzWse3zjGUR7nOZ4TfhI3UIyW','password_hash'=>'$2y$13$u.4MgIhMdC62rQ9hIC634ucuNjc0B.jL/n2nQiu0iRdN7x/TtzGOK','password_reset_token'=>'','email'=>'admin@email.com','status'=>'10','created_at'=>'1475080941','updated_at'=>'1475080941']);
         $this->execute('SET foreign_key_checks = 1;');
-
 
     }
 
@@ -496,6 +529,7 @@ class m130524_201442_init extends Migration
         $this->execute('SET foreign_key_checks = 0');
         $this->execute('DROP TABLE IF EXISTS `user`');
         $this->execute('SET foreign_key_checks = 1;');
+
 
 
     }
