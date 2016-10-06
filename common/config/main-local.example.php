@@ -11,9 +11,9 @@ return [
 
     ],
     'aliases' => [
-        '@backendUrl' => 'http://garybackend/web',
-        '@frontendUrl' => 'http://gary/frontend/web',
-        '@staticUrl' => 'http://gary/frontend/static',
-        '@staticDir' => '@frontend/static',
+        '@backendUrl' => 'http://backend',
+        '@frontendUrl' => 'http://front',
+        '@staticUrl' => '@frontendUrl/static',
+        '@staticDir' => '@frontend/web/static',
     ],
 ];
