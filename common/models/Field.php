@@ -38,6 +38,9 @@ class Field extends \yii\db\ActiveRecord
     const TYPE_TEL_VALUE           = 'tel';
     const TYPE_TEL_NAME            = 'Tel';
 
+    const TYPE_LATLON_VALUE        = 'latlon';
+    const TYPE_LATLON_NAME         = 'LatLon';
+
     /**
      * @inheritdoc
      */
@@ -98,6 +101,7 @@ class Field extends \yii\db\ActiveRecord
             self::TYPE_TEL_VALUE        => self::TYPE_TEL_NAME,
             self::TYPE_CHECKBOX_VALUE   => self::TYPE_CHECKBOX_NAME,
             self::TYPE_DATE_VALUE       => self::TYPE_DATE_NAME,
+            self::TYPE_LATLON_VALUE     => self::TYPE_LATLON_NAME,
         ];
     }
 
@@ -122,6 +126,9 @@ class Field extends \yii\db\ActiveRecord
         switch ($field->type) {
             case Field::TYPE_TEXT_VALUE:
                 $input = Html::input('text',  $lang . '[' .$field->alias . ']', $content, ['class' => 'form-control']);
+                break;
+            case Field::TYPE_LATLON_VALUE:
+                $input = self::getInputLatLon($lang . '[' .$field->alias . ']', $content);
                 break;
             case Field::TYPE_DATE_VALUE:
                 $input = Html::input('text',  $lang . '[' .$field->alias . ']', $content, ['class' => 'form-control pickadate']);
@@ -161,6 +168,14 @@ class Field extends \yii\db\ActiveRecord
         $text = $field->alias;
         if (!empty($field->content) && !empty($field->content->val)) $text = $field->content->val;
         return Html::label($text, '', ['class' => $css]);
+    }
+
+    /**
+     * @return Html [return latlon input with map div]
+     */
+    public function getInputLatLon($name, $content)
+    {
+        return Html::input('text',  $name, $content, ['class' => 'form-control', 'id' => 'latLon', 'readonly' => 'readonly']). '<div id="yMap" style="height:300px;"></div>';
     }
 
 }

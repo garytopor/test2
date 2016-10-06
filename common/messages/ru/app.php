@@ -54,6 +54,7 @@ return [
     'Responsibility and security'=>'Ответственность и безопасность',
     'Company news'=>'Новости компании',
     'Please contact us:'=>'Свяжитесь с нами',
+    'Offices'=>'Офисы',
 
 
 

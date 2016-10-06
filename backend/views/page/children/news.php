@@ -5,7 +5,7 @@ use yii\helpers\Url;
 <div class="col-md-4">
     <div class="panel panel-white">
         <div class="panel-heading">
-        <h6 class="panel-title"><span class="text-semibold"><?php echo $model->getContent('title')->val;; ?></span></h6>
+        <h6 class="panel-title"><span class="text-semibold"><?php echo $model->getContent('title')->val; ?></span></h6>
         <div class="heading-elements">
             <ul class="icons-list">
                 <li><a href="<?php echo Url::toRoute(['/child/delete', 'id' => $model->id]); ?>" class="btn-delete"><i class="icon-trash"></i></a></li>

@@ -79,7 +79,7 @@ class City extends \yii\db\ActiveRecord
         if (!empty($post) && !empty($post['name'])) {
             $transaction = Yii::$app->db->beginTransaction();
             try {
-                $model->latLon = $post['City']['latLon'];
+                $model->latLon = $post['latLon'];
                 $model->save();
                 if($model->content) $model->content->delete();
                 $lang = new CityLang();
