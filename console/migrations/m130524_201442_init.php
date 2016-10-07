@@ -205,34 +205,34 @@ class m130524_201442_init extends Migration
         }
 
 
-        $this->createIndex('idx_idCategory_6782_00','category_lang','idCategory',0);
-        $this->createIndex('idx_idCategory_6782_01','category_lang','idCategory',0);
-        $this->createIndex('idx_idCountry_6802_02','city','idCountry',0);
-        $this->createIndex('idx_idCity_6822_03','city_lang','idCity',0);
-        $this->createIndex('idx_idCountry_6892_04','country_lang','idCountry',0);
-        $this->createIndex('idx_alias_6922_05','field','alias',0);
-        $this->createIndex('idx_idField_6952_06','field_lang','idField',0);
-        $this->createIndex('idx_idCategory_6972_07','page','idCategory',0);
-        $this->createIndex('idx_alias_6972_08','page','alias',0);
-        $this->createIndex('idx_aliasPage_7002_09','page_field','aliasPage',0);
-        $this->createIndex('idx_aliasField_7002_10','page_field','aliasField',0);
-        $this->createIndex('idx_aliasPage_7002_11','page_field','aliasPage',0);
-        $this->createIndex('idx_aliasField_7002_12','page_field','aliasField',0);
-        $this->createIndex('idx_idPage_7062_13','page_image','idPage',0);
-        $this->createIndex('idx_idPage_7092_14','page_lang','idPage',0);
-        $this->createIndex('idx_UNIQUE_username_7152_15','user','username',1);
-        $this->createIndex('idx_UNIQUE_email_7152_16','user','email',1);
-        $this->createIndex('idx_UNIQUE_password_reset_token_7152_17','user','password_reset_token',1);
+        $this->createIndex('idx_idCategory_8044_00','category_lang','idCategory',0);
+        $this->createIndex('idx_idCategory_8044_01','category_lang','idCategory',0);
+        $this->createIndex('idx_idCountry_8074_02','city','idCountry',0);
+        $this->createIndex('idx_idCity_8104_03','city_lang','idCity',0);
+        $this->createIndex('idx_idCountry_8184_04','country_lang','idCountry',0);
+        $this->createIndex('idx_alias_8214_05','field','alias',0);
+        $this->createIndex('idx_idField_8234_06','field_lang','idField',0);
+        $this->createIndex('idx_idCategory_8264_07','page','idCategory',0);
+        $this->createIndex('idx_alias_8264_08','page','alias',0);
+        $this->createIndex('idx_aliasPage_8294_09','page_field','aliasPage',0);
+        $this->createIndex('idx_aliasField_8294_10','page_field','aliasField',0);
+        $this->createIndex('idx_aliasPage_8294_11','page_field','aliasPage',0);
+        $this->createIndex('idx_aliasField_8294_12','page_field','aliasField',0);
+        $this->createIndex('idx_idPage_8364_13','page_image','idPage',0);
+        $this->createIndex('idx_idPage_8384_14','page_lang','idPage',0);
+        $this->createIndex('idx_UNIQUE_username_8444_15','user','username',1);
+        $this->createIndex('idx_UNIQUE_email_8444_16','user','email',1);
+        $this->createIndex('idx_UNIQUE_password_reset_token_8444_17','user','password_reset_token',1);
 
         $this->execute('SET foreign_key_checks = 0');
-        $this->addForeignKey('fk_category_6772_00','{{%category_lang}}', 'idCategory', '{{%category}}', 'id', 'CASCADE', 'NO ACTION' );
-        $this->addForeignKey('fk_country_6802_01','{{%city}}', 'idCountry', '{{%country}}', 'id', 'CASCADE', 'NO ACTION' );
-        $this->addForeignKey('fk_city_6822_02','{{%city_lang}}', 'idCity', '{{%city}}', 'id', 'CASCADE', 'NO ACTION' );
-        $this->addForeignKey('fk_country_6892_03','{{%country_lang}}', 'idCountry', '{{%country}}', 'id', 'CASCADE', 'NO ACTION' );
-        $this->addForeignKey('fk_field_6942_04','{{%field_lang}}', 'idField', '{{%field}}', 'id', 'CASCADE', 'NO ACTION' );
-        $this->addForeignKey('fk_category_6972_05','{{%page}}', 'idCategory', '{{%category}}', 'id', 'CASCADE', 'NO ACTION' );
-        $this->addForeignKey('fk_page_7052_06','{{%page_image}}', 'idPage', '{{%page}}', 'id', 'CASCADE', 'NO ACTION' );
-        $this->addForeignKey('fk_page_7092_07','{{%page_lang}}', 'idPage', '{{%page}}', 'id', 'CASCADE', 'NO ACTION' );
+        $this->addForeignKey('fk_category_8044_00','{{%category_lang}}', 'idCategory', '{{%category}}', 'id', 'CASCADE', 'NO ACTION' );
+        $this->addForeignKey('fk_country_8064_01','{{%city}}', 'idCountry', '{{%country}}', 'id', 'CASCADE', 'NO ACTION' );
+        $this->addForeignKey('fk_city_8104_02','{{%city_lang}}', 'idCity', '{{%city}}', 'id', 'CASCADE', 'NO ACTION' );
+        $this->addForeignKey('fk_country_8184_03','{{%country_lang}}', 'idCountry', '{{%country}}', 'id', 'CASCADE', 'NO ACTION' );
+        $this->addForeignKey('fk_field_8234_04','{{%field_lang}}', 'idField', '{{%field}}', 'id', 'CASCADE', 'NO ACTION' );
+        $this->addForeignKey('fk_category_8264_05','{{%page}}', 'idCategory', '{{%category}}', 'id', 'CASCADE', 'NO ACTION' );
+        $this->addForeignKey('fk_page_8354_06','{{%page_image}}', 'idPage', '{{%page}}', 'id', 'CASCADE', 'NO ACTION' );
+        $this->addForeignKey('fk_page_8384_07','{{%page_lang}}', 'idPage', '{{%page}}', 'id', 'CASCADE', 'NO ACTION' );
         $this->execute('SET foreign_key_checks = 1;');
 
         $this->execute('SET foreign_key_checks = 0');
@@ -280,6 +280,11 @@ class m130524_201442_init extends Migration
         $this->insert('{{%field}}',['id'=>'16','alias'=>'isRed','type'=>'checkbox','i18n'=>'0','imgRatio'=>'16/9']);
         $this->insert('{{%field}}',['id'=>'17','alias'=>'latLon','type'=>'latlon','i18n'=>'1','imgRatio'=>'16/9']);
         $this->insert('{{%field}}',['id'=>'18','alias'=>'address','type'=>'html','i18n'=>'1','imgRatio'=>'16/9']);
+        $this->insert('{{%field}}',['id'=>'19','alias'=>'url','type'=>'text','i18n'=>'0','imgRatio'=>'16/9']);
+        $this->insert('{{%field}}',['id'=>'20','alias'=>'main-img-top','type'=>'image','i18n'=>'0','imgRatio'=>'4/3']);
+        $this->insert('{{%field}}',['id'=>'21','alias'=>'main-img-routes','type'=>'image','i18n'=>'0','imgRatio'=>'4/3']);
+        $this->insert('{{%field}}',['id'=>'22','alias'=>'main-content-route','type'=>'html','i18n'=>'1','imgRatio'=>'16/9']);
+        $this->insert('{{%field}}',['id'=>'23','alias'=>'main-content-top','type'=>'html','i18n'=>'1','imgRatio'=>'16/9']);
         $this->insert('{{%field_lang}}',['id'=>'1','idField'=>'1','lang'=>'en','val'=>'Title']);
         $this->insert('{{%field_lang}}',['id'=>'2','idField'=>'1','lang'=>'ru','val'=>'Заголовок']);
         $this->insert('{{%field_lang}}',['id'=>'3','idField'=>'1','lang'=>'cn','val'=>'标题']);
@@ -334,6 +339,21 @@ class m130524_201442_init extends Migration
         $this->insert('{{%field_lang}}',['id'=>'52','idField'=>'18','lang'=>'ru','val'=>'Адрес']);
         $this->insert('{{%field_lang}}',['id'=>'53','idField'=>'18','lang'=>'en','val'=>'Address']);
         $this->insert('{{%field_lang}}',['id'=>'54','idField'=>'18','lang'=>'cn','val'=>'地址']);
+        $this->insert('{{%field_lang}}',['id'=>'55','idField'=>'19','lang'=>'en','val'=>'Url']);
+        $this->insert('{{%field_lang}}',['id'=>'56','idField'=>'19','lang'=>'ru','val'=>'Ссылка']);
+        $this->insert('{{%field_lang}}',['id'=>'57','idField'=>'19','lang'=>'cn','val'=>'網址']);
+        $this->insert('{{%field_lang}}',['id'=>'58','idField'=>'20','lang'=>'en','val'=>'The background image of the main page']);
+        $this->insert('{{%field_lang}}',['id'=>'59','idField'=>'20','lang'=>'ru','val'=>'Фоновое изображение главной страницы']);
+        $this->insert('{{%field_lang}}',['id'=>'60','idField'=>'20','lang'=>'cn','val'=>'主頁的背景圖片']);
+        $this->insert('{{%field_lang}}',['id'=>'61','idField'=>'21','lang'=>'en','val'=>'Background image block Route the main page']);
+        $this->insert('{{%field_lang}}',['id'=>'62','idField'=>'21','lang'=>'ru','val'=>'Фоновое изображение главной страницы блок роуты']);
+        $this->insert('{{%field_lang}}',['id'=>'63','idField'=>'21','lang'=>'cn','val'=>'背景圖像塊路線主頁']);
+        $this->insert('{{%field_lang}}',['id'=>'64','idField'=>'22','lang'=>'en','val'=>'Content Route Block']);
+        $this->insert('{{%field_lang}}',['id'=>'65','idField'=>'22','lang'=>'ru','val'=>'Содержимое блока Роуты']);
+        $this->insert('{{%field_lang}}',['id'=>'66','idField'=>'22','lang'=>'cn','val'=>'內容根塊']);
+        $this->insert('{{%field_lang}}',['id'=>'67','idField'=>'23','lang'=>'en','val'=>'Сontent of the home page, on top']);
+        $this->insert('{{%field_lang}}',['id'=>'68','idField'=>'23','lang'=>'ru','val'=>'Содержимое главной страницы, сверху']);
+        $this->insert('{{%field_lang}}',['id'=>'69','idField'=>'23','lang'=>'cn','val'=>'主頁的內容']);
         $this->insert('{{%page}}',['id'=>'1','idCategory'=>'2','alias'=>'company_history_and_possibilities','childAlias'=>'','isChild'=>'0']);
         $this->insert('{{%page}}',['id'=>'4','idCategory'=>'2','alias'=>'managment','childAlias'=>'managers','isChild'=>'0']);
         $this->insert('{{%page}}',['id'=>'5','idCategory'=>'2','alias'=>'current_jobs','childAlias'=>'vacancies','isChild'=>'0']);
@@ -348,6 +368,7 @@ class m130524_201442_init extends Migration
         $this->insert('{{%page}}',['id'=>'14','idCategory'=>'4','alias'=>'our_partners','childAlias'=>'partner','isChild'=>'0']);
         $this->insert('{{%page}}',['id'=>'15','idCategory'=>'5','alias'=>'contacts','childAlias'=>'offices','isChild'=>'0']);
         $this->insert('{{%page}}',['id'=>'16','idCategory'=>'5','alias'=>'offices','childAlias'=>'','isChild'=>'1']);
+        $this->insert('{{%page}}',['id'=>'17','idCategory'=>'1','alias'=>'main','childAlias'=>'','isChild'=>'']);
         $this->insert('{{%page_field}}',['id'=>'1','aliasPage'=>'company_history_and_possibilities','aliasField'=>'title']);
         $this->insert('{{%page_field}}',['id'=>'2','aliasPage'=>'company_history_and_possibilities','aliasField'=>'meta-description']);
         $this->insert('{{%page_field}}',['id'=>'3','aliasPage'=>'company_history_and_possibilities','aliasField'=>'meta-keywords']);
@@ -438,6 +459,14 @@ class m130524_201442_init extends Migration
         $this->insert('{{%page_field}}',['id'=>'113','aliasPage'=>'offices','aliasField'=>'tel']);
         $this->insert('{{%page_field}}',['id'=>'114','aliasPage'=>'offices','aliasField'=>'email']);
         $this->insert('{{%page_field}}',['id'=>'115','aliasPage'=>'offices','aliasField'=>'latLon']);
+        $this->insert('{{%page_field}}',['id'=>'116','aliasPage'=>'main','aliasField'=>'title']);
+        $this->insert('{{%page_field}}',['id'=>'117','aliasPage'=>'main','aliasField'=>'meta-description']);
+        $this->insert('{{%page_field}}',['id'=>'118','aliasPage'=>'main','aliasField'=>'meta-keywords']);
+        $this->insert('{{%page_field}}',['id'=>'119','aliasPage'=>'main','aliasField'=>'main-content-top']);
+        $this->insert('{{%page_field}}',['id'=>'120','aliasPage'=>'main','aliasField'=>'url']);
+        $this->insert('{{%page_field}}',['id'=>'121','aliasPage'=>'main','aliasField'=>'main-content-route']);
+        $this->insert('{{%page_field}}',['id'=>'122','aliasPage'=>'main','aliasField'=>'main-img-top']);
+        $this->insert('{{%page_field}}',['id'=>'124','aliasPage'=>'main','aliasField'=>'main-img-routes']);
         $this->insert('{{%page_lang}}',['id'=>'7','idPage'=>'5','lang'=>'en','type'=>'title','val'=>'Current Jobs']);
         $this->insert('{{%page_lang}}',['id'=>'8','idPage'=>'5','lang'=>'ru','type'=>'title','val'=>'Текущие Вакансии']);
         $this->insert('{{%page_lang}}',['id'=>'9','idPage'=>'5','lang'=>'cn','type'=>'title','val'=>'当前作业']);
@@ -482,9 +511,11 @@ class m130524_201442_init extends Migration
         $this->insert('{{%page_lang}}',['id'=>'288','idPage'=>'16','lang'=>'i18n','type'=>'tel','val'=>'+9878447854']);
         $this->insert('{{%page_lang}}',['id'=>'289','idPage'=>'16','lang'=>'i18n','type'=>'email','val'=>'fsdf@fdf.ru']);
         $this->insert('{{%page_lang}}',['id'=>'290','idPage'=>'16','lang'=>'ru','type'=>'latLon','val'=>'41.3080,69.2474']);
+        $this->insert('{{%page_lang}}',['id'=>'299','idPage'=>'17','lang'=>'en','type'=>'title','val'=>'Main settings']);
+        $this->insert('{{%page_lang}}',['id'=>'300','idPage'=>'17','lang'=>'ru','type'=>'title','val'=>'Настройки главной']);
+        $this->insert('{{%page_lang}}',['id'=>'301','idPage'=>'17','lang'=>'cn','type'=>'title','val'=>'主要設置']);
         $this->insert('{{%user}}',['id'=>'1','username'=>'admin','auth_key'=>'XaQFqmmIzWse3zjGUR7nOZ4TfhI3UIyW','password_hash'=>'$2y$13$u.4MgIhMdC62rQ9hIC634ucuNjc0B.jL/n2nQiu0iRdN7x/TtzGOK','password_reset_token'=>'','email'=>'admin@email.com','status'=>'10','created_at'=>'1475080941','updated_at'=>'1475080941']);
         $this->execute('SET foreign_key_checks = 1;');
-
 
     }
 
