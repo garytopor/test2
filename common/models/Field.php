@@ -153,7 +153,7 @@ class Field extends \yii\db\ActiveRecord
                     $content = $content->src . '.' . $content->ext;
                 }
                 $input = Html::fileInput($lang . '[' .$field->alias . '][img]', $content, [
-                    'class' => 'field-image', 'accept' => 'image/*', 'crop' => $crop
+                    'class' => 'field-image', 'accept' => 'image/*', 'crop' => $crop, 'ratio' => $field->imgRatio
                 ]);
                 break;
         }

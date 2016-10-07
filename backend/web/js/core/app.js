@@ -638,6 +638,7 @@ $(function() {
             var name = $(this).attr('name').replace('[img]', '');
             var val = $(this).attr('value');
             var crop = $(this).attr('crop').split(',');
+            var ratio = $(this).attr('ratio').split('/');
 
             var inputs = '<input type="hidden" name="' + name + '[x]" class="img-x">' +
                          '<input type="hidden" name="' + name + '[y]" class="img-y">' +
@@ -675,7 +676,8 @@ $(function() {
                         x: crop[0],
                         y: crop[1],
                         width: crop[2],
-                        height: crop[3]
+                        height: crop[3],
+                        aspectRatio: ratio[0]/ratio[1]
                     },
                     done: function (data) { changeCropInputs(data, previewId); }
                 });
@@ -683,7 +685,9 @@ $(function() {
 
 
             $(this).on('fileloaded', function (event, file, previewId, index, reader) {
+                ratio = $('#' + previewId).closest('.file-input').find('.field-image').attr('ratio').split('/');
                 $('#' + previewId + ' .cropper').cropper({
+                    aspectRatio: ratio[0]/ratio[1],
                     done: function (data) { changeCropInputs(data, previewId); }
                 });
             });
