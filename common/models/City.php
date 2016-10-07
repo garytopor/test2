@@ -32,9 +32,8 @@ class City extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['idCountry', 'lat', 'lon'], 'required'],
+            [['idCountry'], 'required'],
             [['idCountry'], 'integer'],
-            [['lat', 'lon'], 'number'],
             [['idCountry'], 'exist', 'skipOnError' => true, 'targetClass' => Country::className(), 'targetAttribute' => ['idCountry' => 'id']],
         ];
     }

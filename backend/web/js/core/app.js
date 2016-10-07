@@ -759,4 +759,13 @@ $(function() {
         }
     }
 
+    var sidebar_xs = localStorage.getItem('sidebar-xs');
+    $('body').addClass(sidebar_xs);
+
+    $('.sidebar-main-toggle').on('click', function () {
+        if (!sidebar_xs) sidebar_xs = 'sidebar-xs';
+        else sidebar_xs = '';
+        localStorage.setItem('sidebar-xs', sidebar_xs);
+    });
+
 });

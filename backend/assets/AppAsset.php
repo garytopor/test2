@@ -21,6 +21,7 @@ class AppAsset extends AssetBundle
         'https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900"'
     ];
     public $js = [
+        'https://api-maps.yandex.ru/2.1/?lang=ru_RU',
         'js/plugins/loaders/pace.min.js',
         'js/core/libraries/bootstrap.min.js',
         'js/plugins/loaders/blockui.min.js',
